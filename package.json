@@ -20,6 +20,8 @@
     "@cloudflare/workers-types": "^4.20241022.0",
     "h3": "^1.13.0",
     "nitro-cloudflare-dev": "^0.2.1",
+    "sass": "^1.80.4",
+    "scss": "^0.2.4",
     "wrangler": "^3.83.0"
   }
 }
