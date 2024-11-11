@@ -5,6 +5,6 @@
   </div>
 </template>
 
-<script setup scoped></script>
+<script setup></script>
 
 <style lang="scss"></style>
