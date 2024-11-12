@@ -1,10 +1,100 @@
 <template>
-  <div>
-    <h1>Welcome to the homepage</h1>
-    <AppAlert> This is an auto-imported component </AppAlert>
+  <div class="video-wrapper" v-if="showVideo">
+    <video
+      ref="introVideo"
+      class="video-content"
+      :src="videoSource"
+      autoplay
+      playsinline
+      @ended="onVideoEnd"
+      @playing="onVideoPlaying"
+      muted
+    ></video>
+  </div>
+  <div v-else :class="['logo-container', backgroundColorClass]">
+    <h1 ref="logoText" class="logo-text">
+      <img src="/assets/images/padelshoppen-logo.svg" class="logo" />
+    </h1>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, nextTick } from "vue";
 
-<style lang="scss"></style>
+import videoSource from "@/assets/videos/testvideo.mp4";
+const showVideo = ref(true);
+const backgroundColorClass = ref("");
+const logoText = ref(null);
+
+const onVideoEnd = () => {
+  showVideo.value = false;
+  nextTick(() => {
+    if (logoText.value) {
+      setTimeout(() => {
+        logoText.value.classList.add("animate-logo-top");
+      }, 500);
+    }
+  });
+};
+
+const onVideoPlaying = () => {
+  setTimeout(() => {
+    const videoWrapper = document.querySelector(".video-wrapper");
+    videoWrapper.style.transition = "background-color 1s ease";
+    videoWrapper.style.backgroundColor = "#ffffff";
+  }, 3600);
+};
+</script>
+
+<style scoped>
+.video-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #e84b4a;
+  transition: background-color 1s ease;
+}
+
+.video-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.logo-text {
+  font-size: 2.5rem;
+  color: #333;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: top 1s ease, transform 1s ease;
+}
+
+.animate-logo-top {
+  top: 10%;
+  transform: translate(-50%, 0);
+}
+
+.logo {
+  width: 300px;
+  max-width: 100%;
+  transition: transform 1.5s ease;
+}
+</style>
