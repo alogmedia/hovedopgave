@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: false },
 
-  ssr: true,
+  ssr: false,
 
   nitro: {
     preset: "cloudflare-pages",
@@ -25,12 +25,17 @@ export default defineNuxtConfig({
           sizes: "512x512",
           type: "image/png",
         },
+        {
+          src: "/icon192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
       ],
     },
     registerType: "autoUpdate",
     workbox: {
-      navigateFallback: "/",
-      globPatterns: ["**/*.{js,css,html,png,svg,ico,jpg}"],
+      navigateFallback: "/", // Use this to handle navigation requests to non-precached URLs
+      globPatterns: ["**/*.{js,css,html,png,svg,ico,jpg}"], // Adjust this if needed
     },
   },
   css: [
@@ -39,5 +44,6 @@ export default defineNuxtConfig({
 
   app: {
     pageTransition: { name: "page", mode: "out-in" },
+    head: { link: [{ rel: "manifest", href: "/manifest.webmanifest" }] },
   },
 });

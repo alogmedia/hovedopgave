@@ -18,12 +18,16 @@
     <div>
       <button @click="promptInstall" class="installButton">Install App</button>
     </div>
+    <div v-show="$pwa.needRefresh">
+      <span> New content available, click on reload button to update. </span>
+
+      <button @click="$pwa.updateServiceWorker()">Reload</button>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, nextTick } from "vue";
-
+import { ref } from "vue";
 import videoSource from "@/assets/videos/testvideo.mp4";
 const showVideo = ref(true);
 const backgroundColorClass = ref("");
@@ -48,22 +52,55 @@ const onVideoPlaying = () => {
   }, 3600);
 };
 
-import { inject } from "vue";
+import { onMounted, nextTick } from "vue";
 
-const installPrompt = inject("installPrompt");
+const showInstallButton = ref(false); // Controls the visibility of the install button
+let deferredPrompt = null; // Stores the `beforeinstallprompt` event
+
+onMounted(() => {
+  window.addEventListener("beforeinstallprompt", async (e) => {
+    console.log("beforeinstallprompt event fired");
+    e.preventDefault(); // Prevent the automatic prompt
+    deferredPrompt = e; // Save the event for later
+
+    // Helper function to detect desktop
+    function isDesktop() {
+      return window.innerWidth > 1024;
+    }
+
+    // Use nextTick to ensure the DOM updates reactively
+    await nextTick();
+
+    // Only show the install button if it's a mobile device
+    if (deferredPrompt && !isDesktop()) {
+      showInstallButton.value = true; // Show the install button
+    }
+  });
+});
 
 function promptInstall() {
-  if (installPrompt) {
-    installPrompt.prompt();
-    installPrompt.userChoice.then((choiceResult) => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt(); // Show the install prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === "accepted") {
         console.log("User accepted the install prompt");
       } else {
         console.log("User dismissed the install prompt");
       }
+      deferredPrompt = null; // Reset the deferred prompt
+      showInstallButton.value = false; // Hide the button after action
     });
   }
 }
+
+// If you want to use it in setup, import from the nuxtApp.
+const { $pwa } = useNuxtApp();
+
+const toast = useToast();
+
+onMounted(() => {
+  if ($pwa.offlineReady) toast.success("App ready to work offline");
+});
 </script>
 
 <style scoped>
