@@ -15,6 +15,9 @@
     <h1 ref="logoText" class="logo-text">
       <img src="/assets/images/padelshoppen-logo.svg" class="logo" />
     </h1>
+    <div>
+      <button @click="promptInstall" class="installButton">Install App</button>
+    </div>
   </div>
 </template>
 
@@ -44,6 +47,23 @@ const onVideoPlaying = () => {
     videoWrapper.style.backgroundColor = "#ffffff";
   }, 3600);
 };
+
+import { inject } from "vue";
+
+const installPrompt = inject("installPrompt");
+
+function promptInstall() {
+  if (installPrompt) {
+    installPrompt.prompt();
+    installPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === "accepted") {
+        console.log("User accepted the install prompt");
+      } else {
+        console.log("User dismissed the install prompt");
+      }
+    });
+  }
+}
 </script>
 
 <style scoped>
@@ -96,5 +116,16 @@ const onVideoPlaying = () => {
   width: 300px;
   max-width: 100%;
   transition: transform 1.5s ease;
+}
+
+.installButton {
+  padding: 10px 20px;
+  background-color: #e84b4a;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
 }
 </style>
