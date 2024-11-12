@@ -16,7 +16,13 @@
       <img src="/assets/images/padelshoppen-logo.svg" class="logo" />
     </h1>
     <div>
-      <button @click="promptInstall" class="installButton">Install App</button>
+      <button
+        v-if="showInstallButton"
+        @click="promptInstall"
+        class="installButton"
+      >
+        Install App
+      </button>
     </div>
     <div v-show="$pwa.needRefresh">
       <span> New content available, click on reload button to update. </span>
@@ -27,7 +33,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, inject, watch } from "vue";
 import videoSource from "@/assets/videos/testvideo.mp4";
 const showVideo = ref(true);
 const backgroundColorClass = ref("");
@@ -52,36 +58,22 @@ const onVideoPlaying = () => {
   }, 3600);
 };
 
-import { onMounted, nextTick } from "vue";
+const installPrompt = inject("installPrompt");
+const showInstallButton = ref(false);
 
-const showInstallButton = ref(false); // Controls the visibility of the install button
-let deferredPrompt = null; // Stores the `beforeinstallprompt` event
-
-onMounted(() => {
-  window.addEventListener("beforeinstallprompt", async (e) => {
-    console.log("beforeinstallprompt event fired");
-    e.preventDefault(); // Prevent the automatic prompt
-    deferredPrompt = e; // Save the event for later
-
-    // Helper function to detect desktop
-    function isDesktop() {
-      return window.innerWidth > 1024;
-    }
-
-    // Use nextTick to ensure the DOM updates reactively
-    await nextTick();
-
-    // Only show the install button if it's a mobile device
-    if (deferredPrompt && !isDesktop()) {
-      showInstallButton.value = true; // Show the install button
-    }
-  });
+// Watch the reactive installPrompt for changes
+watch(installPrompt, (newPrompt) => {
+  console.log("installPrompt changed:", newPrompt); // Check if installPrompt updates
+  if (newPrompt) {
+    showInstallButton.value = true;
+  }
 });
 
 function promptInstall() {
-  if (deferredPrompt) {
-    deferredPrompt.prompt(); // Show the install prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
+  if (installPrompt && installPrompt.value) {
+    console.log("Prompting install"); // Confirm promptInstall is called
+    installPrompt.value.prompt();
+    installPrompt.value.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === "accepted") {
         console.log("User accepted the install prompt");
       } else {
