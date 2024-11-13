@@ -21,18 +21,20 @@
         @click="promptInstall"
         class="installButton"
       >
-        Install App
+        Install Now
       </button>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, inject, watch } from "vue";
 import videoSource from "@/assets/videos/testvideo.mp4";
+
 const showVideo = ref(true);
 const backgroundColorClass = ref("");
 const logoText = ref(null);
+const showInstallButton = ref(false); // Make sure this is defined
+const deferredPrompt = ref(null); // Store the install prompt event
 
 const onVideoEnd = () => {
   showVideo.value = false;
@@ -53,32 +55,47 @@ const onVideoPlaying = () => {
   }, 3600);
 };
 
-const installPrompt = inject("installPrompt");
-const showInstallButton = ref(false);
-
-// Watch the reactive installPrompt for changes
-watch(installPrompt, (newPrompt) => {
-  console.log("installPrompt changed:", newPrompt); // Check if installPrompt updates
-  if (newPrompt) {
-    showInstallButton.value = true;
+// Handle the install prompt
+const promptInstall = async () => {
+  if (deferredPrompt.value) {
+    console.log("Prompting installation...");
+    deferredPrompt.value.prompt(); // Show the install prompt
+    const { outcome } = await deferredPrompt.value.userChoice; // Wait for user choice
+    console.log(`User choice: ${outcome}`);
+    if (outcome === "accepted") {
+      console.log("User accepted the installation");
+    } else {
+      console.log("User dismissed the installation");
+    }
+    deferredPrompt.value = null; // Clear the deferred prompt
+  } else {
+    console.log("Deferred prompt is null. Cannot show install prompt.");
   }
+};
+
+onMounted(() => {
+  console.log("Component mounted, adding event listeners...");
+
+  // Listen for the beforeinstallprompt event
+  window.addEventListener("beforeinstallprompt", (e) => {
+    console.log("beforeinstallprompt event fired");
+    console.log("Current showInstallButton value:", showInstallButton.value);
+
+    e.preventDefault(); // Prevent the default mini-infobar prompt
+    deferredPrompt.value = e; // Save the event for triggering later
+    showInstallButton.value = true; // Show the install button
+    console.log("Updated showInstallButton to true");
+  });
+
+  // Optional: Handle appinstalled event to track successful installations
+  window.addEventListener("appinstalled", () => {
+    console.log("PWA was installed successfully!");
+    showInstallButton.value = false; // Hide the install button
+  });
+
+  // Debug initial states
+  console.log("Initial showInstallButton:", showInstallButton.value);
 });
-
-function promptInstall() {
-  if (installPrompt && installPrompt.value) {
-    console.log("Prompting install"); // Confirm promptInstall is called
-    installPrompt.value.prompt();
-    installPrompt.value.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === "accepted") {
-        console.log("User accepted the install prompt");
-      } else {
-        console.log("User dismissed the install prompt");
-      }
-      deferredPrompt = null; // Reset the deferred prompt
-      showInstallButton.value = false; // Hide the button after action
-    });
-  }
-}
 </script>
 
 <style scoped>
