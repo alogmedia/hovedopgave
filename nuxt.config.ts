@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     preset: "cloudflare-pages",
   },
 
-  modules: ["nitro-cloudflare-dev", "@vite-pwa/nuxt"],
+  modules: ["nitro-cloudflare-dev", "@vite-pwa/nuxt", "@nuxt/icon"],
   pwa: {
     manifest: {
       name: "Paddelshoppen PWA",
