@@ -63,8 +63,8 @@ export default defineNuxtConfig({
   },
   css: [
     "@/assets/main.scss", // Added main.scss to global styles
+    "@/assets/global_vars.scss", // Ensure it's included globally
   ],
-
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: { link: [{ rel: "manifest", href: "/manifest.webmanifest" }] },

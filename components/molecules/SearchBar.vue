@@ -1,6 +1,6 @@
 <template>
     <div class="search-bar">
-      <SearchIcon class="search-icon"/>
+      <SearchIcon class="search-icon" />
       <Input :placeholder="placeholder" v-model="searchQuery" />
       <SearchButton :label="buttonLabel" @click="onSearch" />
     </div>
@@ -45,12 +45,15 @@
   .search-bar {
     display: flex;
     align-items: center;
+    width: 100%; // Ensure it fills the container width
     border: 1px solid #ccc;
-    overflow: hidden;
+    box-sizing: border-box;
+    background: #FFF;
+    margin-top: 20px;
   }
-
+  
   .search-icon {
-    padding-left: 25px;
+    margin-left: 10px;
   }
   </style>
   

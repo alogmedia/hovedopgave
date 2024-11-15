@@ -7,7 +7,6 @@
   
 <style scoped>
 .logo-container {
-  position: absolute;
   top: 3%;
   left: 13px;
 }

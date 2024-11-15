@@ -10,14 +10,14 @@
       @playing="onVideoPlaying"
       muted
     ></video> -->
-  </div> 
-    <moleculesTopNav />
-    <div class="search-bar">
-      <moleculesSearchBar />
-    </div>
+  </div>
+
+<organismsHeader />
+<organismsHeroBanner :imageSrc="heroImage" title="Deals" headline="Vælg denne uges deal" buttonIcon="material-symbols:arrow-right-alt" buttonLabel="Find den her"/>
 </template>
 
 <script setup>
+import heroImage from "@/assets/images/hero.png"; // Make sure the path is correct
 /* import videoSource from "@/assets/videos/testvideo.mp4";
 
 const showVideo = ref(true);
@@ -54,15 +54,18 @@ body {
   background-color: $background-color;
 }
 
-.search-bar {
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 400px;
-  
+.hero-banner {
+  margin-top: 20px;
 }
+
+.text.heading {
+  font-family: 'Muroslant', sans-serif;
+  letter-spacing: 2px;
+  font-size: 1.9rem !important;
+  padding-top: 5px;
+ }
+
+
 .video-wrapper {
   display: flex;
   align-items: center;

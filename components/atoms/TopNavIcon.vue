@@ -23,5 +23,4 @@ const props = defineProps({
 </script>
 
 <style scoped>
-/* Add any additional styling for the icons if needed */
 </style>

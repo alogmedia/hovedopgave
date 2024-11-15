@@ -1,4 +1,16 @@
-// assets/global_vars.scss
+@font-face {
+  font-family: 'Muroslant';
+  src: url('@/assets/fonts/Muroslant.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+  
+// Define a variable for headings
+$font-heading: 'Muroslant', sans-serif;
+
+  
 // Colors
 $primary-color: #3498db;
 $secondary-color: #2ecc71;
@@ -7,11 +19,16 @@ $text-color: #333;
 $background-color: #F6F8FA;
 
 // Typography
-$font-family-base: 'Helvetica Neue', Arial, sans-serif;
+$font-family-base: 'Muroslant', Arial, sans-serif;
 $font-size-base: 16px;
 $font-size-sm: 14px;
 $font-size-lg: 18px;
 $line-height-base: 1.5;
+
+// Assuming this is in a global SCSS file or in your component styles after importing `global_vars.scss`
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-heading;
+  }
 
 // Spacing
 $spacing-xs: 4px;
