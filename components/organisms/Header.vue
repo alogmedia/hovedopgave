@@ -18,6 +18,7 @@
     padding: 0 20px;
     box-sizing: border-box;
     padding-top: 20px;
+    background-color: #F6F8FA;
   }
   
   .header-inner {
