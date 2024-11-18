@@ -1,7 +1,7 @@
 <template>
     <div class="category-title">
       <Text :content="title" type="subheading" />
-      <Text :content="subtitle" type="paragraph" />
+      <Text :content="subtitle" type="undertitle" />
     </div>
   </template>
   
@@ -24,20 +24,21 @@
   <style scoped lang="scss">
   .category-title {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 30px;
+    left: 30px;
     text-transform: uppercase;
   
     .text.subheading {
-      font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 2rem;
       color: #E84B4A; // Custom red color for emphasis
+      letter-spacing: 4%;
     }
   
-    .text.paragraph {
-      font-weight: bold;
-      font-size: 1rem;
+    .text.undertitle {
+      font-family: Muroslant;
+      font-size: 2rem;
       color: #000; // Custom black color for normal text
+      letter-spacing: 4%;
     }
   }
   </style>

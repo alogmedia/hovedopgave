@@ -19,14 +19,15 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  width: 300px; // Adjust width as needed
-  height: 200px; // Adjust height as needed
+  position: relative;
+  top: -16rem;
+  background: rgba(255, 255, 255, 1);
+  min-width: 250px;
+  max-width: min-content;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  z-index: 10;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%); // Defines the diagonal cut
-  box-sizing: border-box;
 }
 </style>
