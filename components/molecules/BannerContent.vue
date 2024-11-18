@@ -19,45 +19,40 @@ import Text from '@/components/atoms/Text.vue';
 .banner {
   display: flex;
   align-items: center;
-  width:100%;
+  width: 100%;
+  height: 50px; /* Adjust height as needed */
+  background-color: #FFFFFF; /* Grey background color */
+
 }
 
 .banner-content {
   display: flex;
   align-items: center;
-  gap: 10px; // Space between items
-  width: 100%;
-  background-color: #ff4d4d;
-  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
-  height: 35px;
-  position: relative; // Needed for positioning the ::after element
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 15%; // Adjust to control the size of the overlay triangle
-    height: 100%;
-    background-color: #F6F8FA; // Match the banner-right background color
-    clip-path: polygon(0 100%, 100% 0, 100% 100%);
-  }
+  gap: 10px;
+  width: 50%; /* Adjust the width as needed */
+  background-color: #ff4d4d; /* Red background color */
+  clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%); /* Creates the diagonal cut */
+  height: 100%;
+  padding-left: 10px; /* Padding for better alignment of tennis ball and text */
 }
 
 .banner-right {
   display: flex;
-  background-color: #F6F8FA;
-  height: 35px;
-  width: 100%;
   align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 50%;
+  padding-left: 10px;
 }
 
 .textleft {
   font-weight: bold;
-  padding-left: 35%;
+  color: #000; /* Black text color for "KUN IDAG!" */
+  padding-left: 30%;
 }
 
 .textright {
   font-weight: bold;
+  color: #000; /* Black text color for "20 % PÅ ALLE BOLDE" */
 }
 </style>

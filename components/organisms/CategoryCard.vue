@@ -33,13 +33,13 @@
   <style scoped lang="scss">
   .category-card {
     display:flex;
-    background-color: #F6F8FA;
+    background-color: #FFFFFF;
     margin: 0 auto;
     position: relative;
     width: 90%;  // Adjust as needed for your design
     height: 50%; // Adjust as needed for your design
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Adds a modern shadow for depth
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1); // Adds a modern shadow for depth
     margin-bottom: 20px;
     .catImg {
         display: flex;

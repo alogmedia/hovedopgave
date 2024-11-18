@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Jakarta';
+  src: url('@/assets/fonts/PlusJakarta.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
   
 // Define a variable for headings
@@ -16,7 +23,7 @@ $primary-color: #3498db;
 $secondary-color: #2ecc71;
 $accent-color: #e74c3c;
 $text-color: #333;
-$background-color: #FFFFFF;
+$background-color: #F6F8FA;
 
 // Typography
 $font-family-base: 'Muroslant', Arial, sans-serif;

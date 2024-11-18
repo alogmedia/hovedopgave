@@ -30,14 +30,15 @@
   
   <style scoped lang="scss">
   .text.heading {
-    font-weight: bold;
     font-size: 2rem;
+    letter-spacing: 4%;
   }
   
   .text.subheading {
-    font-weight: bold;
     font-size: 1.5rem;
     color: #E84B4A;
+    letter-spacing: 4%;
+
   }
   
   .text.paragraph {

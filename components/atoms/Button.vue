@@ -19,7 +19,7 @@
     },
     color: {
       type: String,
-      default: '#007bff' // Default blue color
+      default: '#0071e3' // Default blue color
     },
 
   });
@@ -34,7 +34,12 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-weight:bold;
+    width: 175px;
+    justify-content: center;
+    font-weight: 700;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-family: Jakarta;
   }
   </style>
   

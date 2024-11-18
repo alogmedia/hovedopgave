@@ -17,12 +17,13 @@
   <organismsPromoBanner />
   <OrganismsCategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage"/>
   <OrganismsCategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage"/>
-
+  <OrganismsBottomNav :homeIcon="homeImg"/>
 </template>
 
 <script setup>
 import heroImage from "@/assets/images/hero.png";
 import categoryImage from "@/assets/images/padelbat.png";
+import homeImg from "/icon.png";
 
 /* import videoSource from "@/assets/videos/testvideo.mp4";
 
@@ -66,9 +67,10 @@ body {
 
 .text.heading {
   font-family: 'Muroslant', sans-serif;
-  letter-spacing: 2px;
-  font-size: 25px !important;
+  letter-spacing: 4%;
+  font-size: 30px !important;
   padding-top: 5px;
+  font-weight: 350;
  }
 
 
