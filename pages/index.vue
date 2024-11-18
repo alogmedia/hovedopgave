@@ -61,7 +61,7 @@ body {
 .text.heading {
   font-family: 'Muroslant', sans-serif;
   letter-spacing: 2px;
-  font-size: 1.9rem !important;
+  font-size: 25px !important;
   padding-top: 5px;
  }
 
