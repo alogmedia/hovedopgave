@@ -12,12 +12,18 @@
     ></video> -->
   </div>
 
-<organismsHeader />
-<organismsHeroBanner :imageSrc="heroImage" title="Deals" headline="Vælg denne uges deal" buttonIcon="material-symbols:arrow-right-alt" buttonLabel="Find den her"/>
+  <organismsHeader />
+  <organismsHeroBanner :imageSrc="heroImage" title="Deals" headline="Vælg denne uges deal" buttonIcon="material-symbols:arrow-right-alt" buttonLabel="Find den her"/>
+  <organismsPromoBanner />
+  <OrganismsCategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage"/>
+  <OrganismsCategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage"/>
+
 </template>
 
 <script setup>
-import heroImage from "@/assets/images/hero.png"; // Make sure the path is correct
+import heroImage from "@/assets/images/hero.png";
+import categoryImage from "@/assets/images/padelbat.png";
+
 /* import videoSource from "@/assets/videos/testvideo.mp4";
 
 const showVideo = ref(true);
@@ -72,7 +78,6 @@ body {
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
   background-color: $accent-color;
   transition: background-color 1s ease;
 }

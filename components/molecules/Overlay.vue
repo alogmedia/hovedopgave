@@ -28,6 +28,5 @@ const props = defineProps({
   height: 200px; // Adjust height as needed
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%); // Defines the diagonal cut
   box-sizing: border-box;
-  overflow: hidden;
 }
 </style>
