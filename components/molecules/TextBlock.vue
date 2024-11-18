@@ -16,7 +16,7 @@
   
   <style scoped lang="scss">
   .text-block {
-    color: #000;
+    color: #000; 
   }
   </style>
   
