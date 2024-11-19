@@ -12,9 +12,9 @@ export default defineNuxtConfig({
   modules: ["nitro-cloudflare-dev", "@vite-pwa/nuxt", "@nuxt/icon"],
   pwa: {
     manifest: {
-      name: "Paddelshoppen PWA",
-      short_name: "paddelpwa", // Short name for homescreen
-      description: "Paddelshoppen PWA", // Description for homescreen
+      name: "Padelshoppen App",
+      short_name: "Padelshoppen", // Short name for homescreen
+      description: "Padelshoppens officielle App", // Description for homescreen
       theme_color: "#ffffff", // Customize your theme color
       background_color: "#ffffff", // Background color when the app is loading
       display: "standalone", // Use 'standalone' for a native app feel
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
           src: "/screenshot1.png",
           sizes: "413x914",
           type: "image/png",
-          label: "Paddelshoppen PWA",
+          label: "Padelshoppen",
         },
       ],
     },
