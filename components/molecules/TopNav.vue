@@ -1,9 +1,9 @@
 <template>
   <div class="top-nav">
-    <atomsLogo />
+    <Logo />
     <div class="topicons">
-      <atomsTopNavIcon name="ic:twotone-favorite-border" />
-      <atomsTopNavIcon name="material-symbols:account-circle-outline" />
+      <TopNavIcon name="ic:twotone-favorite-border" />
+      <TopNavIcon name="material-symbols:account-circle-outline" />
     </div>
   </div>
 </template>

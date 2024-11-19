@@ -5,6 +5,13 @@ export default defineNuxtConfig({
 
   ssr: false,
 
+  components: [
+    {
+      path: "~/components",
+      pathPrefix: false,
+    },
+  ],
+
   nitro: {
     preset: "cloudflare-pages",
   },

@@ -1,57 +1,25 @@
 <template>
-  <div class="video-wrapper" v-if="showVideo">
-  <!--   <video
-      ref="introVideo"
-      class="video-content"
-      :src="videoSource"
-      autoplay
-      playsinline
-      @ended="onVideoEnd"
-      @playing="onVideoPlaying"
-      muted
-    ></video> -->
+  <div>
+    <Header />
+    <HeroBanner
+      :imageSrc="heroImage"
+      title="Deals"
+      headline="Vælg denne uges deal"
+      buttonIcon="material-symbols:arrow-right-alt"
+      buttonLabel="Find den her"
+    />
+    <PromoBanner />
+    <CategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage" />
+    <CategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage" />
+    <LazyCategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage" />
+    <BottomNav :homeIcon="homeImg" />
   </div>
-
-  <organismsHeader />
-  <organismsHeroBanner :imageSrc="heroImage" title="Deals" headline="Vælg denne uges deal" buttonIcon="material-symbols:arrow-right-alt" buttonLabel="Find den her"/>
-  <organismsPromoBanner />
-  <OrganismsCategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage"/>
-  <OrganismsCategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage"/>
-  <OrganismsBottomNav :homeIcon="homeImg"/>
 </template>
 
 <script setup>
 import heroImage from "@/assets/images/hero.png";
 import categoryImage from "@/assets/images/padelbat.png";
 import homeImg from "/icon.png";
-
-/* import videoSource from "@/assets/videos/testvideo.mp4";
-
-const showVideo = ref(true);
-const backgroundColorClass = ref("");
-const logoText = ref(null);
-const showInstallButton = ref(false); // Make sure this is defined
-const deferredPrompt = ref(null); // Store the install prompt event
-
-const onVideoEnd = () => {
-  showVideo.value = false;
-  nextTick(() => {
-    if (logoText.value) {
-      setTimeout(() => {
-        logoText.value.classList.add("animate-logo-top");
-      }, 500);
-    }
-  });
-};
-
-const onVideoPlaying = () => {
-  setTimeout(() => {
-    const videoWrapper = document.querySelector(".video-wrapper");
-    videoWrapper.style.transition = "background-color 1s ease";
-    videoWrapper.style.backgroundColor = "#ffffff";
-  }, 3600);
-};
- */
 </script>
 
 <style lang="scss">
@@ -66,13 +34,12 @@ body {
 }
 
 .text.heading {
-  font-family: 'Muroslant', sans-serif;
+  font-family: "Muroslant", sans-serif;
   letter-spacing: 4%;
   font-size: 30px !important;
   padding-top: 5px;
   font-weight: 350;
- }
-
+}
 
 .video-wrapper {
   display: flex;
