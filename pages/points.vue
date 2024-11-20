@@ -3,7 +3,7 @@
     <SubHeader />
     <SmallPromoBanner />
     <PointShop />
-    <PointProduct  title="Padel" subtitle="Bat" :imageSrc="categoryImage"/>
+    <PointProduct title="Padel" subtitle="Bat" :imageSrc="categoryImage" />
     <BottomNav />
   </div>
 </template>
