@@ -13,7 +13,6 @@
 <style scoped lang="scss">
 .header-container {
   width: 100%;
-  padding: 0 20px;
   box-sizing: border-box;
   padding-top: 20px;
   background-color: #ffffff;

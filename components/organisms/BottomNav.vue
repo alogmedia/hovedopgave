@@ -4,10 +4,13 @@
       <BottomNavItem icon="mdi-home" label="Hjem" />
     </NuxtLink>
     <NuxtLink to="/points" class="BottomNavLinks">
+      <BottomNavItem icon="solar:shop-bold" label="Shop" />
+    </NuxtLink>
+    <NuxtLink to="/points" class="BottomNavLinks">
       <BottomNavItem icon="mdi-basketball" label="Padelpoints" />
     </NuxtLink>
     <NuxtLink to="/kurv" class="BottomNavLinks">
-      <BottomNavItem icon="mdi-cart-outline" label="Kurv" />
+      <BottomNavItem icon="material-symbols:shopping-cart" label="Kurv" />
     </NuxtLink>
   </nav>
 </template>

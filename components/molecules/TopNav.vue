@@ -21,5 +21,6 @@
 .topicons {
   display: flex;
   gap: 11px;
+  margin-right: 20px;
 }
 </style>

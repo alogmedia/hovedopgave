@@ -2,11 +2,11 @@
   <div class="banner">
     <div class="banner-content">
       <TennisBallIcon />
-      <Text :content="'KUN IDAG!'" type="paragraph" class="textleft" />
+      <Text :content="'20 % PÅ ALLE BOLDE'" type="paragraph" class="textleft" />
     </div>
     <div class="banner-right">
       <Text
-        :content="'20 % PÅ ALLE BOLDE'"
+        :content="'KUN IDAG!'"
         type="paragraph"
         class="textright"
       />
@@ -24,22 +24,15 @@ import Text from "@/components/atoms/Text.vue";
   display: flex;
   align-items: center;
   width: 100%;
-  height: 50px; /* Adjust height as needed */
-  background-color: #ffffff; /* Grey background color */
+  height: 30px; /* Adjust height as needed */
+  background-color: #F6F8FA; /* Grey background color */
 }
 
 .banner-content {
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 50%; /* Adjust the width as needed */
-  background-color: #ff4d4d; /* Red background color */
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    90% 100%,
-    0 100%
-  ); /* Creates the diagonal cut */
+  width: 70%; /* Adjust the width as needed */
+  background-color: #F6F8FA; /* Red background color */
   height: 100%;
 }
 
@@ -48,8 +41,15 @@ import Text from "@/components/atoms/Text.vue";
   align-items: center;
   justify-content: center;
   height: 100%;
-  width: 50%;
+  width: 30%;
   padding-left: 10px;
+  background-color: #ff4d4d;
+  clip-path: polygon(
+    5% 0,
+    100% 0,
+    100% 100%,
+    0 100%
+  ); /* Creates the diagonal cut */
 }
 
 .textleft {
@@ -60,6 +60,7 @@ import Text from "@/components/atoms/Text.vue";
 
 .textright {
   font-weight: bold;
+  color: #FFF;
   font-family: Jakarta;
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div class="points">
-    <TopNav />
-    <PromoBanner />
+    <SubHeader />
+    <SmallPromoBanner />
+    <PointShop />
+    <PointProduct  title="Padel" subtitle="Bat" :imageSrc="categoryImage"/>
     <BottomNav />
   </div>
 </template>

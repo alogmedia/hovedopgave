@@ -1,6 +1,7 @@
 <!-- components/atoms/TopNavIcon.vue -->
 <template>
-  <Icon :name="name" :style="{ color }" :size="size" />
+  <Icon :name="name" :style="{ color }" :size="size" :class="customClass" />
+  
 </template>
 
 <script setup>
@@ -18,6 +19,10 @@ const props = defineProps({
   size: {
     type: String,
     default: '38px',
+  },
+  customClass: {
+    type: String,
+    default: '',
   },
 });
 </script>

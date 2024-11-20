@@ -1,5 +1,5 @@
 <template>
-  <div :class="['logo-container', customClass]">
+  <div :class="[defaultClass, customClass]" >
     <img :src="src" :alt="alt" class="logo" />
   </div>
 </template>
@@ -21,19 +21,22 @@ const props = defineProps({
     default: "",
   },
 });
+
+const defaultClass = ref('logo-container');
+
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .logo-container {
   position: relative;
   top: 3%;
-  left: 13px;
 }
 
 .logo {
   width: 160px;
   max-width: 100%;
   transition: transform 0.3s ease;
+  margin-left: 20px;
 }
 
 .logo:hover {
