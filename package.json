@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "@nuxt/icon": "^1.7.5",
+    "@tresjs/cientos": "^4.0.3",
+    "@tresjs/nuxt": "^3.0.7",
+    "@tresjs/post-processing": "^0.7.1",
     "@vite-pwa/nuxt": "^0.10.6",
     "nuxt": "^3.13.2",
     "nuxt-swiper": "^2.0.0",
