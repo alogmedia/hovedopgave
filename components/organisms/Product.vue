@@ -29,11 +29,8 @@
   <style scoped lang="scss">
   .pointProduct-card {
   display: flex;
-  flex-direction: column;
   background-color: #FFFFFF;
-  margin: 0; /* Remove the auto margin to prevent additional spacing */
   position: relative;
-  width: 150px;  // Ensure fixed width for consistency in slider
   height: 250px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px; // Space between each product in the row

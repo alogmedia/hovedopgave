@@ -11,18 +11,16 @@
   
   <style scoped lang="scss">
   .header-container {
-    width: 100%;
-    box-sizing: border-box;
     padding-top: 10px;
     background-color: #F6F8FA;
+    margin-left:20px;
+    margin-right:20px;
+
   }
   
   .header-inner {
     display: flex;
     flex-direction: column;
-    align-items: stretch; // Stretch to ensure children take full width
-    width: 100%;
-    box-sizing: border-box;
   }
   </style>
   

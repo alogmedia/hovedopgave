@@ -20,8 +20,8 @@
     align-items: center;
     padding-bottom: 20px;
     margin-left: 20px;
+    margin-right: 20px;
     gap: 10px;
-    width: 100%;
   }
 
 
@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: row;
     position: absolute;
-    right: 40px;
+    right: 0px;
     align-items: center;
     gap: 5px;
   }

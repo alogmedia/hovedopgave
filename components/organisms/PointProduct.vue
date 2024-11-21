@@ -76,14 +76,12 @@ onMounted(fetchProducts);
 .products-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 2 products per row */
-  gap: 10px; /* Adjust spacing between grid items */
   margin-left: 20px;
+  margin-right: 20px;
+  gap: 20px;
 }
 
 .product-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 10px;
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
 
@@ -107,5 +105,6 @@ onMounted(fetchProducts);
     font-size: 18px;
     }
   }
+ 
   </style>
   

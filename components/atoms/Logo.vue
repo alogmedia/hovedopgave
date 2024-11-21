@@ -36,7 +36,6 @@ const defaultClass = ref('logo-container');
   width: 160px;
   max-width: 100%;
   transition: transform 0.3s ease;
-  margin-left: 20px;
 }
 
 .logo:hover {
