@@ -1,7 +1,6 @@
 <template>
     <div class="category-title">
       <Text :content="title" type="subheading" />
-      <Text :content="subtitle" type="undertitle" />
     </div>
   </template>
   
@@ -14,24 +13,20 @@
       type: String,
       required: true
     },
-    subtitle: {
-      type: String,
-      required: true
-    }
   });
   </script>
   
   <style scoped lang="scss">
   .category-title {
     position: absolute;
-    top: 30px;
-    left: 30px;
+    left: 5px;
+    top: 20px;
+    max-width: fit-content;
+    padding: 5px;
     text-transform: uppercase;
-  
     .text.subheading {
-      font-size: 2rem;
-      color: #E84B4A; // Custom red color for emphasis
-      letter-spacing: 4%;
+      font-size: 1.2rem;
+      color: #000; // Custom red color for emphasis
     }
   
     .text.undertitle {

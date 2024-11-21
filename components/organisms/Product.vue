@@ -1,7 +1,7 @@
 <template>
     <div class="pointProduct-card">
       <Image :src="imageSrc" :alt="alt" width="100%" height="100%" class="catImg"/>
-      <PointProductTitle :title="title" :subtitle="subtitle" />
+      <PointProductTitle :title="title"/>
     </div>
   </template>
   
@@ -23,10 +23,6 @@
       type: String,
       required: true
     },
-    subtitle: {
-      type: String,
-      required: true
-    }
   });
   </script>
   
@@ -45,7 +41,7 @@
   .catImg {
     display: block;
     margin: auto auto;
-    width: 100px;
+    width: 125px;
     padding: 10px; /* Adjust padding to reduce extra space */
   }
 }
