@@ -21,9 +21,13 @@ export default defineNuxtConfig({
       },
     },
   },
-
-  modules: ["nitro-cloudflare-dev", "@vite-pwa/nuxt", "@nuxt/icon", "nuxt-swiper"],
-  
+  modules: [
+    "nitro-cloudflare-dev",
+    "@vite-pwa/nuxt",
+    "@nuxt/icon",
+    "nuxt-swiper",
+    "@tresjs/nuxt",
+  ],
   pwa: {
     manifest: {
       name: "Padelshoppen App",
