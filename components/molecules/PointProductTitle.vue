@@ -18,11 +18,6 @@
   
   <style scoped lang="scss">
   .category-title {
-    position: absolute;
-    left: 5px;
-    top: 20px;
-    max-width: fit-content;
-    padding: 5px;
     text-transform: uppercase;
     .text.subheading {
       font-size: 1.2rem;

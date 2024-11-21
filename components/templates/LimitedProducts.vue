@@ -1,28 +1,41 @@
 <template>
-    <LimitedDeals />
-    <Swiper
-      :slides-per-view="1"
-      :space-between="10"
-      :breakpoints="breakpointsConfig"
-      class="product-slider"
+  <LimitedDeals />
+
+  <Swiper
+    :slides-per-view="1"
+    :space-between="10"
+    :breakpoints="breakpointsConfig"
+    class="product-slider"
+  >
+    <SwiperSlide
+      v-for="(product, index) in (isLoading ? skeletonProducts : products)"
+      :key="index"
+      class="product-slide"
     >
-      <SwiperSlide v-for="(product, index) in products" :key="index" class="product-slide">
+      <template v-if="isLoading">
+        <!-- Skeleton Loader -->
+        <div class="skeleton-loader">
+          <div class="skeleton-image"></div>
+          <div class="skeleton-title"></div>
+          <div class="skeleton-price"></div>
+        </div>
+      </template>
+      <template v-else>
+        <!-- Product Component -->
         <Product
+          :title="product.title"
           :imageSrc="product.imageSrc"
           :alt="product.alt"
-          :title="product.title"
+          :price="product.price"
+          :showExpire="true"
         />
-        <div class="pointPrice">
-            <div class="points-title">
-                <Icon name="ion:tennisball" class="tennisBall"></Icon>
-                <Text content="2500" type="price" />
-            </div>  
-        </div>
-      </SwiperSlide>
-    </Swiper>
-  </template>
+      </template>
+    </SwiperSlide>
+  </Swiper>
+</template>
+
   
-  <script setup>
+<script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper-bundle.css';
 import { ref, onMounted } from 'vue';
@@ -30,6 +43,15 @@ import Product from '@/components/organisms/Product.vue';
 import { useFetch } from '#app';
 
 const products = ref([]);
+const isLoading = ref(true); // State to track loading status
+
+// Placeholder skeleton products
+const skeletonProducts = Array.from({ length: 10 }, () => ({
+  title: '',
+  imageSrc: '',
+  alt: '',
+  price: '',
+}));
 
 const breakpointsConfig = {
   640: {
@@ -47,13 +69,28 @@ const breakpointsConfig = {
 };
 
 const fetchProducts = async () => {
+  const expirationTime = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+  // Retrieve stored products and timestamp
+  const storedProducts = localStorage.getItem('products');
+  const savedTimestamp = localStorage.getItem('productsTimestamp');
+
+  if (storedProducts && savedTimestamp) {
+    const isExpired = Date.now() - parseInt(savedTimestamp, 10) > expirationTime;
+
+    if (!isExpired) {
+      products.value = JSON.parse(storedProducts);
+      isLoading.value = false; // Stop loading
+      return;
+    }
+  }
+
   const requestData = new URLSearchParams();
   requestData.append('action', 'get_product_ids_from_raptor');
   requestData.append('call', 'GetTopViewedInBrands');
   requestData.append('parameters', JSON.stringify({ BrandId: 'Siux', CookieId: 'rsa' }));
 
   try {
-    // Using the proxy endpoint
     const { data, error } = await useFetch('/api', {
       method: 'POST',
       body: requestData.toString(),
@@ -66,38 +103,44 @@ const fetchProducts = async () => {
     if (!error.value && data.value) {
       let responseData = data.value;
 
-      // Check if the response data is a string and parse it if necessary
       if (typeof responseData === 'string') {
         try {
           responseData = JSON.parse(responseData);
-          console.log('Parsed response data:', responseData); // Log to confirm the structure
         } catch (parseError) {
           console.error('Failed to parse response data:', parseError);
           return;
         }
       }
 
-      products.value = Object.keys(responseData)
+      const fetchedProducts = Object.keys(responseData)
         .slice(0, 10) // Limit to 10 products
         .map((key) => {
           const item = responseData[key];
-          console.log(`Processing item with key: ${key}`, item);
           return {
             imageSrc: item.featured_image_url || '/assets/images/padelbat.png', // Use fallback if `imageSrc` is undefined
             alt: item.title || 'Default Title',
             title: item.title || 'Default Product Title',
+            price: item?.pricing?.actual_price || '1500',
           };
         });
+
+      products.value = fetchedProducts;
+      localStorage.setItem('products', JSON.stringify(fetchedProducts));
+      localStorage.setItem('productsTimestamp', Date.now().toString());
     } else {
       console.error('Failed to fetch product data:', error.value);
     }
   } catch (err) {
     console.error('An error occurred during the fetch:', err);
+  } finally {
+    isLoading.value = false; // Stop loading regardless of success or failure
   }
 };
 
 onMounted(fetchProducts);
 </script>
+
+  
   
   <style scoped>
   .product-slider {
@@ -119,27 +162,36 @@ onMounted(fetchProducts);
     width: 100%;
   }
 
-  .pointPrice {
+  .expire {
     position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width:100%;
-    height:50px;
-    background-color: #0071E3;
-
-    .points-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 12.5px;
-    gap: 5px;
-    }
-
-  .tennisBall {
-    color: #FFF;
-    font-size: 20px;
-    }
   }
   
+  .skeleton-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
+  height: 250px;
+  gap: 10px;
+}
+
+.skeleton-image {
+  background: #ddd;
+  height: 125px;
+  width: 125px;
+  border-radius: 8px;
+}
+
+.skeleton-title,
+.skeleton-price {
+  background: #ddd;
+  height: 20px;
+  width: 80%;
+  border-radius: 4px;
+}
   </style>
   

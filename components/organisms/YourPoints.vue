@@ -28,9 +28,9 @@
     justify-content: space-between;
     margin: 0 auto;
     margin-left: 20px;
+    margin-right: 20px;
     align-items: center;
     background-color: #FFF;
-    width: 95%;
     height: 60px;
     text-transform: uppercase;
     box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1); // Adds a modern shadow for depth

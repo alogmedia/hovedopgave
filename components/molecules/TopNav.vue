@@ -13,14 +13,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%; // Ensure full width of the parent container
   padding: 0; // Removed padding, relying on header-container's padding
-  box-sizing: border-box;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .topicons {
   display: flex;
   gap: 11px;
-  margin-right: 20px;
 }
 </style>

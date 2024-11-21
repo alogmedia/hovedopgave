@@ -51,6 +51,16 @@
     letter-spacing: 4%;
     font-family: MuroSlant;
   }
+
+  .text.expire {
+    font-size: .875rem;
+    color: #000;
+    font-family: Jakarta;
+    position: absolute;
+    bottom: 60px;
+    right: 5px;
+    font-weight: 800;
+  }
   
 
 
