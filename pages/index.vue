@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header />
+    <PromoBanner />
     <HeroBanner
       :imageSrc="heroImage"
       title="Deals"
@@ -8,7 +9,6 @@
       buttonIcon="material-symbols:arrow-right-alt"
       buttonLabel="Find den her"
     />
-    <PromoBanner />
     <CategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage" />
     <CategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage" />
     <LazyCategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage" />

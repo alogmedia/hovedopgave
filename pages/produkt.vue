@@ -5,7 +5,6 @@
 
     <!-- Show the 3D model here -->
     <ThreeProductViewer />
-
     <BottomNav />
   </div>
 </template>

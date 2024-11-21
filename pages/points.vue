@@ -1,9 +1,10 @@
 <template>
   <div class="points">
     <SubHeader />
-    <SmallPromoBanner />
+    <YourPoints title="Dine Point" subtitle="500"/>
+    <LimitedProducts />
     <PointShop />
-    <PointProduct/>
+    <PointProduct />
     <BottomNav />
   </div>
 </template>

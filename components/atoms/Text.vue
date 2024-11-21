@@ -44,5 +44,15 @@
   .text.paragraph {
     font-size: 1rem;
   }
+
+  .text.price {
+    font-size: 1.5rem;
+    color: #FFF;
+    letter-spacing: 4%;
+    font-family: MuroSlant;
+  }
+  
+
+
   </style>
   

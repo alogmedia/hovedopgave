@@ -16,6 +16,5 @@ import BannerContent from "@/components/molecules/BannerContent.vue";
   align-items: center;
   width: 100%;
   margin-top: 20px;
-  padding-bottom: 20px;
 }
 </style>

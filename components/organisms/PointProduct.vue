@@ -1,43 +1,22 @@
 <template>
-    <Swiper
-      :slides-per-view="2"
-      :space-between="20"
-      :breakpoints="breakpointsConfig"
-      class="product-slider"
-    >
-      <SwiperSlide v-for="(product, index) in products" :key="index" class="product-slide">
-        <Product
+    <div class="products-grid">
+        <Product  v-for="(product, index) in products" :key="index" class="product-column"
           :imageSrc="product.imageSrc"
           :alt="product.alt"
           :title="product.title"
         />
-      </SwiperSlide>
-    </Swiper>
+
+        </div>
   </template>
   
   <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper-bundle.css';
 import { ref, onMounted } from 'vue';
-import Product from '@/components/organisms/Product.vue';
 import { useFetch } from '#app';
 
 const products = ref([]);
 
-const breakpointsConfig = {
-  640: {
-    slidesPerView: 2,
-    spaceBetween: 20,
-  },
-  768: {
-    slidesPerView: 3,
-    spaceBetween: 30,
-  },
-  1024: {
-    slidesPerView: 4,
-    spaceBetween: 40,
-  },
-};
 
 const fetchProducts = async () => {
   const requestData = new URLSearchParams();
@@ -93,16 +72,40 @@ onMounted(fetchProducts);
 </script>
   
   <style scoped>
-  .product-slider {
-    padding: 0 20px;
-  }
-  
-  .swiper-slide {
-    width: auto; /* Prevent fixed slide width issues */
-  }
 
-  .product-slide {
-    width: 150px !important;
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 products per row */
+  gap: 10px; /* Adjust spacing between grid items */
+  margin-left: 20px;
+}
+
+.product-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
+
+}
+
+  .pointPrice {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width:100%;
+    height:40px;
+    background-color: #0071E3;
+
+    .points-title {
+    gap: 5px;
+    margin-top: 10px;
+    }
+
+  .tennisBall {
+    color: #FFF;
+    font-size: 18px;
+    }
   }
   </style>
   

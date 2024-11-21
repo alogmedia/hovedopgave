@@ -24,7 +24,7 @@ import Text from "@/components/atoms/Text.vue";
   display: flex;
   align-items: center;
   width: 100%;
-  height: 50px; /* Adjust height as needed */
+  height: 40px; /* Adjust height as needed */
   background-color: #ffffff; /* Grey background color */
 }
 
@@ -49,13 +49,13 @@ import Text from "@/components/atoms/Text.vue";
   justify-content: center;
   height: 100%;
   width: 50%;
-  padding-left: 10px;
 }
 
 .textleft {
   font-weight: bold;
   padding-left: 30%;
   font-family: Jakarta;
+  color: #FFF;
 }
 
 .textright {
