@@ -1,5 +1,5 @@
 <template>
-  <div :class="[defaultClass, customClass]" >
+  <div :class="[defaultClass, customClass]">
     <img :src="src" :alt="alt" class="logo" />
   </div>
 </template>
@@ -22,8 +22,7 @@ const props = defineProps({
   },
 });
 
-const defaultClass = ref('logo-container');
-
+const defaultClass = ref("logo-container");
 </script>
 
 <style lang="scss">

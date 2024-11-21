@@ -6,14 +6,14 @@
 </template>
 
 <script setup>
-import TextBlock from '@/components/molecules/TextBlock.vue';
-import CallToAction from '@/components/molecules/CallToAction.vue';
+import TextBlock from "@/components/molecules/TextBlock.vue";
+import CallToAction from "@/components/molecules/CallToAction.vue";
 
 const props = defineProps({
   title: String,
   headline: String,
   buttonLabel: String,
-  buttonIcon: String
+  buttonIcon: String,
 });
 </script>
 

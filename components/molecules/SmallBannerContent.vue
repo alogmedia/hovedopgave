@@ -5,11 +5,7 @@
       <Text :content="'20 % PÅ ALLE BOLDE'" type="paragraph" class="textleft" />
     </div>
     <div class="banner-right">
-      <Text
-        :content="'KUN IDAG!'"
-        type="paragraph"
-        class="textright"
-      />
+      <Text :content="'KUN IDAG!'" type="paragraph" class="textright" />
     </div>
   </div>
 </template>
@@ -25,14 +21,14 @@ import Text from "@/components/atoms/Text.vue";
   align-items: center;
   width: 100%;
   height: 30px; /* Adjust height as needed */
-  background-color: #F6F8FA; /* Grey background color */
+  background-color: #f6f8fa; /* Grey background color */
 }
 
 .banner-content {
   display: flex;
   align-items: center;
   width: 70%; /* Adjust the width as needed */
-  background-color: #F6F8FA; /* Red background color */
+  background-color: #f6f8fa; /* Red background color */
   height: 100%;
 }
 
@@ -60,7 +56,7 @@ import Text from "@/components/atoms/Text.vue";
 
 .textright {
   font-weight: bold;
-  color: #FFF;
+  color: #fff;
   font-family: Jakarta;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="points">
     <SubHeader />
-    <YourPoints title="Dine Point" subtitle="500"/>
+    <YourPoints title="Dine Point" subtitle="500" />
     <LimitedProducts />
     <PointShop />
     <PointProduct />
@@ -9,8 +9,7 @@
   </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped lang="scss">
 @use "@/assets/global_vars.scss" as *;

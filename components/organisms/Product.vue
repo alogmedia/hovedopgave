@@ -1,55 +1,61 @@
 <template>
-    <div class="pointProduct-card">
-      <PointProductTitle :title="title"/>
-      <Image :src="imageSrc" :alt="alt" width="100%" height="100%" class="catImg"/>
-      <div v-if="showExpire" class="expire">
-        <Icon name="material-symbols:alarm" class="expireclock"></Icon>
-        <Text content="UDLØBER OM 7 DAGE" type="expire"/>
-      </div>
-      <div class="pointPrice">
-            <div class="points-title">
-                <Icon name="ion:tennisball" class="tennisBall"></Icon>
-                <Text :content="price" type="price" />
-            </div>  
-        </div>
+  <div class="pointProduct-card">
+    <PointProductTitle :title="title" />
+    <Image
+      :src="imageSrc"
+      :alt="alt"
+      width="100%"
+      height="100%"
+      class="catImg"
+    />
+    <div v-if="showExpire" class="expire">
+      <Icon name="material-symbols:alarm" class="expireclock"></Icon>
+      <Text content="UDLØBER OM 7 DAGE" type="expire" />
     </div>
-  </template>
-  
-  <script setup>
-  import { defineProps } from 'vue';
-  import Image from '@/components/atoms/Image.vue';
-  
-  const props = defineProps({
-    imageSrc: {
-      type: String,
-      required: true
-    },
-    alt: {
-      type: String,
-      default: 'Category Image'
-    },
-    title: {
-      type: String,
-      required: true
-    },
-    price: {
-      type: String,
-      required: true
-    },
-    showExpire: {
-      type: Boolean,
-      default: false // Default to false if not specified
+    <div class="pointPrice">
+      <div class="points-title">
+        <Icon name="ion:tennisball" class="tennisBall"></Icon>
+        <Text :content="price" type="price" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { defineProps } from "vue";
+import Image from "@/components/atoms/Image.vue";
+
+const props = defineProps({
+  imageSrc: {
+    type: String,
+    required: true,
   },
-  });
-  </script>
-  
-  <style scoped lang="scss">
-  .pointProduct-card {
+  alt: {
+    type: String,
+    default: "Category Image",
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: String,
+    required: true,
+  },
+  showExpire: {
+    type: Boolean,
+    default: false, // Default to false if not specified
+  },
+});
+</script>
+
+<style scoped lang="scss">
+.pointProduct-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   position: relative;
   height: 250px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -63,33 +69,32 @@
 }
 
 .pointPrice {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width:100%;
-    height:50px;
-    background-color: #0071E3;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 50px;
+  background-color: #0071e3;
 
-    .points-title {
+  .points-title {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-top: 12.5px;
     gap: 5px;
-    }
+  }
 
   .tennisBall {
-    color: #FFF;
+    color: #fff;
     font-size: 20px;
-    }
   }
+}
 
-  .expire {
-    .expireclock {
-      position: absolute;
-      left: 55%;
-      bottom: 60px;
-    }
+.expire {
+  .expireclock {
+    position: absolute;
+    left: 55%;
+    bottom: 60px;
   }
-  </style>
-  
+}
+</style>

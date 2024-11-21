@@ -1,7 +1,14 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { Scene, PerspectiveCamera, WebGLRenderer, AmbientLight, Box3, Vector3 } from 'three';
+import { ref, onMounted, onUnmounted } from "vue";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import {
+  Scene,
+  PerspectiveCamera,
+  WebGLRenderer,
+  AmbientLight,
+  Box3,
+  Vector3,
+} from "three";
 
 const container = ref<HTMLDivElement | null>(null);
 
@@ -19,7 +26,7 @@ const loadModel = () => {
   camera.position.z = 2; // Adjust camera distance
 
   loader.load(
-    '/models/bat.gltf',
+    "/models/bat.gltf",
     (gltf) => {
       const model = gltf.scene;
 
@@ -38,8 +45,8 @@ const loadModel = () => {
     },
     undefined,
     (error) => {
-      console.error('Error loading model:', error);
-    }
+      console.error("Error loading model:", error);
+    },
   );
 
   const animate = () => {

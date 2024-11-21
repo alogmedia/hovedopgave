@@ -55,7 +55,7 @@ import Text from "@/components/atoms/Text.vue";
   font-weight: bold;
   padding-left: 30%;
   font-family: Jakarta;
-  color: #FFF;
+  color: #fff;
 }
 
 .textright {
