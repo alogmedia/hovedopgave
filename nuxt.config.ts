@@ -14,8 +14,13 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: "cloudflare-pages",
+    routeRules: {
+      '/api/**': {
+        proxy: 'https://www.padelshoppen.com/wp-admin/admin-ajax.php',
+        proxyHeaders: true, // Forward headers such as cookies
+      },
+    },
   },
-
   modules: [
     "nitro-cloudflare-dev",
     "@vite-pwa/nuxt",
