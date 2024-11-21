@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-12-11",
   devtools: { enabled: false },
 
-  ssr: true,
+  ssr: false,
 
   components: [
     {
@@ -15,8 +15,8 @@ export default defineNuxtConfig({
   nitro: {
     preset: "cloudflare-pages",
     routeRules: {
-      '/api/**': {
-        proxy: 'https://www.padelshoppen.com/wp-admin/admin-ajax.php',
+      "/api/**": {
+        proxy: "https://www.padelshoppen.com/wp-admin/admin-ajax.php",
         proxyHeaders: true, // Forward headers such as cookies
       },
     },

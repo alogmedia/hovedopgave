@@ -2,9 +2,9 @@
   <div class="points">
     <SubHeader />
     <YourPoints title="Dine Point" subtitle="500" />
-    <LimitedProducts />
+    <LazyLimitedProducts />
     <PointShop />
-    <PointProduct />
+    <LazyPointProduct />
     <BottomNav />
   </div>
 </template>
