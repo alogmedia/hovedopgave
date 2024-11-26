@@ -28,11 +28,13 @@ const tag = computed(() => {
 });
 </script>
 
-<style scoped lang="scss">
-.text.heading {
-  font-size: 2rem;
-  letter-spacing: 4%;
-}
+  .text.expire {
+    font-size: .775rem;
+    color: #000;
+    font-family: Jakarta;
+    font-weight: 800;
+  }
+  
 
 .text.subheading {
   font-size: 1.5rem;
