@@ -1,10 +1,11 @@
 <template>
   <div class="points">
     <SubHeader />
-    <SmallPromoBanner />
-
+    <PromoBanner />
+    <ProductTitle />
     <!-- Show the 3D model here -->
     <ThreeProductViewer />
+    <ProductForm title="1.500 kr" subtitle="2500" />
     <BottomNav />
   </div>
 </template>
@@ -15,12 +16,4 @@ import ThreeProductViewer from "@/components/templates/ThreeProductViewer.vue";
 
 <style scoped lang="scss">
 @use "@/assets/global_vars.scss" as *;
-
-.points {
-  background-color: $background-color; // Apply specific styles for points page
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 </style>

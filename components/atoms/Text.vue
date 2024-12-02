@@ -7,8 +7,8 @@ import { defineProps } from "vue";
 
 const props = defineProps({
   content: {
-    type: String,
-    required: true,
+    type: [String, Number], // Accept both String and Number
+    required: false,
   },
   type: {
     type: String,
@@ -55,9 +55,6 @@ const tag = computed(() => {
   font-size: 0.875rem;
   color: #000;
   font-family: Jakarta;
-  position: absolute;
-  bottom: 60px;
-  right: 5px;
   font-weight: 800;
 }
 </style>

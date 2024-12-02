@@ -29,3 +29,16 @@ logs
 
 #PWA
 sw.*
+public/models.zip
+public/models/bat/BAT2.bin
+public/models/bat/BAT2.gltf
+public/models/bat/FabricLeatherCowhide001_BUMP16_2K.png
+public/models/bat/FabricLeatherCowhide001_COL_VAR1_2K.jpg
+public/models/bat/FabricLeatherCowhide001_GLOSS_2K.png
+public/models/bat/FACE_HULFRI.png
+public/models/krus/bat.bin
+public/models/krus/bat.gltf
+public/models/krus/FabricLeatherCowhide001_BUMP16_2K.png
+public/models/krus/FabricLeatherCowhide001_COL_VAR1_2K.jpg
+public/models/krus/FabricLeatherCowhide001_GLOSS_2K.png
+public/models/krus/ZERV-Sparta-Z100-2-jpg_png.png

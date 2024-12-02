@@ -10,7 +10,7 @@ import Text from "@/components/atoms/Text.vue";
 
 const props = defineProps({
   title: {
-    type: String,
+    type: [String, Number], // Accept both String and Number
     required: true,
   },
 });
@@ -20,7 +20,7 @@ const props = defineProps({
 .category-title {
   text-transform: uppercase;
   .text.subheading {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #000; // Custom red color for emphasis
   }
 

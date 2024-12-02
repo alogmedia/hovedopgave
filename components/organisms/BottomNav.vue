@@ -30,7 +30,7 @@ import BottomNavItem from "@/components/molecules/BottomNavItem.vue";
   justify-content: space-around;
   align-items: center;
   padding: 10px 0;
-  border-top: 2px solid #000; // Optional: Add a border to match the example
+  border-top: 1px solid #7e7e7e; // Optional: Add a border to match the example
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); // Adds a shadow for depth
   z-index: 100; // Ensures the nav stays above other content
 

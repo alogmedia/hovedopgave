@@ -1,8 +1,10 @@
 <template>
   <div class="points-title">
     <Text :content="title" type="main" />
-    <Icon name="ion:tennisball" class="tennisBall"></Icon>
-    <Text :content="subtitle" type="subheading" />
+    <div class="points">
+      <Icon name="ion:tennisball" class="tennisBall"></Icon>
+      <Text :content="subtitle" type="subheading" />
+    </div>
   </div>
 </template>
 
@@ -35,6 +37,10 @@ const props = defineProps({
   text-transform: uppercase;
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1); // Adds a modern shadow for depth
 
+  .points {
+    display: flex;
+    align-items: center;
+  }
   .text.main {
     font-family: Muroslant;
     font-size: 2rem;
@@ -47,7 +53,6 @@ const props = defineProps({
     color: #e84b4a; // Custom red color for emphasis
     margin-left: auto;
     font-size: 1.5rem;
-    margin-bottom: 5px;
   }
   .text.subheading {
     font-size: 2rem;

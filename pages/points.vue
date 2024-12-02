@@ -1,10 +1,11 @@
 <template>
   <div class="points">
     <SubHeader />
+    <PageTitle title="Point butik" />
     <YourPoints title="Dine Point" subtitle="500" />
-    <LazyLimitedProducts />
+    <LazyLimitedProducts :userPoints="500" />
     <PointShop />
-    <LazyPointProduct />
+    <LazyPointProduct :userPoints="500" />
     <BottomNav />
   </div>
 </template>
