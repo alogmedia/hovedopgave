@@ -20,7 +20,7 @@ const props = defineProps({
 <style scoped lang="scss">
 .search-input {
   width: 100%;
-  padding: 10px;
   border: none;
+  font-family: Jakarta;
 }
 </style>

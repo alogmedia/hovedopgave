@@ -36,8 +36,7 @@ body {
 .text.heading {
   font-family: "Muroslant", sans-serif;
   letter-spacing: 4%;
-  font-size: 30px !important;
-  padding-top: 5px;
+  font-size: 26px !important;
   font-weight: 350;
 }
 

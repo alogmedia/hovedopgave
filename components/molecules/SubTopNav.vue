@@ -2,6 +2,7 @@
   <div class="top-nav">
     <Logo customClass="SubLogo" />
     <div class="topicons">
+      <TopNavIcon name="material-symbols:search" class="pointIconHeart" />
       <TopNavIcon name="ic:twotone-favorite-border" class="pointIconHeart" />
       <TopNavIcon
         name="material-symbols:account-circle-outline"

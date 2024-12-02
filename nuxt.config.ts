@@ -73,7 +73,7 @@ export default defineNuxtConfig({
     workbox: {
       navigateFallback: "/", // Use this to handle navigation requests to non-precached URLs
       globPatterns: ["**/*.{js,css,html,png,svg,ico,jpg}"], // Adjust this if needed
-      maximumFileSizeToCacheInBytes: 8 * 1024 ** 2,
+      maximumFileSizeToCacheInBytes: 22 * 1024 ** 2,
     },
     devOptions: {
       enabled: true,

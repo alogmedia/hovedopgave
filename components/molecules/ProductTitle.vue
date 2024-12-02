@@ -1,19 +1,12 @@
 <template>
-  <div class="pointShop-banner">
-    <Text content="FASTE DEALS!" class="heading" />
-    <div class="filterContent">
-      <Text content="Sorter efter" class="filter" type="sub" />
-      <Icon name="material-symbols:add" class="filterIcon" />
-    </div>
+  <div class="product-banner">
+    <Icon name="material-symbols:arrow-back-rounded" class="arrowIcon" />
+    <Text content="SIUX PRODUKT LIGHT" class="heading" />
   </div>
 </template>
 
-<script setup>
-import BannerContent from "@/components/molecules/BannerContent.vue";
-</script>
-
 <style scoped lang="scss">
-.pointShop-banner {
+.product-banner {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -21,18 +14,17 @@ import BannerContent from "@/components/molecules/BannerContent.vue";
   padding-bottom: 20px;
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 20px;
   gap: 10px;
 }
 
 .filterContent {
   display: flex;
   flex-direction: row;
-  position: absolute;
-  right: 0px;
   align-items: center;
   gap: 5px;
 }
-.filterIcon {
+.arrowIcon {
   font-size: 1rem;
 }
 

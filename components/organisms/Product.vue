@@ -1,5 +1,11 @@
 <template>
   <div class="pointProduct-card">
+    <div v-if="showExpire" class="expire">
+      <p class="expire">
+        <Icon name="material-symbols:alarm" class="expireclock"></Icon>UDLØBER
+        OM 7 DAGE
+      </p>
+    </div>
     <PointProductTitle :title="title" />
     <Image
       :src="imageSrc"
@@ -8,10 +14,7 @@
       height="100%"
       class="catImg"
     />
-    <div v-if="showExpire" class="expire">
-      <Icon name="material-symbols:alarm" class="expireclock"></Icon>
-      <Text content="UDLØBER OM 7 DAGE" type="expire" />
-    </div>
+
     <div class="pointPrice">
       <div class="points-title">
         <Icon name="ion:tennisball" class="tennisBall"></Icon>
@@ -28,7 +31,7 @@ import Image from "@/components/atoms/Image.vue";
 const props = defineProps({
   imageSrc: {
     type: String,
-    required: true,
+    required: false,
   },
   alt: {
     type: String,
@@ -39,7 +42,7 @@ const props = defineProps({
     required: true,
   },
   price: {
-    type: String,
+    type: [String, Number],
     required: true,
   },
   showExpire: {
@@ -75,6 +78,7 @@ const props = defineProps({
   width: 100%;
   height: 50px;
   background-color: #0071e3;
+  z-index: 100;
 
   .points-title {
     display: flex;
@@ -91,10 +95,21 @@ const props = defineProps({
 }
 
 .expire {
-  .expireclock {
-    position: absolute;
-    left: 55%;
-    bottom: 60px;
+  display: flex;
+  position: absolute;
+  right: -30px;
+  bottom: 30px;
+  width: 200px;
+  font-size: 10px;
+  font-family: Jakarta;
+  font-weight: 800;
+  letter-spacing: 0.875px;
+  z-index: 10;
+}
+@media only screen and (max-width: 390px) {
+  .expire {
+    font-size: 10px;
+    right: -30px;
   }
 }
 </style>

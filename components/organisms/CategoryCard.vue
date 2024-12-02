@@ -19,7 +19,7 @@ import CategoryTitle from "@/components/molecules/CategoryTitle.vue";
 const props = defineProps({
   imageSrc: {
     type: String,
-    required: true,
+    required: false,
   },
   alt: {
     type: String,

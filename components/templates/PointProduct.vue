@@ -16,16 +16,28 @@
   </template>
   <template v-else>
     <div class="products-grid">
-      <Product
+      <div
         v-for="(product, index) in products"
         :key="index"
-        class="product-column"
-        :imageSrc="product.imageSrc"
-        :alt="product.alt"
-        :title="product.title"
-        :price="product.price"
-        :showExpire="false"
-      />
+        class="product-wrapper"
+      >
+        <NuxtLink to="/produkt" class="productLink">
+          <Product
+            class="product-column"
+            :imageSrc="product.imageSrc"
+            :alt="product.alt"
+            :title="product.title"
+            :price="product.price"
+            :showExpire="false"
+        /></NuxtLink>
+        <!-- Conditional Overlay -->
+        <div
+          v-if="parseFloat(product.price) > userPoints"
+          class="product-overlay"
+        >
+          <Icon name="material-symbols:lock-outline" class="padlock"></Icon>
+        </div>
+      </div>
     </div>
   </template>
 </template>
@@ -40,13 +52,28 @@ import { useFetch } from "#app";
 const products = ref([]);
 const isLoading = ref(true); // State to track loading status
 
-// Placeholder skeleton products
-const skeletonProducts = Array.from({ length: 10 }, () => ({
-  title: "",
-  imageSrc: "",
-  alt: "",
-  price: "",
-}));
+const props = defineProps({
+  imageSrc: {
+    type: String,
+    required: false,
+  },
+  alt: {
+    type: String,
+    default: "Category Image",
+  },
+  price: {
+    type: [String, Number],
+    default: "1500",
+  },
+  showExpire: {
+    type: Boolean,
+    default: false,
+  },
+  userPoints: {
+    type: Number,
+    required: true,
+  },
+});
 
 const breakpointsConfig = {
   640: {
@@ -75,12 +102,16 @@ const fetchProducts = async () => {
       Date.now() - parseInt(savedTimestamp, 10) > expirationTime;
 
     if (!isExpired) {
-      products.value = JSON.parse(storedProducts);
-      isLoading.value = false; // Stop loading
+      // Handle cached products
+      const cachedProducts = JSON.parse(storedProducts);
+      // Sort cached products by price in ascending order
+      products.value = cachedProducts.sort((a, b) => a.price - b.price);
+      isLoading.value = false;
       return;
     }
   }
 
+  // Fetch new products if cache is expired or doesn't exist
   const requestData = new URLSearchParams();
   requestData.append("action", "get_product_ids_from_raptor");
   requestData.append("call", "GetTopViewedInBrands");
@@ -113,19 +144,19 @@ const fetchProducts = async () => {
       }
 
       const fetchedProducts = Object.keys(responseData)
-        .slice(0, 10) // Limit to 10 products
+        .slice(0, 10)
         .map((key) => {
           const item = responseData[key];
           return {
-            imageSrc: item.featured_image_url || "/assets/images/padelbat.png", // Use fallback if `imageSrc` is undefined
+            imageSrc: item.featured_image_url || "/assets/images/padelbat.png",
             alt: item.title || "Default Title",
             title: item.title || "Default Product Title",
-            price: item?.pricing?.actual_price || "1500",
+            price: parseFloat(item?.pricing?.actual_price || "1500"),
           };
         });
-
-      products.value = fetchedProducts;
-      localStorage.setItem("products", JSON.stringify(fetchedProducts));
+      // Sort products by price in ascending order
+      products.value = fetchedProducts.sort((a, b) => a.price - b.price);
+      localStorage.setItem("products", JSON.stringify(products.value));
       localStorage.setItem("productsTimestamp", Date.now().toString());
     } else {
       console.error("Failed to fetch product data:", error.value);
@@ -147,6 +178,10 @@ onMounted(fetchProducts);
   margin-left: 20px;
   margin-right: 20px;
   gap: 20px;
+
+  .productLink {
+    text-decoration: none;
+  }
 }
 
 .product-column {
@@ -161,6 +196,7 @@ onMounted(fetchProducts);
   width: 100%;
   height: 40px;
   background-color: #0071e3;
+  z-index: 100;
 
   .points-title {
     gap: 5px;
@@ -207,5 +243,39 @@ onMounted(fetchProducts);
   height: 20px;
   width: 80%;
   border-radius: 4px;
+}
+
+.product-wrapper {
+  position: relative;
+}
+
+.product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Semi-transparent black overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px); /* Add blur effect */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  pointer-events: none; /* Allow clicks to pass through overlay */
+
+  .padlock {
+    display: flex;
+    font-size: 3rem;
+    color: #000;
+    margin-bottom: 25%;
+  }
 }
 </style>

@@ -1,5 +1,9 @@
 <template>
-  <div ref="viewerContainer" class="viewer-container"></div>
+  <div class="viewer-container">
+    <div ref="viewerContainer" class="product-container">
+      <Icon name="tdesign:map-3d" class="moveIcon" />
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -17,7 +21,7 @@ onMounted(() => {
   // Camera setup
   const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setSize(250, 250);
+  renderer.setSize(300, 300);
   renderer.setPixelRatio(window.devicePixelRatio);
   viewerContainer.value.appendChild(renderer.domElement);
 
@@ -32,7 +36,7 @@ onMounted(() => {
   // Load the model
   const loader = new GLTFLoader();
   loader.load(
-    "/models/bat.gltf",
+    "/models/krus/bat.gltf",
     (gltf) => {
       const model = gltf.scene;
 
@@ -47,16 +51,13 @@ onMounted(() => {
 
       // Center the model
       model.position.set(-center.x, -center.y, -center.z);
-      model.position.y -= size.y; // Shift down by half the height of the bounding box
-      model.position.z -= size.z - 0.5; // Shift down by half the height of the bounding box
-      model.position.x -= size.x - 0.4; // Shift down by half the height of the bounding box
+
       // Scale the model to fit within the camera's view
       const maxDim = Math.max(size.x, size.y, size.z);
-      const scaleFactor = 3 / maxDim; // Adjust this factor for consistent scaling
+      const scaleFactor = 8 / maxDim; // Adjust this factor for consistent scaling
       modelGroup.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
       // Rotate the bat to the correct orientation (fix rotation to face forward)
-      modelGroup.rotation.set(4.7, 3.55, 0); // Rotate 90 degrees backward on X-axis
 
       // Add the model group to the scene
       scene.add(modelGroup);
@@ -157,9 +158,24 @@ onUnmounted(() => {
 
 <style scoped>
 .viewer-container {
-  width: 250px;
-  height: 250px;
-  border: 1px solid #ddd; /* Optional border */
-  overflow: hidden;
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #fff;
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
+
+  .product-container {
+    height: 300px;
+    overflow: hidden;
+    margin: 0 auto;
+    justify-content: center;
+    .moveIcon {
+      position: absolute;
+      font-size: 1.5rem;
+      color: #000;
+      right: 40px;
+      top: 430px;
+    }
+  }
 }
 </style>

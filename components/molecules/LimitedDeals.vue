@@ -2,8 +2,8 @@
   <div class="pointShop-banner">
     <Text content="Tidsbegrænset Deals!" class="heading" />
     <div class="filterContent">
-      <Text content="Filter" class="filter" type="sub" />
-      <Icon name="material-symbols:filter-alt-outline" class="filterIcon" />
+      <Text content="Sorter efter" class="filter" type="sub" />
+      <Icon name="material-symbols:add" class="filterIcon" />
     </div>
   </div>
 </template>
@@ -15,7 +15,6 @@ import BannerContent from "@/components/molecules/BannerContent.vue";
 <style scoped lang="scss">
 .pointShop-banner {
   display: flex;
-  flex-direction: row;
   position: relative;
   align-items: center;
   padding-bottom: 20px;
@@ -23,13 +22,12 @@ import BannerContent from "@/components/molecules/BannerContent.vue";
   margin-right: 20px;
   gap: 10px;
   margin-top: 20px;
+  justify-content: space-between;
 }
 
 .filterContent {
   display: flex;
   flex-direction: row;
-  position: absolute;
-  right: 0px;
   align-items: center;
   gap: 5px;
 }
@@ -41,5 +39,9 @@ import BannerContent from "@/components/molecules/BannerContent.vue";
   font-size: 0.875rem;
   font-weight: bold;
   font-family: Jakarta;
+  width: 100%;
+}
+
+.heading {
 }
 </style>
