@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@nuxt/icon": "^1.7.5",
+    "@nuxt/image": "^1.8.1",
     "@tresjs/cientos": "^4.0.3",
     "@tresjs/nuxt": "^3.0.7",
     "@tresjs/post-processing": "^0.7.1",

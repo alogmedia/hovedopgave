@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "nuxt-swiper",
     "@tresjs/nuxt",
+    "@nuxt/image",
   ],
   pwa: {
     manifest: {
