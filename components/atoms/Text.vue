@@ -47,8 +47,9 @@ const tag = computed(() => {
 .text.price {
   font-size: 1.5rem;
   color: #fff;
-  letter-spacing: 4%;
-  font-family: MuroSlant;
+  letter-spacing: 1px;
+  font-family: Jakarta;
+  font-weight: 800;
 }
 
 .text.expire {

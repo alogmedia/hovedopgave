@@ -18,4 +18,8 @@
 .points {
   background-color: $background-color; // Apply specific styles for points page
 }
+
+.points {
+  margin-bottom: 75px;
+}
 </style>

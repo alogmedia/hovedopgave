@@ -84,13 +84,15 @@ const props = defineProps({
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 12.5px;
+    align-items: center;
+    margin-top: 10px;
     gap: 5px;
   }
 
   .tennisBall {
     color: #fff;
-    font-size: 20px;
+    font-size: 1.5rem;
+    margin-top: 3px;
   }
 }
 
@@ -105,6 +107,11 @@ const props = defineProps({
   font-weight: 800;
   letter-spacing: 0.875px;
   z-index: 10;
+
+  .expireclock {
+    margin-top: 1px;
+    margin-right: 2px;
+  }
 }
 @media only screen and (max-width: 390px) {
   .expire {
