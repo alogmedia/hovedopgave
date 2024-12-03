@@ -42,7 +42,8 @@ const buttonStyle = computed(() => ({
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 175px;
+  width: 155px;
+  height: 40px;
   justify-content: center;
   font-weight: 700;
   font-size: 0.875rem;

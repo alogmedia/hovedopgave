@@ -2,22 +2,23 @@
   <div>
     <Header />
     <PromoBanner />
+    <Welcome class="heading" title="Velkommen," subtitle="Anders!" />
     <HeroBanner
       :imageSrc="heroImage"
       title="Deals"
-      headline="Vælg denne uges deal"
+      headline="Se denne uges deal"
       buttonIcon="material-symbols:arrow-right-alt"
       buttonLabel="Find den her"
     />
+    <!--     <CategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage" />
     <CategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage" />
-    <CategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage" />
-    <LazyCategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage" />
+    <LazyCategoryCard title="Padel" subtitle="Bat" :imageSrc="categoryImage" /> -->
     <BottomNav :homeIcon="homeImg" />
   </div>
 </template>
 
 <script setup>
-import heroImage from "@/assets/images/hero.png";
+import heroImage from "@/assets/images/hero1.png";
 import categoryImage from "@/assets/images/padelbat.png";
 import homeImg from "/icon.png";
 </script>
@@ -31,13 +32,6 @@ body {
 
 .hero-banner {
   margin-top: 20px;
-}
-
-.text.heading {
-  font-family: "Muroslant", sans-serif;
-  letter-spacing: 4%;
-  font-size: 26px !important;
-  font-weight: 350;
 }
 
 .video-wrapper {

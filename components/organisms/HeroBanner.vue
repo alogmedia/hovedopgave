@@ -27,7 +27,7 @@ const props = defineProps({
 .hero-banner {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 515px;
 }
 
 .hero-banner img {

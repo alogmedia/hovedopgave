@@ -42,6 +42,10 @@ import BannerContent from "@/components/molecules/BannerContent.vue";
   width: 100%;
 }
 
-.heading {
+.text.heading {
+  font-family: "Muroslant", sans-serif;
+  letter-spacing: 1px;
+  font-size: 26px !important;
+  font-weight: 350;
 }
 </style>

@@ -20,10 +20,10 @@ const props = defineProps({
 <style scoped lang="scss">
 .overlay {
   position: relative;
-  top: -16rem;
+  top: -28rem;
   background: rgba(255, 255, 255, 1);
-  min-width: 250px;
-  max-width: min-content;
+  min-width: 155px;
+  max-width: fit-content;
   width: 100%;
   margin-bottom: 1rem;
   padding: 1.5rem;

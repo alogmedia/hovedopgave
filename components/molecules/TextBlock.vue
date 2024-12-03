@@ -17,5 +17,13 @@ const props = defineProps({
 <style scoped lang="scss">
 .text-block {
   color: #000;
+  width: 80%;
+}
+
+.text.heading {
+  font-family: "Muroslant", sans-serif;
+  letter-spacing: 1px;
+  font-size: 26px !important;
+  font-weight: 350;
 }
 </style>

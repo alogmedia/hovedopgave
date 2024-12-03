@@ -1,6 +1,8 @@
 <template>
   <div class="product-banner">
-    <Icon name="material-symbols:arrow-back-rounded" class="arrowIcon" />
+    <NuxtLink to="/points"
+      ><Icon name="material-symbols:arrow-back-rounded" class="arrowIcon"
+    /></NuxtLink>
     <Text content="SIUX PRODUKT LIGHT" class="heading" />
   </div>
 </template>
@@ -25,12 +27,22 @@
   gap: 5px;
 }
 .arrowIcon {
+  display: flex;
   font-size: 1rem;
+  color: #000;
+  margin-top: 5px;
 }
 
 .filter {
   font-size: 0.875rem;
   font-weight: bold;
   font-family: Jakarta;
+}
+
+.text.heading {
+  font-family: "Muroslant", sans-serif;
+  letter-spacing: 1px;
+  font-size: 26px !important;
+  font-weight: 350;
 }
 </style>
