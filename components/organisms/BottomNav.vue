@@ -1,15 +1,15 @@
 <template>
   <nav class="bottom-nav">
-    <NuxtLink to="/" class="BottomNavLinks">
-      <BottomNavItem icon="mdi-home" label="Hjem" />
+    <NuxtLink to="/" class="BottomNavLinks" active-class="active">
+      <BottomNavItem icon="pad-icon:hjem" label="Hjem" />
     </NuxtLink>
-    <NuxtLink to="/points" class="BottomNavLinks">
-      <BottomNavItem icon="solar:shop-bold" label="Shop" />
+    <NuxtLink to="/404" class="BottomNavLinks" active-class="active">
+      <BottomNavItem icon="ic:baseline-grid-view" label="Menu" />
     </NuxtLink>
-    <NuxtLink to="/points" class="BottomNavLinks">
-      <BottomNavItem icon="mdi-basketball" label="Padelpoints" />
+    <NuxtLink to="/points" class="BottomNavLinks" active-class="active">
+      <BottomNavItem icon="ion:tennisball" label="Padelpoints" />
     </NuxtLink>
-    <NuxtLink to="/kurv" class="BottomNavLinks">
+    <NuxtLink to="/kurv" class="BottomNavLinks" active-class="active">
       <BottomNavItem icon="material-symbols:shopping-cart" label="Kurv" />
     </NuxtLink>
   </nav>
@@ -36,8 +36,16 @@ import BottomNavItem from "@/components/molecules/BottomNavItem.vue";
 
   .BottomNavLinks {
     text-decoration: none;
-    color: #000; // Black text color
+    color: #000; // Default text color
     font-family: Jakarta;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &.active {
+      color: #ff4d4d; // Active link color
+      font-weight: bold;
+    }
   }
 }
 </style>

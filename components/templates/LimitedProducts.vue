@@ -22,7 +22,7 @@
       </template>
       <template v-else>
         <!-- Product Component -->
-        <div class="product-wrapper">
+        <div class="product-wrapper" @click.prevent="handleProductClick(product)">
           <Product
             :title="product.title"
             :imageSrc="product.imageSrc"
@@ -43,6 +43,40 @@
       </template>
     </SwiperSlide>
   </Swiper>
+   <!-- Points Overlay -->
+   <div v-if="showOverlay" class="points-overlay">
+        <div class="overlay-content">
+          <div class="overlay-header">
+            <button @click="closeOverlay" class="close-button">
+              <Icon
+                name="material-symbols:arrow-back-rounded"
+                class="arrowIcon"
+              />
+            </button>
+            <p class="overlay-title">Du har desværre ikke nok</p>
+            <p class="overlay-subtitle">
+              PADELPOINT <Icon name="ion:tennisball" class="tennisBall"></Icon>
+            </p>
+          </div>
+          <div class="progress-container">
+            <div
+              class="progress-circle"
+              :style="{
+                background: `conic-gradient(
+          #e84b4a ${progress * 3.6}deg,
+          #f6c5c5 ${progress * 3.6}deg
+        )`,
+              }"
+            >
+              <!-- Inner white circle -->
+              <div class="inner-circle">
+                <p class="progress-percent">{{ progress }}%</p>
+                <p class="progress-text">{{ userPoints }}/{{ totalPoints }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 </template>
 
 <script setup>
@@ -54,6 +88,31 @@ import { useFetch } from "#app";
 
 const products = ref([]);
 const isLoading = ref(true); // State to track loading status
+const showOverlay = ref(false);
+const selectedProduct = ref(null);
+const userPoints = ref(500); // Replace with the user's actual points
+const totalPoints = ref(665);
+
+// Calculate progress for the progress circle
+const progress = computed(() =>
+  Math.floor((userPoints.value / totalPoints.value) * 100),
+);
+
+const handleProductClick = (product) => {
+  if (props.userPoints < product.price) {
+    selectedProduct.value = product;
+    showOverlay.value = true;
+  } else {
+    // Navigate to the product page
+    window.location.href = "/produkt"; // Adjust URL as needed
+  }
+};
+
+// Close overlay
+const closeOverlay = () => {
+  showOverlay.value = false;
+  selectedProduct.value = null;
+};
 
 // Placeholder skeleton products
 const skeletonProducts = Array.from({ length: 10 }, () => ({
@@ -243,15 +302,123 @@ onMounted(fetchProducts);
   font-weight: bold;
   text-align: center;
   pointer-events: none; /* Allow clicks to pass through overlay */
-}
-
-.overlay-text {
-  margin: 0;
 
   .padlock {
+    display: flex;
     font-size: 3rem;
     color: #000;
-    margin-bottom: 50%;
+    margin-bottom: 25%;
   }
+}
+
+.points-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay-content {
+  background: #f9f9f9;
+  padding: 20px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: "Muroslant", sans-serif;
+}
+
+.overlay-header {
+  margin-bottom: 20px;
+}
+
+.overlay-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  font-family: "Muroslant", sans-serif;
+}
+
+.overlay-subtitle {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e84b4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+  font-family: "Muroslant", sans-serif;
+
+  .tennisBall {
+    font-size: 1.6rem;
+    margin-left: 5px;
+    margin-top: 8px;
+  }
+}
+
+.progress-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.progress-circle {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #e84b4a 0deg,
+    #f6c5c5 0deg
+  ); /* Dynamic gradient for progress */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-circle {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  background: #fff; /* White inner circle */
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.progress-percent {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e84b4a;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.progress-text {
+  font-size: 0.875rem;
+  color: #000;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.close-button {
+  background: none;
+  color: #000;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
 }
 </style>

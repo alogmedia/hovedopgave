@@ -89,4 +89,18 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
     head: { link: [{ rel: "manifest", href: "/manifest.webmanifest" }] },
   },
+
+  image: {
+    provider: 'ipx', // Default provider
+    dir: 'assets/images', // For local assets
+  },
+
+  icon: {
+    customCollections: [
+      {
+        prefix: 'pad-icon',
+        dir: './assets/icons'
+      },
+    ],
+  },
 });

@@ -371,6 +371,7 @@ onMounted(fetchProducts);
   color: #000;
   margin-bottom: 8px;
   letter-spacing: 1px;
+  font-family: "Muroslant", sans-serif;
 }
 
 .overlay-subtitle {
@@ -381,6 +382,7 @@ onMounted(fetchProducts);
   justify-content: center;
   align-items: center;
   letter-spacing: 1px;
+  font-family: "Muroslant", sans-serif;
 
   .tennisBall {
     font-size: 1.6rem;

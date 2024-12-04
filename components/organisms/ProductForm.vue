@@ -24,7 +24,7 @@
         <Input placeholder="1"></Input>
       </div>
       <div class="addButton">
-        <Button label="Læg i kurv" />
+        <NuxtLink to="/kurv"><Button label="Læg i kurv" /></NuxtLink>
       </div>
     </div>
     <div class="favorit">
@@ -113,6 +113,10 @@ const props = defineProps({
       display: flex;
       border: 1px solid #007bff;
 
+      a {
+        text-decoration: none;
+        width: 100%;
+      }
       Button {
         width: 100%; // Ensures the button spans the full width
         height: 40px; // Matches input height

@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-import BannerContent from "@/components/molecules/BannerContent.vue";
 </script>
 
 <style scoped lang="scss">

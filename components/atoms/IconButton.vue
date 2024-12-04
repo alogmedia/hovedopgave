@@ -38,10 +38,6 @@ const props = defineProps({
     transition: transform 0.2s ease;
   }
 
-  &:hover .icon {
-    transform: scale(1.1);
-  }
-
   .label {
     margin-top: 5px;
   }

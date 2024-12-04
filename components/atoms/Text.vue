@@ -28,6 +28,8 @@ const tag = computed(() => {
 });
 </script>
 
+<style scoped lang="scss">
+
   .text.expire {
     font-size: .775rem;
     color: #000;

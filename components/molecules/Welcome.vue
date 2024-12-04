@@ -23,7 +23,7 @@ const props = defineProps({
   display: flex;
   gap: 10px;
   margin-left: 10px;
-  padding-top: 10px;
+  padding-top: 20px;
   .text.heading {
     color: #000;
     font-size: 2rem;

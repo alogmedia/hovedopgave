@@ -1,7 +1,7 @@
 <template>
   <div class="points">
     <SubHeader />
-    <PromoBanner />
+    <AnimationBanner />
     <ProductTitle />
     <!-- Show the 3D model here -->
     <ThreeProductViewer />

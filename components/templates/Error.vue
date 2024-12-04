@@ -5,9 +5,9 @@
   <div class="error">
     <div class="error-content">
       <img :src="errorImage" alt="404" />
-      <h1>404..</h1>
+      <h1>404...</h1>
       <p>
-        Denne side blev ikke fundet <br />
+        Denne side er ikke en del af konceptet<br />
         gå tilbage til forsiden
       </p>
       <NuxtLink to="/" class="backButton"
@@ -44,6 +44,12 @@ import errorImage from "@/assets/images/error1.png";
   margin-left: -50px;
   width: 100px;
   height: 100px;
+
+  .error-content {
+    img {
+      width: 300px;
+    }
+  }
 }
 h1 {
   color: #e84b4a;
@@ -52,7 +58,6 @@ h1 {
 }
 
 p {
-  padding-top: 20px;
   font-family: jakarta;
   font-weight: 800;
 }
