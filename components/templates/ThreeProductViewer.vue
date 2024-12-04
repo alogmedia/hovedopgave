@@ -36,7 +36,7 @@ onMounted(() => {
   // Load the model
   const loader = new GLTFLoader();
   loader.load(
-    "/models/krus/bat.gltf",
+    "/models/latest/Bat.gltf",
     (gltf) => {
       const model = gltf.scene;
 
