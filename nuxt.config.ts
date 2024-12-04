@@ -91,15 +91,15 @@ export default defineNuxtConfig({
   },
 
   image: {
-    provider: 'ipx', // Default provider
-    dir: 'assets/images', // For local assets
+    provider: "ipx", // Default provider
+    dir: "assets/images", // For local assets
   },
 
   icon: {
     customCollections: [
       {
-        prefix: 'pad-icon',
-        dir: './assets/icons'
+        prefix: "pad-icon",
+        dir: "./assets/icons",
       },
     ],
   },

@@ -1,16 +1,19 @@
 <template>
   <div>
+    <VideoOverlay />
+
     <Header />
     <AnimationBanner />
     <Welcome class="heading" title="Velkommen," subtitle="Anders!" />
     <!-- Loop through the heroBanners array -->
-    <div v-for="(banner, index) in heroBanners" :key="index">
+    <div v-for="(banner, idx) in heroBanners" :key="idx">
       <HeroBanner
         :imageSrc="banner.imageSrc"
         :title="banner.title"
         :headline="banner.headline"
         :buttonIcon="banner.buttonIcon"
         :buttonLabel="banner.buttonLabel"
+        v-if="isBannerVisible(idx)"
       />
     </div>
 
@@ -18,15 +21,15 @@
   </div>
 </template>
 
-
 <script setup>
+import { ref, onMounted } from "vue";
 import hero1 from "@/assets/images/hero1.png";
 import hero2 from "@/assets/images/hero2.png";
 import hero3 from "@/assets/images/hero3.png";
 import hero4 from "@/assets/images/hero4.png";
 import hero5 from "@/assets/images/hero5.png";
 
-import categoryImage from "@/assets/images/padelbat.png";
+// Import other assets
 import homeImg from "/icon.png";
 
 // Array of banner data
@@ -67,6 +70,41 @@ const heroBanners = [
     buttonLabel: "Shop nu",
   },
 ];
+
+// Lazy load logic
+const loadedIndexes = ref([0, 1]); // Initially load the first two banners
+
+const isBannerVisible = (idx) => {
+  // Check if the index is already loaded
+  return loadedIndexes.value.includes(idx);
+};
+
+// Lazy load banners as the user scrolls
+const loadRemainingBanners = () => {
+  loadedIndexes.value = heroBanners.map((_, index) => index); // Load all banners
+};
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          loadRemainingBanners();
+        }
+      });
+    },
+    {
+      root: null,
+      threshold: 0.1, // Adjust to trigger loading earlier
+    },
+  );
+
+  // Observe the last banner container
+  const lastBanner = document.querySelector(".bottom-nav");
+  if (lastBanner) {
+    observer.observe(lastBanner);
+  }
+});
 </script>
 
 <style lang="scss">

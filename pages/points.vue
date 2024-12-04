@@ -3,9 +3,9 @@
     <SubHeader />
     <PageTitle title="Point butik" />
     <YourPoints title="Dine Point" subtitle="500" />
-    <LazyLimitedProducts :userPoints="500" />
+    <LimitedProducts :userPoints="500" />
     <PointShop />
-    <LazyPointProduct :userPoints="500" />
+    <PointProduct :userPoints="500" />
     <BottomNav />
   </div>
 </template>

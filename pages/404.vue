@@ -1,6 +1,7 @@
 <template>
   <div>
     <Error />
+    <BottomNav :homeIcon="homeImg" />
   </div>
 </template>
 
