@@ -1,75 +1,82 @@
 <template>
-    <div class="cart">
-      <div
-        v-for="(product, index) in products"
-        :key="index"
-        class="cart-item-container"
-      >
-        <div class="cart-item">
-          <div class="cart-item-left">
-            <img :src="product.imageSrc" :alt="product.alt" class="product-image" />
+  <div class="cart">
+    <div
+      v-for="(product, index) in products"
+      :key="index"
+      class="cart-item-container"
+    >
+      <div class="cart-item">
+        <div class="cart-item-left">
+          <img
+            :src="product.imageSrc"
+            :alt="product.alt"
+            class="product-image"
+          />
+        </div>
+
+        <div class="cart-item-right">
+          <p class="product-title">{{ product.title }}</p>
+          <div class="product-details">
+            <p class="product-stock">
+              <Icon name="material-symbols:check-small" class="stock-icon" /> På
+              lager
+            </p>
+            <p class="product-delivery">Levering 1 - 2 hverdage</p>
+            <a href="#" class="product-info-link">Info</a>
           </div>
-  
-          <div class="cart-item-right">
-            <p class="product-title">{{ product.title }}</p>
-            <div class="product-details">
-              <p class="product-stock">
-                <Icon name="material-symbols:check-small" class="stock-icon" /> På lager
-              </p>
-              <p class="product-delivery">Levering 1 - 2 hverdage</p>
-              <a href="#" class="product-info-link">Info</a>
+          <div class="product-info">
+            <div class="quantity-selector">
+              <select v-model="product.quantity" class="quantity-input">
+                <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
+              </select>
             </div>
-            <div class="product-info">
-              <div class="quantity-selector">
-                <select v-model="product.quantity" class="quantity-input">
-                  <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
-                </select>
-              </div>
-              <p class="product-price">
-                {{ product.price }} kr.
-                <span class="product-point-price">
-                  {{ product.price }} <Icon name="ion:tennisball" class="tennisIcon" />
-                </span>
-              </p>
-            </div>
-            <div class="extra-options">
-              <p class="favorit">
-                <Icon name="material-symbols:favorite-outline" class="stock-icon" /> Gem som favorit
-              </p>
-              <button class="remove-button">
-                Slet X
-              </button>
-            </div>
+            <p class="product-price">
+              {{ product.price }} kr.
+              <span class="product-point-price">
+                {{ product.price }}
+                <Icon name="ion:tennisball" class="tennisIcon" />
+              </span>
+            </p>
+          </div>
+          <div class="extra-options">
+            <p class="favorit">
+              <Icon
+                name="material-symbols:favorite-outline"
+                class="stock-icon"
+              />
+              Gem som favorit
+            </p>
+            <button class="remove-button">Slet X</button>
           </div>
         </div>
-        <!-- Add <hr> only if it's not the last product -->
-        <hr class="product-divider" />
       </div>
-      <div class="cart-summary">
-        <div class="cart-summary-right">
+      <!-- Add <hr> only if it's not the last product -->
+      <hr class="product-divider" />
+    </div>
+    <div class="cart-summary">
+      <div class="cart-summary-right">
         <p class="cart-summary-title">Total</p>
         <p class="cart-summary-title">Levering</p>
         <p class="cart-summary-title">Fuldfør købet og optjen</p>
         <p class="cart-summary-title">Total inkl. levering</p>
-
-
       </div>
       <div class="cart-summary-left">
         <p class="cart-summary-price">{{ totalPrice }} kr.</p>
         <p class="cart-summary-price">0</p>
-        <p class="cart-summary-price">{{ totalPrice }}  <Icon name="ion:tennisball" class="tennisIcon" /></p>
+        <p class="cart-summary-price">
+          {{ totalPrice }} <Icon name="ion:tennisball" class="tennisIcon" />
+        </p>
         <p class="cart-summary-price">{{ totalPrice }} kr.</p>
-
       </div>
-      </div>
-      <NuxtLink to="/" class="checkout-button"
-        ><CallToAction label="Gå til kassen" class="checkout-button" icon="material-symbols:arrow-forward-rounded"
-      /></NuxtLink>
     </div>
-  </template>
-  
-  
-  
+    <NuxtLink to="/" class="checkout-button"
+      ><CallToAction
+        label="Gå til kassen"
+        class="checkout-button"
+        icon="material-symbols:arrow-forward-rounded"
+    /></NuxtLink>
+  </div>
+</template>
 
 <script setup>
 import { ref } from "vue";
@@ -100,10 +107,12 @@ const products = ref([
 ]);
 
 const totalPrice = ref(
-  products.value.reduce((acc, product) => acc + product.price * product.quantity, 0)
+  products.value.reduce(
+    (acc, product) => acc + product.price * product.quantity,
+    0,
+  ),
 );
 const quantity = ref(1);
-
 </script>
 
 <style scoped lang="scss">
@@ -150,22 +159,23 @@ const quantity = ref(1);
 
   .product-info {
     display: flex;
-    justify-content: space-between;  gap: 15px; /* Add space between each element */
-  margin-bottom: 10px;
+    justify-content: space-between;
+    gap: 15px; /* Add space between each element */
+    margin-bottom: 10px;
 
     .product-price {
-      display:flex;
+      display: flex;
       flex-direction: column;
-        font-size: .875rem;
-        color: #000;
-        font-weight: 800;
-        font-family: Jakarta;
+      font-size: 0.875rem;
+      color: #000;
+      font-weight: 800;
+      font-family: Jakarta;
     }
     .tennisIcon {
-        font-size: .875rem;
-        color: #ff4d4d;
-        font-weight: 800;
-        font-family: Jakarta;
+      font-size: 0.875rem;
+      color: #ff4d4d;
+      font-weight: 800;
+      font-family: Jakarta;
     }
 
     .quantity-selector {
@@ -174,7 +184,7 @@ const quantity = ref(1);
       gap: 5px;
 
       .quantity-button {
-        background: #FFF;
+        background: #fff;
         border: none;
         border-radius: 4px;
         width: 30px;
@@ -194,49 +204,47 @@ const quantity = ref(1);
         border: 1px solid #ddd;
         border-radius: 4px;
         font-size: 1rem;
-        background-color: #FFF;
-
+        background-color: #fff;
       }
     }
-}
+  }
   .product-details {
-  display: flex;
-  flex-direction: row; /* Arrange items side by side */
-  align-items: center; /* Vertically align items */
-  gap: 15px; /* Add space between each element */
-  margin-bottom: 10px;
-
-  .product-stock {
-    font-size: 0.675rem;
-    color: #17a700;
     display: flex;
-    align-items: center;
+    flex-direction: row; /* Arrange items side by side */
+    align-items: center; /* Vertically align items */
+    gap: 15px; /* Add space between each element */
+    margin-bottom: 10px;
 
-    .stock-icon {
-      margin-right: 5px;
-      font-size: 1rem;
+    .product-stock {
+      font-size: 0.675rem;
+      color: #17a700;
+      display: flex;
+      align-items: center;
+
+      .stock-icon {
+        margin-right: 5px;
+        font-size: 1rem;
+      }
+    }
+    .product-delivery {
+      font-size: 0.675rem;
+      color: #666;
     }
 
+    .product-info-link {
+      font-size: 0.675rem;
+      color: #007bff;
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
-  .product-delivery {
-    font-size: 0.675rem;
-    color: #666;
-  }
+  .extra-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; /* Add space between each element */
+    margin-bottom: 10px;
 
-  .product-info-link {
-    font-size: 0.675rem;
-    color: #007bff;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-}
-.extra-options {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px; /* Add space between each element */
-  margin-bottom: 10px;
-
-  .remove-button {
+    .remove-button {
       background: none;
       border: none;
       color: #000;
@@ -246,35 +254,35 @@ const quantity = ref(1);
       cursor: pointer;
       font-family: Jakarta;
     }
-  .product-stock {
-    font-size: 0.675rem;
-    color: #17a700;
-    display: flex;
-    align-items: center;
+    .product-stock {
+      font-size: 0.675rem;
+      color: #17a700;
+      display: flex;
+      align-items: center;
 
-    .stock-icon {
-      margin-right: 5px;
-      font-size: 1rem;
+      .stock-icon {
+        margin-right: 5px;
+        font-size: 1rem;
+      }
+    }
+    .favorit {
+      font-size: 0.675rem;
+      color: #000;
+      display: flex;
+      align-items: center;
+      font-family: Jakarta;
+
+      .stock-icon {
+        margin-right: 5px;
+        font-size: 1rem;
+      }
     }
   }
-  .favorit {
-    font-size: 0.675rem;
-    color: #000;
-    display: flex;
-    align-items: center;
-    font-family: Jakarta;
-
-    .stock-icon {
-      margin-right: 5px;
-      font-size: 1rem;
-    }
-  }
-}    
 }
 
 .product-divider {
   border: none;
-  border-top: 1px solid rgba(0,0,0,0.2); /* Light gray line */
+  border-top: 1px solid rgba(0, 0, 0, 0.2); /* Light gray line */
   margin: 15px 0; /* Add spacing around the line */
   width: 90%;
   margin: 0 auto;
@@ -290,7 +298,7 @@ const quantity = ref(1);
   letter-spacing: 1px;
 
   .tennisIcon {
-    font-size: .875rem;
+    font-size: 0.875rem;
     color: #ff4d4d;
   }
 }
@@ -299,12 +307,11 @@ const quantity = ref(1);
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 :deep(button) {
-  display:flex;
+  display: flex;
   flex-direction: row-reverse;
-
 }
 </style>

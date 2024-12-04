@@ -84,8 +84,9 @@ const props = defineProps({
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 12.5px;
+    margin-top: 10px;
     gap: 5px;
+    align-items: center;
   }
 
   .tennisBall {

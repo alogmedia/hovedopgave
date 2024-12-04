@@ -109,22 +109,14 @@ const props = defineProps({
     }
 
     .addButton {
-      flex: 1; // Allows the button to take the remaining space
-      display: flex;
       border: 1px solid #007bff;
-
+      width: 100%;
       a {
         text-decoration: none;
         width: 100%;
       }
-      Button {
-        width: 100%; // Ensures the button spans the full width
-        height: 40px; // Matches input height
-        background-color: #007bff; // Customize button color
-        color: #fff; // White text for contrast
-        font-weight: bold;
-        text-align: center;
-        border: none;
+      button {
+        width: 100%;
       }
     }
   }
@@ -145,6 +137,7 @@ const props = defineProps({
       font-family: Jakarta;
       font-weight: 800;
       font-size: 1.1rem;
+      color: #000;
     }
   }
 
