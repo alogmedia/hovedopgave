@@ -4,6 +4,9 @@
       class="banner-video"
       autoplay
       muted
+      playsinline
+      webkit-playsinline
+      loop
       loading="lazy"
     >
       <source :src="randomVideo" type="video/mp4" />
@@ -12,7 +15,6 @@
   </div>
 </template>
 
-  
 <script setup>
 import vid1 from "@/assets/videos/animationvideo1.mp4";
 import vid2 from "@/assets/videos/animationvideo2.mp4";
@@ -33,19 +35,17 @@ const getRandomVideo = () => {
 const randomVideo = ref(getRandomVideo());
 </script>
 
-  
-  <style scoped lang="scss">
-  .animation-banner {
-    display: flex;
-    width: 100%;
-    margin-top: 20px;
-    overflow: hidden; /* Ensures the video does not overflow */
-  }
-  
-  .banner-video {
-    width: 100%; /* Make video responsive */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Ensures the video fills the banner nicely */
-  }
-  </style>
-  
+<style scoped lang="scss">
+.animation-banner {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  overflow: hidden; /* Ensures the video does not overflow */
+}
+
+.banner-video {
+  width: 100%; /* Make video responsive */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensures the video fills the banner nicely */
+}
+</style>
