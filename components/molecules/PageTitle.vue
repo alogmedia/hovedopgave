@@ -22,6 +22,8 @@ const props = defineProps({
   .text.subheading {
     font-size: 2rem;
     color: #e84b4a;
+    font-weight: 100;
+
   }
 }
 </style>

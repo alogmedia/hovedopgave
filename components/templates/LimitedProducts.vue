@@ -355,6 +355,8 @@ onMounted(fetchProducts);
   align-items: center;
   letter-spacing: 1px;
   font-family: "Muroslant", sans-serif;
+  font-weight: 100;
+
 
   .tennisBall {
     font-size: 1.6rem;
@@ -403,6 +405,8 @@ onMounted(fetchProducts);
   color: #e84b4a;
   margin: 0;
   letter-spacing: 1px;
+  font-weight: 100;
+
 }
 
 .progress-text {

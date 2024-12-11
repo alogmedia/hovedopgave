@@ -55,6 +55,8 @@ h1 {
   color: #e84b4a;
   font-size: 2rem;
   padding-top: 20px;
+  font-weight: 100;
+
 }
 
 p {

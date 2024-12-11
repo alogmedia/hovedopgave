@@ -28,11 +28,15 @@ const props = defineProps({
     color: #000;
     font-size: 2rem;
     letter-spacing: 2px;
+    font-weight: 100;
+
   }
   .text.subheading {
     color: #e84b4a;
     font-size: 2rem;
     letter-spacing: 2px;
+    font-weight: 100;
+
   }
 }
 </style>

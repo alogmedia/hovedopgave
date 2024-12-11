@@ -32,6 +32,7 @@ const props = defineProps({
     font-size: 2rem;
     color: #e84b4a; // Custom red color for emphasis
     letter-spacing: 4%;
+    font-weight: 100;
   }
 
   .text.undertitle {
@@ -39,6 +40,8 @@ const props = defineProps({
     font-size: 2rem;
     color: #000; // Custom black color for normal text
     letter-spacing: 4%;
+    font-weight: 100;
+
   }
 }
 </style>

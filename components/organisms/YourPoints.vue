@@ -47,6 +47,9 @@ const props = defineProps({
     color: #000; // Custom black color for normal text
     letter-spacing: 4%;
     padding-left: 20px;
+    font-weight: 100;
+
+
   }
 
   .tennisBall {
@@ -60,7 +63,8 @@ const props = defineProps({
     letter-spacing: 2px;
     padding-right: 20px;
     padding-left: 5px;
-    font-weight: 400;
+    font-weight: 100;
+
   }
 }
 </style>
