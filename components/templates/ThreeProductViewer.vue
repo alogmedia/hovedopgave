@@ -1,5 +1,14 @@
+
 <template>
+      
   <div class="viewer-container">
+    <div v-if="isLoading">
+        <!-- Skeleton Loader -->
+        <div class="skeleton-loader">
+          <div class="skeleton-image"></div>
+
+        </div>
+      </div>
     <div ref="viewerContainer" class="product-container">
       <Icon name="tdesign:map-3d" class="moveIcon" />
     </div>
@@ -13,6 +22,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 const viewerContainer = ref(null);
+const isLoading = ref(true); // Initial state is loading
 
 onMounted(() => {
   // Scene setup
@@ -82,10 +92,14 @@ onMounted(() => {
       // Adjust the camera's position dynamically for better fit
       camera.position.set(0.19, 4, cameraDistance * 1.1); // Slight zoom-in
       camera.lookAt(0, 0, 0); // Ensure the camera looks at the center of the model
+      // Stop showing the skeleton loader
+      isLoading.value = false;
     },
     undefined,
     (error) => {
       console.error("Error loading model:", error);
+      isLoading.value = false; // Ensure loader disappears on error
+
     },
   );
 
@@ -138,6 +152,7 @@ onMounted(() => {
 
     controls.update();
     renderer.render(scene, camera);
+
   };
 
   animate();
@@ -176,6 +191,32 @@ onUnmounted(() => {
       right: 40px;
       top: 430px;
     }
+  }
+}
+
+.skeleton-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  height: 250px;
+  margin-left: 50%;
+  gap: 10px;
+  width:100%;
+}
+
+.skeleton-image {
+  height: 80%;
+  width: 125px;
+  border-radius: 8px;
+  background: #eee;
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  animation: 1.5s shine linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
   }
 }
 </style>

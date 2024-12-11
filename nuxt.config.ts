@@ -75,6 +75,19 @@ export default defineNuxtConfig({
       navigateFallback: "/", // Use this to handle navigation requests to non-precached URLs
       globPatterns: ["**/*.{js,css,html,png,svg,ico,jpg}"], // Adjust this if needed
       maximumFileSizeToCacheInBytes: 22 * 1024 ** 2,
+      runtimeCaching: [
+        {
+          urlPattern: /intro\.mp4$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'video-cache',
+            expiration: {
+              maxAgeSeconds: 24 * 60 * 60, // 24 hours
+              maxEntries: 1, // Only keep the latest version
+            },
+          },
+        },
+      ],
     },
     devOptions: {
       enabled: true,
