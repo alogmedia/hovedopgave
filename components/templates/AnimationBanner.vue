@@ -6,7 +6,6 @@
       muted
       playsinline
       webkit-playsinline
-      loop
       loading="lazy"
     >
       <source :src="randomVideo" type="video/mp4" />
