@@ -3,7 +3,6 @@
     <SubHeader />
     <AnimationBanner />
     <ProductTitle />
-    <!-- Show the 3D model here -->
     <ThreeProductViewer />
     <ProductForm title="1.500 kr" subtitle="2500" />
     <ProductDescription

@@ -81,7 +81,7 @@ export default defineNuxtConfig({
           options: {
             cacheName: 'nuxt-meta-cache',
             expiration: {
-              maxAgeSeconds: 24 * 60 * 60,
+              maxAgeSeconds: 60,
               maxEntries: 20,
             },
           },
@@ -100,7 +100,7 @@ export default defineNuxtConfig({
           options: {
             cacheName: 'static-assets-cache',
             expiration: {
-              maxAgeSeconds: 30 * 24 * 60 * 60,
+              maxAgeSeconds: 60,
               maxEntries: 100,
             },
           },

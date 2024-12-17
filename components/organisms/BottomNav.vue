@@ -11,18 +11,21 @@
     </NuxtLink>
     <NuxtLink to="/kurv" class="BottomNavLinks" active-class="active">
       <BottomNavItem icon="material-symbols:shopping-cart" label="Kurv" />
+      <div class="cart-count">{{ cartCount }}</div>
     </NuxtLink>
   </nav>
 </template>
 
 <script setup>
 import BottomNavItem from "@/components/molecules/BottomNavItem.vue";
+
+const cartCount = ref(3);
 </script>
 
 <style scoped lang="scss">
 .bottom-nav {
   position: fixed;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   width: 100%;
   background-color: #f6f8fa; // Light grey background
@@ -48,4 +51,17 @@ import BottomNavItem from "@/components/molecules/BottomNavItem.vue";
     }
   }
 }
+
+.cart-count {
+  background-color: #ff4d4d;
+  color: #fff; 
+  border-radius: 50%; 
+  padding: 2px 6px; 
+  font-size: 12px;
+  position: absolute;
+  top: 3px;
+  right: 20px;
+  z-index: 1; 
+}
+
 </style>

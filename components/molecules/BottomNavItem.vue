@@ -29,6 +29,9 @@ const isActive = computed(() => route.path === props.to); // Compare route.path 
 .bottom-nav-item {
   flex: 1; // Ensure each item takes up equal space in the bottom navigation
   text-align: center;
+  font-family: "Muroslant"; // Use the Muroslant font
+  font-weight: 100;
+  letter-spacing: 1px;
 
   &.active {
     color: #ff4d4d; // Active state color

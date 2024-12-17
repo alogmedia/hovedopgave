@@ -23,6 +23,7 @@
       <template v-else>
         <!-- Product Component -->
         <div class="product-wrapper" @click.prevent="handleProductClick(product)">
+          
           <Product
             :title="product.title"
             :imageSrc="parseFloat(product.price) > userPoints ? padelBat : mainBat"
@@ -84,18 +85,23 @@
 
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/swiper-bundle.css";
 import { ref, onMounted } from "vue";
-import Product from "@/components/organisms/Product.vue";
 import { useFetch } from "#app";
+import { useRouter } from 'vue-router';
+import { useNuxtApp } from '#app';
 import mainBat from "@/assets/images/mainbat.png";
 import padelBat from "@/assets/images/padelbat.png";
+import Product from "@/components/organisms/Product.vue";
+import "swiper/swiper-bundle.css";
 
+
+const router = useRouter();
+const nuxtApp = useNuxtApp();
 const products = ref([]);
-const isLoading = ref(true); // State to track loading status
+const isLoading = ref(true); 
 const showOverlay = ref(false);
 const selectedProduct = ref(null);
-const userPoints = ref(500); // Replace with the user's actual points
+const userPoints = ref(500);
 const totalPoints = ref(665);
 
 // Calculate progress for the progress circle
@@ -103,13 +109,18 @@ const progress = computed(() =>
   Math.floor((userPoints.value / totalPoints.value) * 100),
 );
 
-const handleProductClick = (product) => {
-  if (props.userPoints < product.price) {
+const handleProductClick = async (product) => {
+  if (userPoints.value < product.price) {
     selectedProduct.value = product;
     showOverlay.value = true;
   } else {
+    // Prefetch the product page before navigating
+    await nuxtApp.runWithContext(async () => {
+      await router.resolve({ path: "/produkt", query: { productId: product.id } });
+    });
+
     // Navigate to the product page
-    window.location.href = "/produkt"; // Adjust URL as needed
+    router.push({ path: "/produkt", query: { productId: product.id } });
   }
 };
 
