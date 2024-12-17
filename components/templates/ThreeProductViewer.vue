@@ -3,7 +3,6 @@
       
   <div class="viewer-container">
     <div v-if="isLoading">
-        <!-- Skeleton Loader -->
         <div class="skeleton-loader">
           <div class="skeleton-image"></div>
 
@@ -22,17 +21,26 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 const viewerContainer = ref(null);
-const isLoading = ref(true); // Initial state is loading
+const isLoading = ref(true);
+let autoRotate = true;
 
 onMounted(() => {
   // Scene setup
   const scene = new THREE.Scene();
 
+  
   // Camera setup
   const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  alpha: true,
+  });
   renderer.setSize(300, 300);
-  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping; 
+  renderer.toneMappingExposure = 1.5; 
+
   viewerContainer.value.appendChild(renderer.domElement);
 
   // Lighting
@@ -41,7 +49,7 @@ onMounted(() => {
   directionalLight.position.set(5, 5, 5);
   scene.add(ambientLight, directionalLight);
 
-  let modelGroup = null; // Declare modelGroup to access it in the animation loop
+  let modelGroup = null;
 
   // Load the model
   const loader = new GLTFLoader();
@@ -50,11 +58,9 @@ onMounted(() => {
     (gltf) => {
       const model = gltf.scene;
 
-      // Assign the global modelGroup instead of redefining it
       modelGroup = new THREE.Group();
       modelGroup.add(model);
 
-      // Calculate bounding box for the entire model
       const box = new THREE.Box3().setFromObject(model);
       const size = box.getSize(new THREE.Vector3());
       const center = box.getCenter(new THREE.Vector3());
@@ -67,76 +73,43 @@ onMounted(() => {
       modelGroup.scale.set(scaleFactor, scaleFactor, scaleFactor);
       scene.add(modelGroup);
 
-
-      const fov = camera.fov * (Math.PI / 3000); 
+      const fov = camera.fov * (Math.PI / 3000);
       const modelHeight = size.y;
-      const cameraDistance = modelHeight / (2 * Math.tan(fov / 2)); 
+      const cameraDistance = modelHeight / (2 * Math.tan(fov / 2));
       camera.position.set(0.19, 4, cameraDistance * 1.1);
-      camera.lookAt(0, 0, 0); 
+      camera.lookAt(0, 0, 0);
       isLoading.value = false;
     },
     undefined,
     (error) => {
       console.error("Error loading model:", error);
-      isLoading.value = false; // Ensure loader disappears on error
-
+      isLoading.value = false;
     },
   );
 
   const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.1;
+  controls.screenSpacePanning = false;
+  controls.enableRotate = true;
 
-  controls.enableDamping = true; // Smooth rotation
-  controls.dampingFactor = 0.1; // Dampening effect for smoother interaction
-  controls.screenSpacePanning = false; // Disable panning (left/right and up/down)
-
-  controls.minPolarAngle = Math.PI / 2; // Prevent movement along the Y-axis
-  controls.maxPolarAngle = Math.PI / 2; // Prevent movement along the Y-axis
-
-  controls.enableRotate = true; // Allow rotation
-  controls.minAzimuthAngle = -Math.PI; // Allow full 360° rotation
-  controls.maxAzimuthAngle = Math.PI; // Allow full 360° rotation
-
-  let lastPosition = new THREE.Vector3();
-  let lastRotation = new THREE.Euler();
-  let lastScale = new THREE.Vector3();
+  controls.addEventListener("start", () => {
+    autoRotate = false;
+  });
 
   const animate = () => {
     requestAnimationFrame(animate);
 
-    if (modelGroup) {
-      // Check for position changes
-      if (!modelGroup.position.equals(lastPosition)) {
-        console.log(
-          `Updated Position: x=${modelGroup.position.x}, y=${modelGroup.position.y}, z=${modelGroup.position.z}`,
-        );
-        lastPosition.copy(modelGroup.position);
-      }
-
-      // Check for rotation changes
-      if (!modelGroup.rotation.equals(lastRotation)) {
-        console.log(
-          `Updated Rotation: x=${modelGroup.rotation.x}, y=${modelGroup.rotation.y}, z=${modelGroup.rotation.z}`,
-        );
-        lastRotation.copy(modelGroup.rotation);
-      }
-
-      // Check for scale changes
-      if (!modelGroup.scale.equals(lastScale)) {
-        console.log(
-          `Updated Scale: x=${modelGroup.scale.x}, y=${modelGroup.scale.y}, z=${modelGroup.scale.z}`,
-        );
-        lastScale.copy(modelGroup.scale);
-      }
+    if (modelGroup && autoRotate) {
+      modelGroup.rotation.y += 0.008; 
     }
 
     controls.update();
     renderer.render(scene, camera);
-
   };
 
   animate();
 
-  // Cleanup on unmount
   viewerContainer.value.__destroy__ = () => {
     renderer.dispose();
     controls.dispose();
@@ -148,6 +121,7 @@ onUnmounted(() => {
     viewerContainer.value.__destroy__();
   }
 });
+
 </script>
 
 <style scoped>
