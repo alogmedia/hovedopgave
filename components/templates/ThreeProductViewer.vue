@@ -27,7 +27,7 @@ onMounted(() => {
   const scene = new THREE.Scene();
 
   // Camera setup
-  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(1, 1, 0.1, 1000);
   const renderer = new THREE.WebGLRenderer({
     antialias: true,
     alpha: true,
@@ -54,7 +54,7 @@ onMounted(() => {
   loader.setDRACOLoader(dracoLoader);
 
   loader.load(
-    "/models/new/Bat.gltf", // Update with your Draco-compressed model path
+    "/models/new/Bat.gltf",
     (gltf) => {
       const model = gltf.scene;
 
@@ -76,7 +76,7 @@ onMounted(() => {
       const fov = camera.fov * (Math.PI / 3000);
       const modelHeight = size.y;
       const cameraDistance = modelHeight / (2 * Math.tan(fov / 2));
-      camera.position.set(0.19, 4, cameraDistance * 1.1);
+      camera.position.set(0.19, 4, cameraDistance * 15);
       camera.lookAt(0, 0, 0);
       isLoading.value = false;
     },
