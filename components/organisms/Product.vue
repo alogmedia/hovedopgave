@@ -60,12 +60,12 @@ const props = defineProps({
   align-items: center;
   background-color: #ffffff;
   position: relative;
-  height: 250px;
+  height: 300px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px; // Space between each product in the row
 
   .catImg {
-    width: 125px;
+    width: 100px;
     padding-bottom: 60px;
     padding-top: 20px;
   }

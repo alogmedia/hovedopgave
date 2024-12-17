@@ -1,11 +1,19 @@
 <template>
+  <div class="point-wrapper">
   <div class="points-title">
     <Text :content="title" type="main" />
     <div class="points">
       <Icon name="ion:tennisball" class="tennisBall"></Icon>
       <Text :content="subtitle" type="subheading" />
+      
     </div>
   </div>
+  <div class="guide">
+  <p class="guideText">Padelpoints</p>
+  <NuxtLink to="/guide" class="guideLink">Sådan virker det</NuxtLink>
+  </div>
+</div>
+
 </template>
 
 <script setup>
@@ -25,25 +33,28 @@ const props = defineProps({
 </script>
 
 <style scoped lang="scss">
-.points-title {
-  display: flex;
-  justify-content: space-between;
+.point-wrapper {
   margin: 0 auto;
   margin-left: 20px;
   margin-right: 20px;
-  align-items: center;
   background-color: #fff;
-  height: 60px;
+  height: 100px;
   text-transform: uppercase;
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1); // Adds a modern shadow for depth
-
+}
+.points-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
   .points {
     display: flex;
     align-items: center;
   }
   .text.main {
     font-family: Muroslant;
-    font-size: 2rem;
+    font-size: 1.675rem;
     color: #000; // Custom black color for normal text
     letter-spacing: 4%;
     padding-left: 20px;
@@ -51,7 +62,6 @@ const props = defineProps({
 
 
   }
-
   .tennisBall {
     color: #e84b4a; // Custom red color for emphasis
     margin-left: auto;
@@ -64,7 +74,31 @@ const props = defineProps({
     padding-right: 20px;
     padding-left: 5px;
     font-weight: 100;
-
   }
+
 }
+.guide {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-items: center;
+    padding-top: 10px;
+    .guideText {
+      font-size: .875rem;
+      color: #000;
+      font-family: Jakarta;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform:initial;
+    }
+    .guideLink {
+      font-size: .675rem;
+      color: #0071E3;
+      font-family: Jakarta;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: initial;
+    }
+  }
 </style>

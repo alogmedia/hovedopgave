@@ -21,7 +21,7 @@
 import errorImage from "@/assets/images/error1.png";
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .top-logo {
   display: flex;
   align-items: center;

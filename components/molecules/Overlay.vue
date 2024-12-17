@@ -1,7 +1,8 @@
 <template>
   <div class="overlay">
     <TextBlock :title="title" :headline="headline" />
-    <CallToAction :label="buttonLabel" :icon="buttonIcon" />
+    <NuxtLink to="/points">
+    <CallToAction :label="buttonLabel" :icon="buttonIcon" /></NuxtLink>
   </div>
 </template>
 
@@ -29,5 +30,10 @@ const props = defineProps({
   padding: 1.5rem;
   z-index: 10;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%); // Defines the diagonal cut
+}
+
+a {
+  text-decoration: none;
+
 }
 </style>

@@ -62,37 +62,17 @@ onMounted(() => {
       // Center the model
       model.position.set(-center.x, -center.y, -center.z);
 
-      // Scale the model to fit within the camera's view
       const maxDim = Math.max(size.x, size.y, size.z);
-      const scaleFactor = 8 / maxDim; // Adjust this factor for consistent scaling
+      const scaleFactor = 8 / maxDim;
       modelGroup.scale.set(scaleFactor, scaleFactor, scaleFactor);
-
-      // Rotate the bat to the correct orientation (fix rotation to face forward)
-
-      // Add the model group to the scene
       scene.add(modelGroup);
 
-      // Add debugging helpers
-      /* const gridHelper = new THREE.GridHelper(10, 10); // Grid size 10, divisions 10
-      scene.add(gridHelper);
 
-      const axesHelper = new THREE.AxesHelper(5); // Axes size 5
-      scene.add(axesHelper); 
-
-      // Add a bounding box helper to visualize the model's bounds
-      const boxHelper = new THREE.BoxHelper(modelGroup, 0xff0000); // Red bounding box
-      scene.add(boxHelper);
-      */
-
-      // Adjust camera position dynamically
-      const fov = camera.fov * (Math.PI / 3000); // Convert FOV to radians
-      const modelHeight = size.y; // Height of the model from bounding box
-      const cameraDistance = modelHeight / (2 * Math.tan(fov / 2)); // Fit the model height
-
-      // Adjust the camera's position dynamically for better fit
-      camera.position.set(0.19, 4, cameraDistance * 1.1); // Slight zoom-in
-      camera.lookAt(0, 0, 0); // Ensure the camera looks at the center of the model
-      // Stop showing the skeleton loader
+      const fov = camera.fov * (Math.PI / 3000); 
+      const modelHeight = size.y;
+      const cameraDistance = modelHeight / (2 * Math.tan(fov / 2)); 
+      camera.position.set(0.19, 4, cameraDistance * 1.1);
+      camera.lookAt(0, 0, 0); 
       isLoading.value = false;
     },
     undefined,
@@ -105,7 +85,6 @@ onMounted(() => {
 
   const controls = new OrbitControls(camera, renderer.domElement);
 
-  // Constrain movement to only rotate around the Z-axis
   controls.enableDamping = true; // Smooth rotation
   controls.dampingFactor = 0.1; // Dampening effect for smoother interaction
   controls.screenSpacePanning = false; // Disable panning (left/right and up/down)

@@ -45,7 +45,7 @@ const props = defineProps({
     font-family: Jakarta;
     font-size: 1rem;
     font-weight: 800;
-    text-transform: capitalize;
+    text-transform: initial;
   }
 
   .descriptionText {

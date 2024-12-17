@@ -25,7 +25,7 @@
         <div class="product-wrapper" @click.prevent="handleProductClick(product)">
           <Product
             :title="product.title"
-            :imageSrc="product.imageSrc"
+            :imageSrc="parseFloat(product.price) > userPoints ? padelBat : mainBat"
             :alt="product.alt"
             :price="product.price"
             :showExpire="true"
@@ -75,6 +75,9 @@
               </div>
             </div>
           </div>
+          <NuxtLink to="/produkt" class="linkToProduct">
+          <Button label="Gå til produktet" class="goToProduct" />
+          </NuxtLink>
         </div>
       </div>
 </template>
@@ -85,6 +88,8 @@ import "swiper/swiper-bundle.css";
 import { ref, onMounted } from "vue";
 import Product from "@/components/organisms/Product.vue";
 import { useFetch } from "#app";
+import mainBat from "@/assets/images/mainbat.png";
+import padelBat from "@/assets/images/padelbat.png";
 
 const products = ref([]);
 const isLoading = ref(true); // State to track loading status
@@ -126,6 +131,10 @@ const props = defineProps({
   userPoints: {
     type: Number,
     required: true,
+  },
+  imageSrc: {
+    type: String,
+    required: false,
   },
 });
 
@@ -249,33 +258,7 @@ onMounted(fetchProducts);
   position: absolute;
 }
 
-.skeleton-loader {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
-  height: 250px;
-  gap: 10px;
-}
-
-.skeleton-image {
-  background: #ddd;
-  height: 125px;
-  width: 125px;
-  border-radius: 8px;
-}
-
-.skeleton-title,
-.skeleton-price {
-  background: #ddd;
-  height: 20px;
-  width: 80%;
-  border-radius: 4px;
-}
+¨
 
 .product-wrapper {
   position: relative;
@@ -283,7 +266,7 @@ onMounted(fetchProducts);
 
 .product-overlay {
   position: absolute;
-  top: 0;
+  top: -10%;
   left: 0;
   width: 100%;
   height: 100%;
@@ -296,7 +279,6 @@ onMounted(fetchProducts);
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(2px); /* Add blur effect */
   color: #fff;
   font-size: 16px;
   font-weight: bold;
@@ -424,5 +406,12 @@ onMounted(fetchProducts);
   font-weight: bold;
   cursor: pointer;
   display: flex;
+}
+
+.goToProduct {
+  margin: 0 auto;
+}
+.linkToProduct {
+  text-decoration: none;
 }
 </style>

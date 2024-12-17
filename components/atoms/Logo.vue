@@ -1,6 +1,6 @@
 <template>
   <div :class="[defaultClass, customClass]">
-    <img :src="src" :alt="alt" class="logo" />
+    <NuxtLink to="/"><img :src="src" :alt="alt" class="logo" /></NuxtLink>
   </div>
 </template>
 

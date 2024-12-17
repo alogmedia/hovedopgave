@@ -1,4 +1,3 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2024-12-11",
   devtools: { enabled: false },
@@ -17,26 +16,27 @@ export default defineNuxtConfig({
     routeRules: {
       "/api/**": {
         proxy: "https://www.padelshoppen.com/wp-admin/admin-ajax.php",
-        proxyHeaders: true, // Forward headers such as cookies
+        proxyHeaders: true,
       },
     },
   },
+
   modules: [
-    "nitro-cloudflare-dev",
     "@vite-pwa/nuxt",
     "@nuxt/icon",
     "nuxt-swiper",
     "@tresjs/nuxt",
     "@nuxt/image",
   ],
+
   pwa: {
     manifest: {
       name: "Padelshoppen App",
-      short_name: "Padelshoppen", // Short name for homescreen
-      description: "Padelshoppens officielle App", // Description for homescreen
-      theme_color: "#ffffff", // Customize your theme color
-      background_color: "#ffffff", // Background color when the app is loading
-      display: "standalone", // Use 'standalone' for a native app feel
+      short_name: "Padelshoppen",
+      description: "Padelshoppens officielle App",
+      theme_color: "#ffffff",
+      background_color: "#ffffff",
+      display: "standalone",
       orientation: "portrait",
       icons: [
         {
@@ -50,16 +50,6 @@ export default defineNuxtConfig({
           type: "image/png",
           purpose: "maskable",
         },
-        {
-          src: "/icon192.png",
-          sizes: "192x192",
-          type: "image/png",
-        },
-        {
-          src: "/icon64.png",
-          sizes: "64x64",
-          type: "image/png",
-        },
       ],
       screenshots: [
         {
@@ -72,40 +62,70 @@ export default defineNuxtConfig({
     },
     registerType: "autoUpdate",
     workbox: {
-      navigateFallback: "/", // Use this to handle navigation requests to non-precached URLs
-      globPatterns: ["**/*.{js,css,html,png,svg,ico,jpg}"], // Adjust this if needed
-      maximumFileSizeToCacheInBytes: 22 * 1024 ** 2,
+      navigateFallback: '/offline.html', 
+      globPatterns: ['**/*.{js,css,html,png,svg,ico,jpg,json,woff2,webp,mp4}'],
+      additionalManifestEntries: [
+        { url: '/', revision: null },
+        { url: '/points', revision: null },
+        { url: '/error', revision: null },
+        { url: '/kurv', revision: null },
+        { url: '/guide', revision: null },
+        { url: '/produkt', revision: null },
+
+      ],
+      maximumFileSizeToCacheInBytes: 22 * 1024 ** 2, // 22 MB limit
       runtimeCaching: [
         {
-          urlPattern: /intro\.mp4$/,
+          urlPattern: /^\/_nuxt\/builds\/meta\/.*\.json$/,
           handler: 'CacheFirst',
           options: {
-            cacheName: 'video-cache',
+            cacheName: 'nuxt-meta-cache',
             expiration: {
-              maxAgeSeconds: 24 * 60 * 60, // 24 hours
-              maxEntries: 1, // Only keep the latest version
+              maxAgeSeconds: 24 * 60 * 60,
+              maxEntries: 20,
+            },
+          },
+        },
+        {
+          urlPattern: /^\/_nuxt\/builds\/meta\/.*\.json$/,
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'nuxt-meta-cache',
+            networkTimeoutSeconds: 10,
+          },
+        },
+        {
+          urlPattern: /.*\.(js|css|png|jpg|jpeg|svg|ico|webp|woff2|mp4)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'static-assets-cache',
+            expiration: {
+              maxAgeSeconds: 30 * 24 * 60 * 60,
+              maxEntries: 100,
             },
           },
         },
       ],
     },
     devOptions: {
-      enabled: true,
+      enabled: false,
       type: "module",
     },
   },
+
   css: [
-    "@/assets/main.scss", // Added main.scss to global styles
-    "@/assets/global_vars.scss", // Ensure it's included globally
+    "@/assets/main.scss",
+    "@/assets/global_vars.scss",
   ],
+
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     head: { link: [{ rel: "manifest", href: "/manifest.webmanifest" }] },
   },
 
   image: {
-    provider: "ipx", // Default provider
-    dir: "assets/images", // For local assets
+    provider: "ipx",
+    dir: "assets/images",
   },
 
   icon: {

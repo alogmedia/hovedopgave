@@ -24,7 +24,7 @@
         <div class="productLink" @click.prevent="handleProductClick(product)">
           <Product
             class="product-column"
-            :imageSrc="product.imageSrc"
+            :imageSrc="parseFloat(product.price) > userPoints ? padelBat : mainBat"
             :alt="product.alt"
             :title="product.title"
             :price="product.price"
@@ -71,6 +71,9 @@
               </div>
             </div>
           </div>
+          <NuxtLink to="/produkt" class="linkToProduct">
+          <Button label="Gå til produktet" class="goToProduct" />
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -83,12 +86,14 @@ import "swiper/swiper-bundle.css";
 import { ref, onMounted } from "vue";
 import Product from "@/components/organisms/Product.vue";
 import { useFetch } from "#app";
+import mainBat from "@/assets/images/mainbat.png";
+import padelBat from "@/assets/images/padelbat.png";
 
 const products = ref([]);
-const isLoading = ref(true); // State to track loading status
+const isLoading = ref(true);
 const showOverlay = ref(false);
 const selectedProduct = ref(null);
-const userPoints = ref(500); // Replace with the user's actual points
+const userPoints = ref(500);
 const totalPoints = ref(665);
 
 const props = defineProps({
@@ -114,7 +119,6 @@ const props = defineProps({
   },
 });
 
-// Calculate progress for the progress circle
 const progress = computed(() =>
   Math.floor((userPoints.value / totalPoints.value) * 100),
 );
@@ -124,12 +128,10 @@ const handleProductClick = (product) => {
     selectedProduct.value = product;
     showOverlay.value = true;
   } else {
-    // Navigate to the product page
-    window.location.href = "/produkt"; // Adjust URL as needed
+    window.location.href = "/produkt";
   }
 };
 
-// Close overlay
 const closeOverlay = () => {
   showOverlay.value = false;
   selectedProduct.value = null;
@@ -151,82 +153,69 @@ const breakpointsConfig = {
 };
 
 const fetchProducts = async () => {
-  const expirationTime = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+  const expirationTime = 24 * 60 * 60 * 1000; // 24 hours
 
-  // Retrieve stored products and timestamp
-  const storedProducts = localStorage.getItem("products");
-  const savedTimestamp = localStorage.getItem("productsTimestamp");
+  const storedProducts = localStorage.getItem('products');
+  const savedTimestamp = localStorage.getItem('productsTimestamp');
 
   if (storedProducts && savedTimestamp) {
-    const isExpired =
-      Date.now() - parseInt(savedTimestamp, 10) > expirationTime;
+    const isExpired = Date.now() - parseInt(savedTimestamp, 10) > expirationTime;
 
     if (!isExpired) {
-      // Handle cached products
-      const cachedProducts = JSON.parse(storedProducts);
-      // Sort cached products by price in ascending order
-      products.value = cachedProducts.sort((a, b) => a.price - b.price);
+      console.log('Loading products from cache');
+      products.value = JSON.parse(storedProducts);
       isLoading.value = false;
       return;
     }
   }
 
-  // Fetch new products if cache is expired or doesn't exist
+  console.log('Fetching products from API');
   const requestData = new URLSearchParams();
-  requestData.append("action", "get_product_ids_from_raptor");
-  requestData.append("call", "GetTopViewedInBrands");
-  requestData.append(
-    "parameters",
-    JSON.stringify({ BrandId: "Siux", CookieId: "rsa" }),
-  );
+  requestData.append('action', 'get_product_ids_from_raptor');
+  requestData.append('call', 'GetTopViewedInBrands');
+  requestData.append('parameters', JSON.stringify({ BrandId: 'Siux', CookieId: 'rsa' }));
 
   try {
-    const { data, error } = await useFetch("/api", {
-      method: "POST",
+    const { data, error } = await useFetch('/api', {
+      method: 'POST',
       body: requestData.toString(),
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "User-Agent":
-          "Mozilla/5.0 (X11; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0",
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
     });
 
     if (!error.value && data.value) {
-      let responseData = data.value;
-
-      if (typeof responseData === "string") {
-        try {
-          responseData = JSON.parse(responseData);
-        } catch (parseError) {
-          console.error("Failed to parse response data:", parseError);
-          return;
-        }
-      }
+      let responseData = typeof data.value === 'string' ? JSON.parse(data.value) : data.value;
 
       const fetchedProducts = Object.keys(responseData)
         .slice(0, 10)
         .map((key) => {
           const item = responseData[key];
           return {
-            imageSrc: item.featured_image_url || "/assets/images/padelbat.png",
-            alt: item.title || "Default Title",
-            title: item.title || "Default Product Title",
-            price: parseFloat(item?.pricing?.actual_price || "1500"),
+            imageSrc: item.featured_image_url || '/assets/images/padelbat.png',
+            alt: item.title || 'Default Title',
+            title: item.title || 'Default Product Title',
+            price: parseFloat(item?.pricing?.actual_price || '1500'),
           };
         });
-      // Sort products by price in ascending order
+
       products.value = fetchedProducts.sort((a, b) => a.price - b.price);
-      localStorage.setItem("products", JSON.stringify(products.value));
-      localStorage.setItem("productsTimestamp", Date.now().toString());
+      localStorage.setItem('products', JSON.stringify(products.value));
+      localStorage.setItem('productsTimestamp', Date.now().toString());
     } else {
-      console.error("Failed to fetch product data:", error.value);
+      console.error('Error fetching product data:', error.value);
     }
   } catch (err) {
-    console.error("An error occurred during the fetch:", err);
+    console.error('Fetch failed, falling back to cached data', err);
+    const cachedProducts = localStorage.getItem('products');
+    if (cachedProducts) {
+      products.value = JSON.parse(cachedProducts);
+    }
   } finally {
-    isLoading.value = false; // Stop loading regardless of success or failure
+    isLoading.value = false;
   }
 };
+
 
 onMounted(fetchProducts);
 </script>
@@ -234,7 +223,7 @@ onMounted(fetchProducts);
 <style scoped>
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 products per row */
+  grid-template-columns: repeat(2, 1fr); 
   margin-left: 20px;
   margin-right: 20px;
   gap: 20px;
@@ -247,7 +236,9 @@ onMounted(fetchProducts);
 .product-column {
   padding: 10px;
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
+
 }
+
 
 .pointPrice {
   position: absolute;
@@ -271,7 +262,7 @@ onMounted(fetchProducts);
 
 .skeleton-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 products per row */
+  grid-template-columns: repeat(2, 1fr);
   margin-left: 20px;
   margin-right: 20px;
   gap: 20px;
@@ -320,16 +311,15 @@ onMounted(fetchProducts);
     255,
     255,
     0.3
-  ); /* Semi-transparent black overlay */
+  ); 
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(2px); /* Add blur effect */
   color: #fff;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  pointer-events: none; /* Allow clicks to pass through overlay */
+  pointer-events: none; 
 
   .padlock {
     display: flex;
@@ -345,7 +335,7 @@ onMounted(fetchProducts);
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  background: rgba(0, 0, 0, 0.8); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -408,7 +398,7 @@ onMounted(fetchProducts);
   background: conic-gradient(
     #e84b4a 0deg,
     #f6c5c5 0deg
-  ); /* Dynamic gradient for progress */
+  ); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -418,13 +408,13 @@ onMounted(fetchProducts);
   position: absolute;
   width: 125px;
   height: 125px;
-  background: #fff; /* White inner circle */
+  background: #fff; 
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .progress-percent {
@@ -452,5 +442,11 @@ onMounted(fetchProducts);
   font-weight: bold;
   cursor: pointer;
   display: flex;
+}
+.goToProduct {
+  margin: 0 auto;
+}
+.linkToProduct {
+  text-decoration: none;
 }
 </style>

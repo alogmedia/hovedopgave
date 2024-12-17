@@ -20,23 +20,18 @@ import { useVibrate } from '@vueuse/core'
 const isVisible = ref(false);
 
 const closeOverlay = () => {
-  isVisible.value = false; // Hide the overlay
-  localStorage.setItem("hasSeenOverlay", "true"); // Mark the video as seen
+  isVisible.value = false; 
+  sessionStorage.setItem("hasSeenOverlay", "true"); 
 };
 
 onMounted(() => {
-  const hasSeenOverlay = localStorage.getItem("hasSeenOverlay");
-  if (!hasSeenOverlay) {
-    isVisible.value = true; // Show the video overlay only if it hasn't been seen
-    const { vibrate, stop, isSupported } = useVibrate({ pattern: [300, 100, 300] })
+  const hasSeenOverlay = sessionStorage.getItem("hasSeenOverlay");
 
-    // Start the vibration, it will automatically stop when the pattern is complete:
-    vibrate()
-    console.log("Vibrating...");
-    // But if you want to stop it, you can:
-    stop()
+  if (!hasSeenOverlay) {
+    isVisible.value = true;
   }
 });
+
 </script>
 
 

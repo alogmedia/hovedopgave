@@ -1,5 +1,6 @@
 <template>
   <div class="cart">
+    <!-- Loop through products -->
     <div
       v-for="(product, index) in products"
       :key="index"
@@ -24,20 +25,54 @@
             <p class="product-delivery">Levering 1 - 2 hverdage</p>
             <a href="#" class="product-info-link">Info</a>
           </div>
+
           <div class="product-info">
+            <!-- Quantity Selector -->
             <div class="quantity-selector">
-              <select v-model="product.quantity" class="quantity-input">
+              <select
+                v-model="product.quantity"
+                @change="updateTotalPrice"
+                class="quantity-input"
+              >
                 <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
               </select>
             </div>
-            <p class="product-price">
-              {{ product.price }} kr.
-              <span class="product-point-price">
-                {{ product.price }}
-                <Icon name="ion:tennisball" class="tennisIcon" />
-              </span>
-            </p>
+
+            <!-- Conditional Radio Buttons -->
+            <div class="productPrice-wrapper">
+              <p class="product-price">
+                <input
+                  v-if="product.points" 
+                  class="radioColor"
+                  type="radio"
+                  :id="`priceKr-${index}`"
+                  value="Kroner"
+                  v-model="product.selectedPrice"
+                  :name="`priceType-${index}`"
+                  @change="updateTotalPrice"
+                />
+                <label :for="`priceKr-${index}`">
+                  {{ product.price }} kr.
+                </label>
+              </p>
+              <p v-if="product.points" class="product-price">
+                <input
+                  type="radio"
+                  class="radioColor"
+                  :id="`pricePoints-${index}`"
+                  value="Points"
+                  v-model="product.selectedPrice"
+                  :name="`priceType-${index}`"
+                  @change="updateTotalPrice"
+                />
+                <label :for="`pricePoints-${index}`">
+                  {{ product.price }}
+                  <Icon name="ion:tennisball" class="tennisIcon" />
+                </label>
+              </p>
+            </div>
           </div>
+
           <div class="extra-options">
             <p class="favorit">
               <Icon
@@ -46,13 +81,17 @@
               />
               Gem som favorit
             </p>
-            <button class="remove-button">Slet X</button>
+            <button class="remove-button" @click="removeProduct(index)">
+              Slet X
+            </button>
           </div>
         </div>
       </div>
       <!-- Add <hr> only if it's not the last product -->
-      <hr class="product-divider" />
+      <hr v-if="index !== products.length - 1" class="product-divider" />
     </div>
+
+    <!-- Cart Summary -->
     <div class="cart-summary">
       <div class="cart-summary-right">
         <p class="cart-summary-title">Total</p>
@@ -69,42 +108,52 @@
         <p class="cart-summary-price">{{ totalPrice }} kr.</p>
       </div>
     </div>
-    <NuxtLink to="/" class="checkout-button"
-      ><CallToAction
+
+    <!-- Checkout Button -->
+    <NuxtLink to="/" class="checkout-button">
+      <CallToAction
         label="Gå til kassen"
         class="checkout-button"
         icon="material-symbols:arrow-forward-rounded"
-    /></NuxtLink>
+      />
+    </NuxtLink>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import boldeImage from "@/assets/images/bolde.png";
+import mainBat from "@/assets/images/mainbat.png";
+import padelBat from "@/assets/images/padelbat.png";
+const selectedPrice = ref("Kroner"); // Default selected value
 
 const products = ref([
   {
-    imageSrc: boldeImage,
+    imageSrc: mainBat,
     alt: "Product Image",
     title: "Siux Ultra Pro",
     price: 2500,
     quantity: 1, // Default quantity
+    points: true, // Show radio buttons
   },
   {
-    imageSrc: boldeImage,
+    imageSrc: padelBat,
     alt: "Product Image 2",
     title: "Siux Pro Ultra Light",
     price: 2400,
     quantity: 1, // Default quantity
+    points: true, // Hide radio buttons
   },
   {
-    imageSrc: boldeImage,
+    imageSrc: padelBat,
     alt: "Product Image 3",
     title: "Babolat Court Bolde",
     price: 79,
     quantity: 1, // Default quantity
+    points: false, // Show radio buttons
   },
 ]);
+
 
 const totalPrice = ref(
   products.value.reduce(
@@ -136,7 +185,7 @@ const quantity = ref(1);
   .product-image {
     display: flex;
     margin: 0 auto;
-    width: 75%;
+    width: 75px;
     height: auto;
     object-fit: cover;
     padding: 10px;
@@ -165,11 +214,13 @@ const quantity = ref(1);
 
     .product-price {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      gap: 5px;
       font-size: 0.875rem;
       color: #000;
       font-weight: 800;
       font-family: Jakarta;
+      padding-top: 10px;
     }
     .tennisIcon {
       font-size: 0.875rem;
@@ -208,6 +259,28 @@ const quantity = ref(1);
       }
     }
   }
+  .radioColor {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 12px; /* Set radio button size */
+    height: 12px;
+    border: none;
+    outline: none;
+    border-radius: 50%; 
+    background-color: #FFF;
+    border: 1px solid #ff4d4d;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    display:flex;
+    margin-top: 5%;
+  }
+  .radioColor:checked {
+    background-color: #ff4d4d; /* Fill color for checked state */
+  }
+
+
   .product-details {
     display: flex;
     flex-direction: row; /* Arrange items side by side */

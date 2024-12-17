@@ -72,7 +72,7 @@ const props = defineProps({
 
   .productPoints {
     padding: 5px 20px;
-    text-transform: capitalize;
+    text-transform: initial;
     font-family: Jakarta;
     font-size: 0.775rem;
     font-weight: 800;

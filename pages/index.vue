@@ -36,7 +36,7 @@ import homeImg from "/icon.png";
 const heroBanners = [
   {
     imageSrc: hero1,
-    title: "Deals",
+    title: "Padelpoints",
     headline: "Se denne uges deal",
     buttonIcon: "material-symbols:arrow-right-alt",
     buttonLabel: "Find den her",
