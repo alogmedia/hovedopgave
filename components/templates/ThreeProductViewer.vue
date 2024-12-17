@@ -1,13 +1,10 @@
-
 <template>
-      
   <div class="viewer-container">
     <div v-if="isLoading">
-        <div class="skeleton-loader">
-          <div class="skeleton-image"></div>
-
-        </div>
+      <div class="skeleton-loader">
+        <div class="skeleton-image"></div>
       </div>
+    </div>
     <div ref="viewerContainer" class="product-container">
       <Icon name="tdesign:map-3d" class="moveIcon" />
     </div>
@@ -19,6 +16,7 @@ import { onMounted, ref, onUnmounted } from "vue";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
 const viewerContainer = ref(null);
 const isLoading = ref(true);
@@ -28,18 +26,17 @@ onMounted(() => {
   // Scene setup
   const scene = new THREE.Scene();
 
-  
   // Camera setup
   const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
   const renderer = new THREE.WebGLRenderer({
-  antialias: true,
-  alpha: true,
+    antialias: true,
+    alpha: true,
   });
   renderer.setSize(300, 300);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.outputEncoding = THREE.sRGBEncoding;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping; 
-  renderer.toneMappingExposure = 1.5; 
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.5;
 
   viewerContainer.value.appendChild(renderer.domElement);
 
@@ -50,11 +47,14 @@ onMounted(() => {
   scene.add(ambientLight, directionalLight);
 
   let modelGroup = null;
-
-  // Load the model
+  // Load the model with DRACOLoader
   const loader = new GLTFLoader();
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
+  loader.setDRACOLoader(dracoLoader);
+
   loader.load(
-    "/models/latest/Bat.gltf",
+    "/models/new/Bat.gltf", // Update with your Draco-compressed model path
     (gltf) => {
       const model = gltf.scene;
 
@@ -101,7 +101,7 @@ onMounted(() => {
     requestAnimationFrame(animate);
 
     if (modelGroup && autoRotate) {
-      modelGroup.rotation.y += 0.008; 
+      modelGroup.rotation.y += 0.005;
     }
 
     controls.update();
@@ -121,7 +121,6 @@ onUnmounted(() => {
     viewerContainer.value.__destroy__();
   }
 });
-
 </script>
 
 <style scoped>
@@ -155,7 +154,7 @@ onUnmounted(() => {
   height: 250px;
   margin-left: 50%;
   gap: 10px;
-  width:100%;
+  width: 100%;
 }
 
 .skeleton-image {
