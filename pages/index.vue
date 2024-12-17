@@ -4,7 +4,7 @@
 
     <Header />
     <AnimationBanner />
-    <Welcome class="heading" title="Velkommen," subtitle="Anders!" />
+    <Welcome class="heading" title="Velkommen," subtitle="Søren!" />
     <!-- Loop through the heroBanners array -->
     <div v-for="(banner, idx) in heroBanners" :key="idx">
       <HeroBanner

@@ -24,6 +24,6 @@ const props = defineProps({
   font-family: "Muroslant", sans-serif;
   letter-spacing: 1px;
   font-size: 26px !important;
-  font-weight: 350;
+  font-weight: normal;
 }
 </style>

@@ -42,6 +42,7 @@ const tag = computed(() => {
   font-size: 1.5rem;
   color: #e84b4a;
   letter-spacing: 4%;
+  font-weight: 100;
 }
 
 .text.paragraph {

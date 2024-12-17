@@ -50,6 +50,7 @@
                   v-model="product.selectedPrice"
                   :name="`priceType-${index}`"
                   @change="updateTotalPrice"
+                  checked
                 />
                 <label :for="`priceKr-${index}`">
                   {{ product.price }} kr.
@@ -283,10 +284,11 @@ const quantity = ref(1);
 
   .product-details {
     display: flex;
-    flex-direction: row; /* Arrange items side by side */
-    align-items: center; /* Vertically align items */
-    gap: 15px; /* Add space between each element */
+    flex-direction: row;
+    align-items: center; 
+    justify-content: space-between;
     margin-bottom: 10px;
+    font-family: Jakarta;
 
     .product-stock {
       font-size: 0.675rem;
