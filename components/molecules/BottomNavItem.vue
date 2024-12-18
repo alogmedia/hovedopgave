@@ -35,6 +35,5 @@ const isActive = computed(() => route.path === props.to);
   &.active {
     color: #ff4d4d;
   }
-
 }
 </style>

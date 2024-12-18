@@ -33,7 +33,6 @@ const cartCount = ref(3);
   justify-content: space-around;
   align-items: center;
   padding: 10px 0;
-  border-top: 1px solid #7e7e7e; 
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   z-index: 100;
 
@@ -44,10 +43,11 @@ const cartCount = ref(3);
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-weight: 100;
 
     &.active {
       color: #ff4d4d;
-      font-weight: bold;
+      font-weight: 100;
     }
   }
 }
