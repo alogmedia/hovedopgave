@@ -1,6 +1,6 @@
 <template>
   <div class="pointShop-banner">
-    <Text content="FASTE DEALS!" class="heading" />
+    <Text content="FASTE DEALS" class="heading" />
     <div class="filterContent">
       <Text content="Sorter efter" class="filter" type="sub" />
       <Icon name="material-symbols:add" class="filterIcon" />

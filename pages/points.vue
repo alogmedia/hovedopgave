@@ -1,11 +1,11 @@
 <template>
   <div class="points">
     <SubHeader />
-    <PageTitle title="Point butik" />
-    <YourPoints title="Dine Point" subtitle="500" />
-    <LimitedProducts :userPoints="500" />
+    <PageTitle title="Padelpoints" />
+    <YourPoints title="Dine Point" subtitle="2500" />
+    <LimitedProducts :userPoints="2500" />
     <PointShop />
-    <PointProduct :userPoints="500" />
+    <PointProduct :userPoints="2500" />
     <BottomNav />
   </div>
 </template>

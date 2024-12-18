@@ -20,9 +20,12 @@ const props = defineProps({
 .category-title {
   text-transform: uppercase;
   .text.subheading {
-    font-size: 1rem;
+    font-size: .875rem;
     color: #000;
-    font-weight: 100;
+    font-weight: 800;
+    text-align: center;
+    font-family: $font-subheading;
+
   }
 
   .text.undertitle {

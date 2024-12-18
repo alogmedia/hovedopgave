@@ -52,6 +52,8 @@ const props = defineProps({
     font-family: $font-subheading;
     font-size: 0.875rem;
     font-weight: 400;
+    text-transform: initial;
+    padding-top: 5px;
   }
 }
 </style>

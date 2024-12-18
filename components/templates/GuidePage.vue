@@ -1,8 +1,7 @@
 <template>
     <div>
-      <div class="top-logo">
-        <Logo />
-      </div>
+      <SubHeader />
+
       <Swiper
       :slides-per-view="1"
       :space-between="10"
@@ -17,12 +16,13 @@
           class="product-slide"
 
         >
-          <div class="guide-wrapper">
             <div class="guide">
                 <div class="guide-content">
   <p class="guideTitle">{{ guide.title }}</p>
+  <p class="guideSubtitle">{{ guide.subtitle }}</p>
   <img :src="guide.image" :alt="guide.alt" />
   <p class="guideText" v-html="guide.text"></p>
+  <div class="pagination-wrapper">
   <div class="custom-pagination">
     <span
       v-for="(guide, index) in guides"
@@ -74,35 +74,38 @@ const goToSlide = (index) => {
 
   const guides = [
     {
-      title: "Padelpoint Guide",
+      title: "Padelpoints",
+      subtitle: "Guide",
       image: hero1,
       alt: "Guide Image 1",
       text: `
-        <strong>Hvad er Padelpoint?</strong><br>
+        <strong>Hvad er Padelpoint?</strong><br><br>
         Padelpoint er vores eksklusive belønningssystem, der giver dig mulighed for at få endnu mere ud af dine køb hos os.
         <br><br>
         <strong>Sådan fungerer det:</strong><br>
-        <ul>
+        <ul style="padding: 10px 0 0 10px; width: 100%;">
           <li>Optjen point hver gang du handler hos os.</li>
-          <li>Brug dine Padelpoint til at købe produkter i Padelpoint butikken.</li>
+          <li style="padding-top: 5px;">Brug dine Padelpoint til at købe produkter i Padelpoint butikken.</li>
         </ul>
       `,
     },
     {
-      title: "Padelpoint Guide",
+      title: "Padelpoints",
+      subtitle: "Guide",
       image: hero2,
       alt: "Guide Image 2",
       text: `
         <strong>Sådan optjener du Padelpoint</strong><br><br>
-At optjene Padelpoint er super nemt. Hver gang du handler hos os, får du en procentdel af dit køb i point, og de bliver pointene automatisk tilføjet til din konto.
+<p style="width: 100%;">At optjene Padelpoint er super nemt. Hver gang du handler hos os, får du en procentdel af dit køb i point, og de bliver pointene automatisk tilføjet til din konto.
 <br><br>
 Du kan holde øje med dine point under Padelpoint og bruge dem, når det passer dig. 
 <br><br>
-Der er ingen grænser for, hvor mange point du kan optjene – jo mere du handler, jo flere point får du!
+Der er ingen grænser for, hvor mange point du kan optjene – jo mere du handler, jo flere point får du!</p>
       `,
     },
     {
-      title: "Padelpoint Guide",
+      title: "Padelpoints",
+      subtitle: "Guide",
       image: hero3,
       alt: "Guide Image 3",
       text: `
@@ -110,12 +113,12 @@ Der er ingen grænser for, hvor mange point du kan optjene – jo mere du handle
 
 Når du har optjent Padelpoint, kan du bruge dem til at købe produkter i vores Padelpoint-butik. 
 <br><br>
-<strong>Det er nemt og hurtigt:</strong><br><br>
+<strong>Det er nemt og hurtigt:</strong><br>
 
-<ul>
+<ul style="padding: 12px 0 0 10px; width: 100%;">
     <li>Gå ind i Padelpoint butikken.</li>
-    <li>Vælg de produkter, du ønsker.</li>
-    <li>Betal med dine point og optjen nye</li>
+    <li style="padding-top: 5px;">Vælg de produkter, du ønsker.</li>
+    <li style="padding-top: 5px;">Betal med dine point og optjen nye</li>
 </ul><br>
 
 Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget nyt at vælge imellem.
@@ -125,44 +128,19 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
   </script>
   
   <style lang="scss" scoped>
-  .top-logo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0; 
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
-  }
-  .guide-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  margin-top: 20px;
-  background: #fff;
-  width: 90%;
-  height: calc(100vh - 200px);
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden; 
-}
 
 
-.backButton {
-  position: absolute;
-  bottom: 0;
-  left: 0; 
-  right: 0; 
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 10px;
-}
 
 .guideTitle {
     font-size: 3rem;
     font-family: $font-heading;
     font-weight: 100;
+}
+.guideSubtitle {
+  font-size: 2rem;
+  font-family: $font-heading;
+  font-weight: 100;
+  padding-bottom: 20px;
 }
 
 .guide {
@@ -174,7 +152,6 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
   width: 100%;
   height: 100%;
   padding: 20px 0 20px 0;
-  box-sizing: border-box;
 }
 
 .guide-content {
@@ -186,23 +163,22 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
 }
 
 .guide-content img {
-  width: 100%;
-  max-height: 260px; 
-  object-fit: con;
+  width: 90%;
+  margin: 0 auto;
+  max-height: 275px; 
   object-fit: cover;
 }
 
 .guideText {
   flex-grow: 1; 
-  overflow-y: auto;
   font-size: 0.800rem;
   text-align: left;
   font-weight: 100;
   margin: 0 20px;
   letter-spacing: 1px;
   font-family: $font-subheading;
+  padding: 20px;
 }
-
 
 .guideText {
     font-size: .800rem;
@@ -215,21 +191,38 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
     font-family: $font-subheading;
     margin-top: 10px;
     width: 300px;
-    ul {
-        list-style-type: disc;
-        margin-left: 20px;
-        font-size: .775rem;
-    }
+    height: 250px;
+
+}
+
     
+.pagination-wrapper {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+
+  a {
+    text-decoration: none;
+  }
+
+
 }
 
 .custom-pagination {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 12px;
-  margin-bottom: 45px;
+  justify-content: center;
 }
+
+.backButton {
+  display:flex;
+  justify-content: center;
+  width: 100%;
+  :deep(.button) {
+    width: 90%;
+  }
+}
+
 
 .custom-bullet {
   cursor: pointer;
@@ -259,6 +252,16 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
     font-size: 2rem;
     width: 25px;
     height: 25px;
+}
+
+
+@media only screen and (max-width: 390px) {
+  .guide-content img {
+    height: 200px;
+  }
+  .guideText {
+    height: 240px;
+  }
 }
   </style>
   

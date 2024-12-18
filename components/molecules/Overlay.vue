@@ -27,13 +27,12 @@ const props = defineProps({
   max-width: fit-content;
   width: 100%;
   margin-bottom: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
   z-index: 10;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
 }
 
 a {
   text-decoration: none;
-
 }
 </style>

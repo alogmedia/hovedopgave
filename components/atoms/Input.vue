@@ -1,15 +1,11 @@
 <template>
-  <input type="text" :placeholder="placeholder" class="search-input" />
+  <input type="text" class="search-input" />
 </template>
 
 <script setup>
 import { defineProps, defineEmits } from "vue";
 
 const props = defineProps({
-  placeholder: {
-    type: String,
-    default: "Søg...",
-  },
   customClass: {
     type: String,
     default: "",

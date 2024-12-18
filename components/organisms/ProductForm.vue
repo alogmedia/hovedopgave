@@ -13,7 +13,7 @@
     </div>
     <div class="column">
       <div class="productPoints">
-        <p>
+        <p class="earnedPoints">
           Optjent point: 250
           <Icon name="ion:tennisball" class="pointTennisBall"></Icon>
         </p>
@@ -75,7 +75,7 @@ const props = defineProps({
     text-transform: initial;
     font-family: $font-subheading;
     font-size: 0.775rem;
-    font-weight: 800;
+    font-weight: 400;
 
     .pointTennisBall {
       color: $secondary-color;
@@ -150,12 +150,11 @@ const props = defineProps({
 
   .tennisBall {
     color: $secondary-color;
-    font-size: 0.875rem;
-    margin-top: 3px;
+    font-size: 1.5rem;
   }
 
   .text.subheading {
-    font-size: 0.875rem;
+    font-size: 1.5rem;
     color: #000;
     letter-spacing: 2px;
     font-weight: 800;

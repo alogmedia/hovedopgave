@@ -53,7 +53,7 @@ import errorImage from "@/assets/images/error1.png";
 }
 h1 {
   color: $secondary-color;
-  font-size: 2rem;
+  font-size: 3.5rem;
   padding-top: 20px;
   font-weight: 100;
 
@@ -62,6 +62,7 @@ h1 {
 p {
   font-family: $font-subheading;
   font-weight: 800;
+  font-size: 1rem;
 }
 
 .backButton {
@@ -69,5 +70,9 @@ p {
   justify-content: center;
   align-items: center;
   text-decoration: none;
+
+  :deep(button) {
+    padding: 0 60px;
+  }
 }
 </style>
