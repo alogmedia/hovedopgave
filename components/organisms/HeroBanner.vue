@@ -6,6 +6,7 @@
       :headline="headline"
       :buttonLabel="buttonLabel"
       :buttonIcon="buttonIcon"
+      :buttonLink="buttonLink"
     />
   </div>
 </template>
@@ -20,6 +21,7 @@ const props = defineProps({
   headline: String,
   buttonLabel: String,
   buttonIcon: String,
+  buttonLink: String,
 });
 </script>
 

@@ -23,15 +23,15 @@
         <div class="productLink" @click.prevent="handleProductClick(product)">
           <Product
             class="product-column"
-            :imageSrc="parseFloat(product.price) > userPoints ? padelBat : mainBat"
+            :imageSrc="parseFloat(product.price + 1000) > userPoints ? padelBat : mainBat"
             :alt="product.alt"
             :title="product.title"
-            :price="product.price"
+            :price="product.price + 1000"
             :showExpire="false"
           />
           <!-- Conditional Overlay -->
           <div
-            v-if="parseFloat(product.price) > userPoints"
+            v-if="parseFloat(product.price + 1000) > userPoints"
             class="product-overlay"
           >
             <Icon name="material-symbols:lock-outline" class="padlock"></Icon>
@@ -78,20 +78,19 @@
 </template>
 
 <script setup>
-import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/swiper-bundle.css";
 import { ref, onMounted } from "vue";
 import Product from "@/components/organisms/Product.vue";
 import { useFetch } from "#app";
-import mainBat from "@/assets/images/mainbat.png";
+import mainBat from "@/assets/images/mainbat2.png";
 import padelBat from "@/assets/images/padelbat.png";
 
 const products = ref([]);
 const isLoading = ref(true);
 const showOverlay = ref(false);
 const selectedProduct = ref(null);
-const userPoints = ref(500);
-const totalPoints = ref(665);
+const userPoints = ref(2500);
+const totalPoints = ref(3300);
 
 const props = defineProps({
   imageSrc: {
@@ -121,7 +120,7 @@ const progress = computed(() =>
 );
 
 const handleProductClick = (product) => {
-  if (props.userPoints < product.price) {
+  if (props.userPoints < product.price + 1000) {
     selectedProduct.value = product;
     showOverlay.value = true;
   } else {
@@ -217,7 +216,7 @@ const fetchProducts = async () => {
 onMounted(fetchProducts);
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .products-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
@@ -307,7 +306,7 @@ onMounted(fetchProducts);
     255,
     255,
     255,
-    0.3
+    0.5
   ); 
   display: flex;
   justify-content: center;
@@ -341,11 +340,10 @@ onMounted(fetchProducts);
 
 .overlay-content {
   background: #f9f9f9;
-  padding: 20px;
+  padding: 40px;
   text-align: center;
   width: 320px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  font-family: $font-heading;
 }
 
 .overlay-header {
@@ -354,7 +352,7 @@ onMounted(fetchProducts);
 
 .overlay-title {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 100;
   color: #000;
   margin-bottom: 8px;
   letter-spacing: 1px;
@@ -369,14 +367,16 @@ onMounted(fetchProducts);
   justify-content: center;
   align-items: center;
   letter-spacing: 1px;
-  font-family: $font-heading;
   font-weight: 100;
+  font-family: $font-heading;
+
 
 
   .tennisBall {
     font-size: 1.6rem;
+    margin-bottom: 8px;
     margin-left: 5px;
-    margin-top: 8px;
+
   }
 }
 
@@ -421,6 +421,7 @@ onMounted(fetchProducts);
   margin: 0;
   letter-spacing: 1px;
   font-weight: 100;
+  font-family: $font-heading;
 
 }
 
@@ -429,17 +430,23 @@ onMounted(fetchProducts);
   color: #000;
   margin: 0;
   margin-top: 5px;
+  font-family: $font-heading;
+
 }
 
 .close-button {
+  position: relative;
+  right: 20px;
+  bottom: 20px;
   background: none;
   color: #000;
   border: none;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
   display: flex;
 }
+
 .goToProduct {
   margin: 0 auto;
 }

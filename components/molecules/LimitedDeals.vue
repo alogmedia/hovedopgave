@@ -1,9 +1,8 @@
 <template>
   <div class="pointShop-banner">
-    <Text content="Tidsbegrænset Deals!" class="heading" />
+    <Text content="Tidsbegrænset Deals" class="heading" />
     <div class="filterContent">
-      <Text content="Sorter efter" class="filter" type="sub" />
-      <Icon name="material-symbols:add" class="filterIcon" />
+      <Text class="filter" type="sub" />
     </div>
   </div>
 </template>

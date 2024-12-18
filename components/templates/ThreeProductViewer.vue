@@ -89,7 +89,7 @@ onMounted(() => {
 
   const controls = new TrackballControls(camera, renderer.domElement);
   controls.noRotate = false;
-  controls.noZoom = false; 
+  controls.noZoom = true; 
   controls.noPan = false;
   controls.staticMoving = false;
   controls.dynamicDampingFactor = 0.1; 

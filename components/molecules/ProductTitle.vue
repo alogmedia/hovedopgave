@@ -12,7 +12,6 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  align-items: center;
   padding-bottom: 20px;
   margin-left: 20px;
   margin-right: 20px;
@@ -28,9 +27,8 @@
 }
 .arrowIcon {
   display: flex;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #000;
-  margin-top: 5px;
 }
 
 .filter {

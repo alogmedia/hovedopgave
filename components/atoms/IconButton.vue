@@ -39,7 +39,8 @@ const props = defineProps({
   }
 
   .label {
-    margin-top: 5px;
+    font-weight: 100;
+    font-size: .775rem;
   }
 }
 </style>

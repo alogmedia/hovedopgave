@@ -26,4 +26,8 @@ const props = defineProps({
   font-size: 26px !important;
   font-weight: normal;
 }
+
+.text.subheading {
+  padding-bottom: 20px;
+}
 </style>

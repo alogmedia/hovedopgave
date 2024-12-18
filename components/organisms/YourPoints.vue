@@ -50,7 +50,6 @@ const props = defineProps({
   padding-top: 20px;
   .points {
     display: flex;
-    align-items: center;
   }
   .text.main {
     font-family: $font-heading;
@@ -75,7 +74,6 @@ const props = defineProps({
     padding-left: 5px;
     font-weight: 100;
   }
-
 }
 .guide {
     display: flex;
@@ -88,7 +86,7 @@ const props = defineProps({
       font-size: .875rem;
       color: #000;
       font-family: $font-subheading;
-      font-weight: 800;
+      font-weight: 600;
       letter-spacing: 1px;
       text-transform:initial;
     }
@@ -96,7 +94,7 @@ const props = defineProps({
       font-size: .675rem;
       color: $primary-color;
       font-family: $font-subheading;
-      font-weight: 800;
+      font-weight: 600;
       letter-spacing: 1px;
       text-transform: initial;
     }

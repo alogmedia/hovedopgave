@@ -98,19 +98,20 @@ const props = defineProps({
 .expire {
   display: flex;
   position: absolute;
-  right: -30px;
+  right: -25px;
   bottom: 30px;
   width: 200px;
   font-size: 10px;
   font-family: $font-subheading;
   font-weight: 800;
   letter-spacing: 0.875px;
+  gap: 5px;
   z-index: 10;
 }
 @media only screen and (max-width: 390px) {
   .expire {
     font-size: 10px;
-    right: -30px;
+    right: -25px;
   }
 }
 </style>

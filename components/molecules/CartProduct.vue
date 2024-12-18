@@ -23,7 +23,7 @@
               lager
             </p>
             <p class="product-delivery">Levering 1 - 2 hverdage</p>
-            <a href="#" class="product-info-link">Info</a>
+            <NuxtLink to="/404" class="product-info-link">Info</NuxtLink>
           </div>
 
           <div class="product-info">
@@ -75,16 +75,16 @@
           </div>
 
           <div class="extra-options">
-            <p class="favorit">
+            <NuxtLink to="/404"><p class="favorit">
               <Icon
                 name="material-symbols:favorite-outline"
                 class="stock-icon"
               />
               Gem som favorit
-            </p>
-            <button class="remove-button" @click="removeProduct(index)">
+            </p></NuxtLink>
+            <NuxtLink to="/404"><button class="remove-button" @click="removeProduct(index)">
               Slet X
-            </button>
+            </button></NuxtLink>
           </div>
         </div>
       </div>
@@ -101,13 +101,13 @@
         <p class="cart-summary-price">{{ totalPrice }} kr.</p>
         <p class="cart-summary-price">0</p>
         <p class="cart-summary-price">
-          {{ totalPrice }} <Icon name="ion:tennisball" class="tennisIcon" />
+          350 <Icon name="ion:tennisball" class="tennisIcon" />
         </p>
         <p class="cart-summary-price">{{ totalPrice }} kr.</p>
       </div>
     </div>
 
-    <NuxtLink to="/" class="checkout-button">
+    <NuxtLink to="/404" class="checkout-button">
       <CallToAction
         label="Gå til kassen"
         class="checkout-button"
@@ -120,7 +120,7 @@
 <script setup>
 import { ref } from "vue";
 import boldeImage from "@/assets/images/bolde.png";
-import mainBat from "@/assets/images/mainbat.png";
+import mainBat from "@/assets/images/mainbat2.png";
 import padelBat from "@/assets/images/padelbat.png";
 const selectedPrice = ref("Kroner");
 
@@ -291,6 +291,7 @@ const quantity = ref(1);
       color: #17a700;
       display: flex;
       align-items: center;
+      font-weight: 600;
 
       .stock-icon {
         margin-right: 5px;
@@ -304,9 +305,10 @@ const quantity = ref(1);
 
     .product-info-link {
       font-size: 0.675rem;
-      color: $primary-color;
+      color: $link-color;
       text-decoration: underline;
       cursor: pointer;
+      font-weight: 600;
     }
   }
   .extra-options {
@@ -365,22 +367,33 @@ const quantity = ref(1);
   margin-left: 20px;
   margin-right: 20px;
   font-family: $font-subheading;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 1px;
 
   .tennisIcon {
     font-size: 0.875rem;
     color: #ff4d4d;
   }
+  .cart-summary-title {
+    padding: 5px;
+  }
+  .cart-summary-price {
+    padding: 5px;
+  }
 }
+
 
 .checkout-button {
-  display: flex;
+  display:flex;
   justify-content: center;
-  align-items: center;
-  text-decoration: none;
+  width: 100%;
+  :deep(.button) {
+    width: 90%;
+  }
 }
-
+a {
+    text-decoration: none;
+  }
 :deep(button) {
   display: flex;
   flex-direction: row-reverse;

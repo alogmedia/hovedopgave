@@ -14,14 +14,13 @@
     </transition>
     <input
       v-model="searchQuery"
-      :placeholder="placeholder"
       @focus="isFocused = true"
       @blur="isFocused = false"
       class="search-input"
     />
-    <button class="search-button" @click="$emit('search', searchQuery)">
+    <NuxtLink to="/404"><button class="search-button" @click="$emit('search', searchQuery)">
       {{ buttonLabel }}
-    </button>
+    </button></NuxtLink>
   </div>
 </template>
 
@@ -29,10 +28,6 @@
 import { ref, defineProps } from "vue";
 
 const props = defineProps({
-  placeholder: {
-    type: String,
-    default: "Søg...",
-  },
   iconName: {
     type: String,
     default: "ph-magnifying-glass",
@@ -43,7 +38,7 @@ const props = defineProps({
   },
   buttonLabel: {
     type: String,
-    default: "Søg",
+    default: "SØG",
   },
 });
 
@@ -91,6 +86,8 @@ const handleBlur = () => {
     cursor: pointer;
     margin-left: 8px;
     transition: background-color 0.3s ease;
+    font-family: $font-subheading;
+    font-weight: 800;
   }
 }
 

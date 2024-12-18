@@ -1,7 +1,7 @@
 <template>
   <div class="overlay">
     <TextBlock :title="title" :headline="headline" />
-    <NuxtLink to="/points">
+    <NuxtLink :to="buttonLink">
     <CallToAction :label="buttonLabel" :icon="buttonIcon" /></NuxtLink>
   </div>
 </template>
@@ -15,6 +15,7 @@ const props = defineProps({
   headline: String,
   buttonLabel: String,
   buttonIcon: String,
+  buttonLink: String,
 });
 </script>
 
@@ -27,13 +28,12 @@ const props = defineProps({
   max-width: fit-content;
   width: 100%;
   margin-bottom: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
   z-index: 10;
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
 }
 
 a {
   text-decoration: none;
-
 }
 </style>
