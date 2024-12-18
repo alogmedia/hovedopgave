@@ -21,6 +21,6 @@ const props = defineProps({
 .search-input {
   width: 100%;
   border: none;
-  font-family: Jakarta;
+  font-family: $font-subheading;
 }
 </style>

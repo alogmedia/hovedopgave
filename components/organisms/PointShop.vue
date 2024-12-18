@@ -38,11 +38,11 @@
 .filter {
   font-size: 0.875rem;
   font-weight: bold;
-  font-family: Jakarta;
+  font-family: $font-subheading;
 }
 
 .text.heading {
-  font-family: "Muroslant", sans-serif;
+  font-family: $font-heading;
   letter-spacing: 1px;
   font-size: 26px !important;
   font-weight: 350;

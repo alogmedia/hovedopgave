@@ -21,7 +21,7 @@
 .header-inner {
   display: flex;
   flex-direction: column;
-  align-items: stretch; // Stretch to ensure children take full width
+  align-items: stretch;
   width: 100%;
   box-sizing: border-box;
 }

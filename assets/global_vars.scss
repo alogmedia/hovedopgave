@@ -22,58 +22,15 @@
   
 // Define a variable for headings
 $font-heading: 'Muroslant', sans-serif;
+$font-subheading: 'Jakarta', sans-serif;
 
-  
 // Colors
-$primary-color: #3498db;
-$secondary-color: #2ecc71;
-$accent-color: #e74c3c;
-$text-color: #333;
+$primary-color: #0071E3;
+$secondary-color: #E84B4A;
 $background-color: #F6F8FA;
 
-// Typography
-$font-family-base: 'Muroslant', Arial, sans-serif;
-$font-size-base: 16px;
-$font-size-sm: 14px;
-$font-size-lg: 18px;
-$line-height-base: 1.5;
 
 // Assuming this is in a global SCSS file or in your component styles after importing `global_vars.scss`
 h1, h2, h3, h4, h5, h6 {
     font-family: $font-heading;
   }
-
-// Spacing
-$spacing-xs: 4px;
-$spacing-sm: 8px;
-$spacing-md: 16px;
-$spacing-lg: 24px;
-$spacing-xl: 32px;
-
-
-
-// Breakpoints
-$breakpoint-xs: 320px;
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
-
-// Icon Sizes
-$icon-size-sm: 16px;
-$icon-size-md: 24px;
-$icon-size-lg: 38px;
-$icon-size-xl: 48px;
-
-// Z-index
-$z-index-header: 100;
-$z-index-modal: 1000;
-$z-index-tooltip: 1100;
-
-// Transition
-$transition-duration: 0.3s;
-$transition-easing: ease-in-out;
-
-// Misc
-$border-radius: 4px;
-$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

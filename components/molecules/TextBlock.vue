@@ -21,7 +21,7 @@ const props = defineProps({
 }
 
 .text.heading {
-  font-family: "Muroslant", sans-serif;
+  font-family: $font-heading;
   letter-spacing: 1px;
   font-size: 26px !important;
   font-weight: normal;

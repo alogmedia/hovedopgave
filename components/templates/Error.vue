@@ -26,7 +26,7 @@ import errorImage from "@/assets/images/error1.png";
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0; // Removed padding, relying on header-container's padding
+  padding: 0;
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 20px;
@@ -52,7 +52,7 @@ import errorImage from "@/assets/images/error1.png";
   }
 }
 h1 {
-  color: #e84b4a;
+  color: $secondary-color;
   font-size: 2rem;
   padding-top: 20px;
   font-weight: 100;
@@ -60,7 +60,7 @@ h1 {
 }
 
 p {
-  font-family: jakarta;
+  font-family: $font-subheading;
   font-weight: 800;
 }
 

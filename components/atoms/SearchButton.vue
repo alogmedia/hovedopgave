@@ -23,15 +23,11 @@ const emit = defineEmits(["click"]);
 
 <style scoped lang="scss">
 .search-button {
-  background-color: #007bff;
+  background-color: $primary-color;
   color: #fff;
   padding: 10px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #0056b3;
-  }
 }
 </style>

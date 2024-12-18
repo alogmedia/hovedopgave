@@ -47,7 +47,7 @@ const props = defineProps({
   },
   showExpire: {
     type: Boolean,
-    default: false, // Default to false if not specified
+    default: false,
   },
 });
 </script>
@@ -62,7 +62,7 @@ const props = defineProps({
   position: relative;
   height: 300px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; // Space between each product in the row
+  margin-bottom: 20px;
 
   .catImg {
     width: 100px;
@@ -77,7 +77,7 @@ const props = defineProps({
   left: 0px;
   width: 100%;
   height: 50px;
-  background-color: #0071e3;
+  background-color: $primary-color;
   z-index: 100;
 
   .points-title {
@@ -102,7 +102,7 @@ const props = defineProps({
   bottom: 30px;
   width: 200px;
   font-size: 10px;
-  font-family: Jakarta;
+  font-family: $font-subheading;
   font-weight: 800;
   letter-spacing: 0.875px;
   z-index: 10;

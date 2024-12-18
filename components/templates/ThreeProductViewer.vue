@@ -14,9 +14,9 @@
 <script setup>
 import { onMounted, ref, onUnmounted } from "vue";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
+import { TrackballControls } from "three/examples/jsm/controls/TrackballControls";
 
 const viewerContainer = ref(null);
 const isLoading = ref(true);
@@ -41,8 +41,8 @@ onMounted(() => {
   viewerContainer.value.appendChild(renderer.domElement);
 
   // Lighting
-  const ambientLight = new THREE.AmbientLight(0xffffff, 1);
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+  const ambientLight = new THREE.AmbientLight(0xffffff, 8);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.1);
   directionalLight.position.set(5, 5, 5);
   scene.add(ambientLight, directionalLight);
 
@@ -76,7 +76,7 @@ onMounted(() => {
       const fov = camera.fov * (Math.PI / 3000);
       const modelHeight = size.y;
       const cameraDistance = modelHeight / (2 * Math.tan(fov / 2));
-      camera.position.set(0.19, 4, cameraDistance * 15);
+      camera.position.set(0.19, 4, cameraDistance * 12);
       camera.lookAt(0, 0, 0);
       isLoading.value = false;
     },
@@ -87,10 +87,13 @@ onMounted(() => {
     },
   );
 
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-  controls.dampingFactor = 0.1;
-  controls.screenSpacePanning = false;
+  const controls = new TrackballControls(camera, renderer.domElement);
+  controls.noRotate = false;
+  controls.noZoom = false; 
+  controls.noPan = false;
+  controls.staticMoving = false;
+  controls.dynamicDampingFactor = 0.1; 
+
   controls.enableRotate = true;
 
   controls.addEventListener("start", () => {

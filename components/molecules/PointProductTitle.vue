@@ -10,7 +10,7 @@ import Text from "@/components/atoms/Text.vue";
 
 const props = defineProps({
   title: {
-    type: [String, Number], // Accept both String and Number
+    type: [String, Number], 
     required: true,
   },
 });
@@ -21,14 +21,14 @@ const props = defineProps({
   text-transform: uppercase;
   .text.subheading {
     font-size: 1rem;
-    color: #000; // Custom red color for emphasis
+    color: #000;
     font-weight: 100;
   }
 
   .text.undertitle {
-    font-family: Muroslant;
+    font-family: $font-heading;
     font-size: 2rem;
-    color: #000; // Custom black color for normal text
+    color: #000;
     letter-spacing: 4%;
     font-weight: 100;
 

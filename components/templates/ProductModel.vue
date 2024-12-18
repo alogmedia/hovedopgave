@@ -14,29 +14,27 @@ const container = ref<HTMLDivElement | null>(null);
 
 const loadModel = () => {
   const scene = new Scene();
-  const camera = new PerspectiveCamera(75, 1, 0.1, 1000); // Square aspect ratio
+  const camera = new PerspectiveCamera(75, 1, 0.1, 1000);
   const renderer = new WebGLRenderer({ antialias: true, alpha: true });
   const light = new AmbientLight(0xffffff, 1);
   const loader = new GLTFLoader();
 
   renderer.setSize(250, 250);
-  renderer.setClearColor(0x000000, 0); // Transparent background
+  renderer.setClearColor(0x000000, 0); 
   scene.add(light);
 
-  camera.position.z = 2; // Adjust camera distance
+  camera.position.z = 2; 
 
   loader.load(
     "/models/bat.gltf",
     (gltf) => {
       const model = gltf.scene;
 
-      // Center the model within the box
       const box = new Box3().setFromObject(model);
       const center = new Vector3();
       box.getCenter(center);
       model.position.sub(center);
 
-      // Scale the model to fit within the box
       const size = box.getSize(new Vector3());
       const maxDim = Math.max(size.x, size.y, size.z);
       model.scale.setScalar(1 / maxDim);

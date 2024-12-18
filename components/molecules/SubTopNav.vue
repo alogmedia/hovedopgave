@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%; // Ensure full width of the parent container
+  width: 100%;
 }
 
 .topicons {

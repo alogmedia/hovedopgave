@@ -30,15 +30,15 @@ const props = defineProps({
 
   .text.subheading {
     font-size: 2rem;
-    color: #e84b4a; // Custom red color for emphasis
+    color: $secondary-color;
     letter-spacing: 4%;
     font-weight: 100;
   }
 
   .text.undertitle {
-    font-family: Muroslant;
+    font-family: $font-heading;
     font-size: 2rem;
-    color: #000; // Custom black color for normal text
+    color: #000;
     letter-spacing: 4%;
     font-weight: 100;
 

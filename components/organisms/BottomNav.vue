@@ -28,25 +28,25 @@ const cartCount = ref(3);
   bottom: -1px;
   left: 0;
   width: 100%;
-  background-color: #f6f8fa; // Light grey background
+  background-color: #f6f8fa; 
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 10px 0;
-  border-top: 1px solid #7e7e7e; // Optional: Add a border to match the example
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); // Adds a shadow for depth
-  z-index: 100; // Ensures the nav stays above other content
+  border-top: 1px solid #7e7e7e; 
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 100;
 
   .BottomNavLinks {
     text-decoration: none;
-    color: #000; // Default text color
-    font-family: Jakarta;
+    color: #000;
+    font-family: $font-subheading;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     &.active {
-      color: #ff4d4d; // Active link color
+      color: #ff4d4d;
       font-weight: bold;
     }
   }

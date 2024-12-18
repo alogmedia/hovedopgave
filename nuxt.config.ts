@@ -115,8 +115,18 @@ export default defineNuxtConfig({
 
   css: [
     "@/assets/main.scss",
-    "@/assets/global_vars.scss",
   ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @use "@/assets/global_vars.scss" as *;
+          `,
+        },
+      },
+    },
+  },
 
   app: {
     pageTransition: { name: "page", mode: "out-in" },

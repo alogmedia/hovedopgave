@@ -20,7 +20,7 @@ const props = defineProps({
   },
   color: {
     type: String,
-    default: "#0071e3", // Default blue color
+    default: "#0071e3", // Default blue
   },
   customClass: {
     type: String,
@@ -48,7 +48,7 @@ const buttonStyle = computed(() => ({
   font-weight: 700;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  font-family: "Jakarta", sans-serif;
+  font-family: $font-subheading;
   transition: background-color 0.3s ease;
 
   &:hover {

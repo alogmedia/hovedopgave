@@ -40,7 +40,7 @@ const props = defineProps({
   background-color: #fff;
   height: 100px;
   text-transform: uppercase;
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1); // Adds a modern shadow for depth
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1); 
 }
 .points-title {
   display: flex;
@@ -53,9 +53,9 @@ const props = defineProps({
     align-items: center;
   }
   .text.main {
-    font-family: Muroslant;
+    font-family: $font-heading;
     font-size: 1.675rem;
-    color: #000; // Custom black color for normal text
+    color: #000; 
     letter-spacing: 4%;
     padding-left: 20px;
     font-weight: 100;
@@ -63,13 +63,13 @@ const props = defineProps({
 
   }
   .tennisBall {
-    color: #e84b4a; // Custom red color for emphasis
+    color: $secondary-color;
     margin-left: auto;
     font-size: 1.5rem;
   }
   .text.subheading {
     font-size: 2rem;
-    color: #e84b4a; // Custom red color for emphasis
+    color: $secondary-color;
     letter-spacing: 2px;
     padding-right: 20px;
     padding-left: 5px;
@@ -87,15 +87,15 @@ const props = defineProps({
     .guideText {
       font-size: .875rem;
       color: #000;
-      font-family: Jakarta;
+      font-family: $font-subheading;
       font-weight: 800;
       letter-spacing: 1px;
       text-transform:initial;
     }
     .guideLink {
       font-size: .675rem;
-      color: #0071E3;
-      font-family: Jakarta;
+      color: $primary-color;
+      font-family: $font-subheading;
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: initial;

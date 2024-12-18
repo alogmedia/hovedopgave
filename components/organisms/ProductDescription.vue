@@ -31,7 +31,7 @@ const props = defineProps({
   background-color: #fff;
   height: 214px;
   text-transform: lowercase;
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1); // Adds a modern shadow for depth
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 100px;
 
   .description {
@@ -42,14 +42,14 @@ const props = defineProps({
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: Jakarta;
+    font-family: $font-subheading;
     font-size: 1rem;
     font-weight: 800;
     text-transform: initial;
   }
 
   .descriptionText {
-    font-family: Jakarta;
+    font-family: $font-subheading;
     font-size: 0.875rem;
     font-weight: 400;
   }

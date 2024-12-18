@@ -88,11 +88,8 @@
           </div>
         </div>
       </div>
-      <!-- Add <hr> only if it's not the last product -->
       <hr v-if="index !== products.length - 1" class="product-divider" />
     </div>
-
-    <!-- Cart Summary -->
     <div class="cart-summary">
       <div class="cart-summary-right">
         <p class="cart-summary-title">Total</p>
@@ -110,7 +107,6 @@
       </div>
     </div>
 
-    <!-- Checkout Button -->
     <NuxtLink to="/" class="checkout-button">
       <CallToAction
         label="Gå til kassen"
@@ -126,7 +122,7 @@ import { ref } from "vue";
 import boldeImage from "@/assets/images/bolde.png";
 import mainBat from "@/assets/images/mainbat.png";
 import padelBat from "@/assets/images/padelbat.png";
-const selectedPrice = ref("Kroner"); // Default selected value
+const selectedPrice = ref("Kroner");
 
 const products = ref([
   {
@@ -134,24 +130,24 @@ const products = ref([
     alt: "Product Image",
     title: "Siux Ultra Pro",
     price: 2500,
-    quantity: 1, // Default quantity
-    points: true, // Show radio buttons
+    quantity: 1,
+    points: true,
   },
   {
     imageSrc: padelBat,
     alt: "Product Image 2",
     title: "Siux Pro Ultra Light",
     price: 2400,
-    quantity: 1, // Default quantity
-    points: true, // Hide radio buttons
+    quantity: 1,
+    points: true,
   },
   {
     imageSrc: padelBat,
     alt: "Product Image 3",
     title: "Babolat Court Bolde",
     price: 79,
-    quantity: 1, // Default quantity
-    points: false, // Show radio buttons
+    quantity: 1,
+    points: false,
   },
 ]);
 
@@ -169,7 +165,7 @@ const quantity = ref(1);
 .cart {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Space between cart items */
+  gap: 15px; 
 }
 
 .cart-item {
@@ -204,13 +200,13 @@ const quantity = ref(1);
     font-weight: 800;
     color: #000;
     margin-bottom: 10px;
-    font-family: Jakarta;
+    font-family: $font-subheading;
   }
 
   .product-info {
     display: flex;
     justify-content: space-between;
-    gap: 15px; /* Add space between each element */
+    gap: 15px; 
     margin-bottom: 10px;
 
     .product-price {
@@ -220,14 +216,14 @@ const quantity = ref(1);
       font-size: 0.875rem;
       color: #000;
       font-weight: 800;
-      font-family: Jakarta;
+      font-family: $font-subheading;
       padding-top: 10px;
     }
     .tennisIcon {
       font-size: 0.875rem;
       color: #ff4d4d;
       font-weight: 800;
-      font-family: Jakarta;
+      font-family: $font-subheading;
     }
 
     .quantity-selector {
@@ -264,7 +260,7 @@ const quantity = ref(1);
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 12px; /* Set radio button size */
+    width: 12px; 
     height: 12px;
     border: none;
     outline: none;
@@ -278,7 +274,7 @@ const quantity = ref(1);
     margin-top: 5%;
   }
   .radioColor:checked {
-    background-color: #ff4d4d; /* Fill color for checked state */
+    background-color: #ff4d4d;
   }
 
 
@@ -288,7 +284,7 @@ const quantity = ref(1);
     align-items: center; 
     justify-content: space-between;
     margin-bottom: 10px;
-    font-family: Jakarta;
+    font-family: $font-subheading;
 
     .product-stock {
       font-size: 0.675rem;
@@ -308,7 +304,7 @@ const quantity = ref(1);
 
     .product-info-link {
       font-size: 0.675rem;
-      color: #007bff;
+      color: $primary-color;
       text-decoration: underline;
       cursor: pointer;
     }
@@ -316,7 +312,7 @@ const quantity = ref(1);
   .extra-options {
     display: flex;
     justify-content: space-between;
-    gap: 15px; /* Add space between each element */
+    gap: 15px;
     margin-bottom: 10px;
 
     .remove-button {
@@ -327,7 +323,7 @@ const quantity = ref(1);
       align-items: center;
       font-size: 0.675rem;
       cursor: pointer;
-      font-family: Jakarta;
+      font-family: $font-subheading;
     }
     .product-stock {
       font-size: 0.675rem;
@@ -345,7 +341,7 @@ const quantity = ref(1);
       color: #000;
       display: flex;
       align-items: center;
-      font-family: Jakarta;
+      font-family: $font-subheading;
 
       .stock-icon {
         margin-right: 5px;
@@ -357,8 +353,8 @@ const quantity = ref(1);
 
 .product-divider {
   border: none;
-  border-top: 1px solid rgba(0, 0, 0, 0.2); /* Light gray line */
-  margin: 15px 0; /* Add spacing around the line */
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 15px 0; 
   width: 90%;
   margin: 0 auto;
 }
@@ -368,7 +364,7 @@ const quantity = ref(1);
   justify-content: space-between;
   margin-left: 20px;
   margin-right: 20px;
-  font-family: Jakarta;
+  font-family: $font-subheading;
   font-weight: 800;
   letter-spacing: 1px;
 

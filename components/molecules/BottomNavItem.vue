@@ -20,21 +20,20 @@ const props = defineProps({
   },
 });
 
-// Use the route hook to check if the current route matches
 const route = useRoute();
-const isActive = computed(() => route.path === props.to); // Compare route.path with the `to` prop
+const isActive = computed(() => route.path === props.to);
 </script>
 
 <style scoped lang="scss">
 .bottom-nav-item {
-  flex: 1; // Ensure each item takes up equal space in the bottom navigation
+  flex: 1; 
   text-align: center;
-  font-family: "Muroslant"; // Use the Muroslant font
+  font-family: $font-heading;
   font-weight: 100;
   letter-spacing: 1px;
 
   &.active {
-    color: #ff4d4d; // Active state color
+    color: #ff4d4d;
   }
 
 }

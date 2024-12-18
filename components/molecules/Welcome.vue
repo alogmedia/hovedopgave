@@ -32,7 +32,7 @@ const props = defineProps({
 
   }
   .text.subheading {
-    color: #e84b4a;
+    color: $secondary-color;
     font-size: 2rem;
     letter-spacing: 2px;
     font-weight: 100;

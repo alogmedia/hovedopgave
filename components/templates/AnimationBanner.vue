@@ -21,16 +21,13 @@ import vid3 from "@/assets/videos/animationvideo3.mp4";
 import vid4 from "@/assets/videos/animationvideo4.mp4";
 import vid5 from "@/assets/videos/animationvideo5.mp4";
 
-// Array of video imports
 const videos = [vid1, vid2, vid3, vid4, vid5];
 
-// Function to pick a random video
 const getRandomVideo = () => {
   const randomIndex = Math.floor(Math.random() * videos.length);
   return videos[randomIndex];
 };
 
-// Ref to hold the randomly selected video
 const randomVideo = ref(getRandomVideo());
 </script>
 
@@ -39,12 +36,12 @@ const randomVideo = ref(getRandomVideo());
   display: flex;
   width: 100%;
   margin-top: 20px;
-  overflow: hidden; /* Ensures the video does not overflow */
+  overflow: hidden;
 }
 
 .banner-video {
-  width: 100%; /* Make video responsive */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Ensures the video fills the banner nicely */
+  width: 100%;
+  height: auto; 
+  object-fit: cover;
 }
 </style>

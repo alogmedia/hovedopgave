@@ -21,7 +21,6 @@
         </div>
       </template>
       <template v-else>
-        <!-- Product Component -->
         <div class="product-wrapper" @click.prevent="handleProductClick(product)">
           
           <Product
@@ -31,7 +30,6 @@
             :price="product.price"
             :showExpire="true"
           />
-          <!-- Conditional Overlay -->
           <div
             v-if="parseFloat(product.price) > userPoints"
             class="product-overlay"
@@ -44,7 +42,6 @@
       </template>
     </SwiperSlide>
   </Swiper>
-   <!-- Points Overlay -->
    <div v-if="showOverlay" class="points-overlay">
         <div class="overlay-content">
           <div class="overlay-header">
@@ -69,7 +66,6 @@
         )`,
               }"
             >
-              <!-- Inner white circle -->
               <div class="inner-circle">
                 <p class="progress-percent">{{ progress }}%</p>
                 <p class="progress-text">{{ userPoints }}/{{ totalPoints }}</p>
@@ -104,7 +100,6 @@ const selectedProduct = ref(null);
 const userPoints = ref(500);
 const totalPoints = ref(665);
 
-// Calculate progress for the progress circle
 const progress = computed(() =>
   Math.floor((userPoints.value / totalPoints.value) * 100),
 );
@@ -114,23 +109,19 @@ const handleProductClick = async (product) => {
     selectedProduct.value = product;
     showOverlay.value = true;
   } else {
-    // Prefetch the product page before navigating
     await nuxtApp.runWithContext(async () => {
       await router.resolve({ path: "/produkt", query: { productId: product.id } });
     });
 
-    // Navigate to the product page
     router.push({ path: "/produkt", query: { productId: product.id } });
   }
 };
 
-// Close overlay
 const closeOverlay = () => {
   showOverlay.value = false;
   selectedProduct.value = null;
 };
 
-// Placeholder skeleton products
 const skeletonProducts = Array.from({ length: 10 }, () => ({
   title: "",
   imageSrc: "",
@@ -167,7 +158,6 @@ const breakpointsConfig = {
 const fetchProducts = async () => {
   const expirationTime = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
-  // Retrieve stored products and timestamp
   const storedProducts = localStorage.getItem("products");
   const savedTimestamp = localStorage.getItem("productsTimestamp");
 
@@ -176,16 +166,13 @@ const fetchProducts = async () => {
       Date.now() - parseInt(savedTimestamp, 10) > expirationTime;
 
     if (!isExpired) {
-      // Handle cached products
       const cachedProducts = JSON.parse(storedProducts);
-      // Sort cached products by price in ascending order
       products.value = cachedProducts.sort((a, b) => a.price - b.price);
       isLoading.value = false;
       return;
     }
   }
 
-  // Fetch new products if cache is expired or doesn't exist
   const requestData = new URLSearchParams();
   requestData.append("action", "get_product_ids_from_raptor");
   requestData.append("call", "GetTopViewedInBrands");
@@ -229,7 +216,6 @@ const fetchProducts = async () => {
           };
         });
 
-      // Sort products by price in ascending order
       products.value = fetchedProducts.sort((a, b) => a.price - b.price);
 
       localStorage.setItem("products", JSON.stringify(products.value));
@@ -240,7 +226,7 @@ const fetchProducts = async () => {
   } catch (err) {
     console.error("An error occurred during the fetch:", err);
   } finally {
-    isLoading.value = false; // Stop loading regardless of success or failure
+    isLoading.value = false; 
   }
 };
 
@@ -253,7 +239,7 @@ onMounted(fetchProducts);
 }
 
 .swiper-slide {
-  width: auto; /* Prevent fixed slide width issues */
+  width: auto; 
 }
 
 .product-slide {
@@ -286,7 +272,7 @@ onMounted(fetchProducts);
     255,
     255,
     0.3
-  ); /* Semi-transparent black overlay */
+  );
   display: flex;
   justify-content: center;
   align-items: center;
@@ -294,7 +280,7 @@ onMounted(fetchProducts);
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  pointer-events: none; /* Allow clicks to pass through overlay */
+  pointer-events: none; 
 
   .padlock {
     display: flex;
@@ -310,7 +296,7 @@ onMounted(fetchProducts);
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -323,7 +309,7 @@ onMounted(fetchProducts);
   text-align: center;
   width: 320px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  font-family: "Muroslant", sans-serif;
+  font-family: $font-heading;
 }
 
 .overlay-header {
@@ -336,18 +322,18 @@ onMounted(fetchProducts);
   color: #000;
   margin-bottom: 8px;
   letter-spacing: 1px;
-  font-family: "Muroslant", sans-serif;
+  font-family: $font-heading;
 }
 
 .overlay-subtitle {
   font-size: 2rem;
   font-weight: bold;
-  color: #e84b4a;
+  color: $secondary-color;
   display: flex;
   justify-content: center;
   align-items: center;
   letter-spacing: 1px;
-  font-family: "Muroslant", sans-serif;
+  font-family: $font-heading;
   font-weight: 100;
 
 
@@ -371,9 +357,9 @@ onMounted(fetchProducts);
   height: 150px;
   border-radius: 50%;
   background: conic-gradient(
-    #e84b4a 0deg,
+    $secondary-color 0deg,
     #f6c5c5 0deg
-  ); /* Dynamic gradient for progress */
+  );
   display: flex;
   justify-content: center;
   align-items: center;
@@ -383,19 +369,19 @@ onMounted(fetchProducts);
   position: absolute;
   width: 125px;
   height: 125px;
-  background: #fff; /* White inner circle */
+  background: #fff; 
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
 }
 
 .progress-percent {
   font-size: 2rem;
   font-weight: bold;
-  color: #e84b4a;
+  color: $secondary-color;
   margin: 0;
   letter-spacing: 1px;
   font-weight: 100;

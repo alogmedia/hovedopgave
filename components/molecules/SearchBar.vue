@@ -68,7 +68,7 @@ const handleBlur = () => {
   transition: border-color 0.3s ease;
 
   &--focused {
-    border-color: #007bff;
+    border-color: $primary-color;
   }
 
   .search-icon {
@@ -84,17 +84,13 @@ const handleBlur = () => {
   }
 
   .search-button {
-    background-color: #007bff;
+    background-color: $primary-color;
     color: #fff;
     border: none;
     padding: 11px;
     cursor: pointer;
     margin-left: 8px;
     transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #0056b3;
-    }
   }
 }
 

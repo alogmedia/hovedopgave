@@ -8,7 +8,7 @@ import { defineProps, computed } from "vue";
 const props = defineProps({
   name: {
     type: String,
-    default: "ph-magnifying-glass", // Default to a magnifying glass icon
+    default: "ph-magnifying-glass",
   },
   color: {
     type: String,
@@ -29,6 +29,3 @@ const iconStyle = computed(() => ({
 }));
 </script>
 
-<style scoped>
-/* Add any additional styling for the icons if needed */
-</style>

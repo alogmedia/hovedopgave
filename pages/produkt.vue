@@ -16,7 +16,3 @@
 <script setup>
 import ThreeProductViewer from "@/components/templates/ThreeProductViewer.vue";
 </script>
-
-<style scoped lang="scss">
-@use "@/assets/global_vars.scss" as *;
-</style>

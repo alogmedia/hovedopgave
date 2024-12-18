@@ -61,7 +61,7 @@ const props = defineProps({
   background-color: #fff;
   height: 214px;
   text-transform: lowercase;
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1); // Adds a modern shadow for depth
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
 
   .productPrice {
     display: flex;
@@ -73,12 +73,12 @@ const props = defineProps({
   .productPoints {
     padding: 5px 20px;
     text-transform: initial;
-    font-family: Jakarta;
+    font-family: $font-subheading;
     font-size: 0.775rem;
     font-weight: 800;
 
     .pointTennisBall {
-      color: #e84b4a; // Custom red color for emphasis
+      color: $secondary-color;
       font-size: 0.675rem;
     }
   }
@@ -86,14 +86,14 @@ const props = defineProps({
   .AddToCart {
     display: flex;
     align-items: center;
-    gap: 10px; // Add spacing between the input and button
+    gap: 10px;
     padding: 20px;
 
     .amount {
-      flex: 0 0 50px; // Fixed width for the input field
+      flex: 0 0 50px; 
       border: 1px solid #000;
-      text-align: center; // Centers the text inside the input
-      height: 40px; // Ensure consistent height with the button
+      text-align: center; 
+      height: 40px; 
       display: flex;
       align-items: center;
       justify-content: center;
@@ -102,14 +102,14 @@ const props = defineProps({
         font-weight: 800;
         font-size: 1.5rem;
         color: rgba(0, 0, 0, 1);
-        border: none; // Remove inner input border
-        width: 100%; // Take full width of container
-        text-align: center; // Center the number in the input
+        border: none;
+        width: 100%; 
+        text-align: center; 
       }
     }
 
     .addButton {
-      border: 1px solid #007bff;
+      border: 1px solid $primary-color;
       width: 100%;
       a {
         text-decoration: none;
@@ -134,7 +134,7 @@ const props = defineProps({
       margin-left: 20px;
       margin-right: 20px;
       border: none;
-      font-family: Jakarta;
+      font-family: $font-subheading;
       font-weight: 800;
       font-size: 1.1rem;
       color: #000;
@@ -142,14 +142,14 @@ const props = defineProps({
   }
 
   .text.main {
-    font-family: Jakarta;
+    font-family: $font-subheading;
     font-size: 1.5rem;
     font-weight: 800;
-    color: #17a700; // Custom green color for emphasis
+    color: #17a700;
   }
 
   .tennisBall {
-    color: #e84b4a; // Custom red color for emphasis
+    color: $secondary-color;
     font-size: 0.875rem;
     margin-top: 3px;
   }
@@ -159,7 +159,7 @@ const props = defineProps({
     color: #000;
     letter-spacing: 2px;
     font-weight: 800;
-    font-family: Jakarta;
+    font-family: $font-subheading;
   }
 }
 

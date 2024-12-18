@@ -1,6 +1,5 @@
 <template>
   <template v-if="isLoading">
-    <!-- Skeleton Loader -->
     <div class="skeleton-grid">
       <div class="skeleton-loader">
         <div class="skeleton-image"></div>
@@ -39,7 +38,6 @@
           </div>
         </div>
       </div>
-      <!-- Points Overlay -->
       <div v-if="showOverlay" class="points-overlay">
         <div class="overlay-content">
           <div class="overlay-header">
@@ -64,7 +62,6 @@
         )`,
               }"
             >
-              <!-- Inner white circle -->
               <div class="inner-circle">
                 <p class="progress-percent">{{ progress }}%</p>
                 <p class="progress-text">{{ userPoints }}/{{ totalPoints }}</p>
@@ -153,7 +150,7 @@ const breakpointsConfig = {
 };
 
 const fetchProducts = async () => {
-  const expirationTime = 24 * 60 * 60 * 1000; // 24 hours
+  const expirationTime = 24 * 60 * 60 * 1000; 
 
   const storedProducts = localStorage.getItem('products');
   const savedTimestamp = localStorage.getItem('productsTimestamp');
@@ -246,7 +243,7 @@ onMounted(fetchProducts);
   left: 0px;
   width: 100%;
   height: 40px;
-  background-color: #0071e3;
+  background-color: $primary-color;
   z-index: 100;
 
   .points-title {
@@ -348,7 +345,7 @@ onMounted(fetchProducts);
   text-align: center;
   width: 320px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  font-family: "Muroslant", sans-serif;
+  font-family: $font-heading;
 }
 
 .overlay-header {
@@ -361,18 +358,18 @@ onMounted(fetchProducts);
   color: #000;
   margin-bottom: 8px;
   letter-spacing: 1px;
-  font-family: "Muroslant", sans-serif;
+  font-family: $font-heading;
 }
 
 .overlay-subtitle {
   font-size: 2rem;
   font-weight: bold;
-  color: #e84b4a;
+  color: $secondary-color;
   display: flex;
   justify-content: center;
   align-items: center;
   letter-spacing: 1px;
-  font-family: "Muroslant", sans-serif;
+  font-family: $font-heading;
   font-weight: 100;
 
 
@@ -396,7 +393,7 @@ onMounted(fetchProducts);
   height: 150px;
   border-radius: 50%;
   background: conic-gradient(
-    #e84b4a 0deg,
+    $secondary-color 0deg,
     #f6c5c5 0deg
   ); 
   display: flex;
@@ -420,7 +417,7 @@ onMounted(fetchProducts);
 .progress-percent {
   font-size: 2rem;
   font-weight: bold;
-  color: #e84b4a;
+  color: $secondary-color;
   margin: 0;
   letter-spacing: 1px;
   font-weight: 100;

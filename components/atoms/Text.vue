@@ -33,14 +33,14 @@ const tag = computed(() => {
   .text.expire {
     font-size: .775rem;
     color: #000;
-    font-family: Jakarta;
+    font-family: $font-subheading;
     font-weight: 800;
   }
   
 
 .text.subheading {
   font-size: 1.5rem;
-  color: #e84b4a;
+  color: $secondary-color;
   letter-spacing: 4%;
   font-weight: 100;
 }
@@ -53,14 +53,14 @@ const tag = computed(() => {
   font-size: 1.5rem;
   color: #fff;
   letter-spacing: 1px;
-  font-family: Jakarta;
+  font-family: $font-subheading;
   font-weight: 800;
 }
 
 .text.expire {
   font-size: 0.875rem;
   color: #000;
-  font-family: Jakarta;
+  font-family: $font-subheading;
   font-weight: 800;
 }
 </style>

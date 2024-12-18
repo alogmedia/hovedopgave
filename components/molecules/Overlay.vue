@@ -29,7 +29,7 @@ const props = defineProps({
   margin-bottom: 1rem;
   padding: 1.5rem;
   z-index: 10;
-  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%); // Defines the diagonal cut
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
 }
 
 a {

@@ -23,7 +23,6 @@
   <p class="guideTitle">{{ guide.title }}</p>
   <img :src="guide.image" :alt="guide.alt" />
   <p class="guideText" v-html="guide.text"></p>
-  <!-- Custom Pagination -->
   <div class="custom-pagination">
     <span
       v-for="(guide, index) in guides"
@@ -69,7 +68,7 @@ const updateActiveSlide = (swiper) => {
 
 const goToSlide = (index) => {
   if (swiperInstance) {
-    swiperInstance.slideTo(index); // Use Swiper's slideTo method
+    swiperInstance.slideTo(index); 
   }
 };
 
@@ -130,7 +129,7 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0; // Removed padding, relying on header-container's padding
+    padding: 0; 
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
@@ -143,39 +142,39 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
   margin-top: 20px;
   background: #fff;
   width: 90%;
-  height: calc(100vh - 200px); /* Dynamically set height based on the viewport */
+  height: calc(100vh - 200px);
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
-  overflow: hidden; /* Prevent content overflow */
+  overflow: hidden; 
 }
 
 
 .backButton {
   position: absolute;
-  bottom: 0; /* Stick to the bottom of the wrapper */
-  left: 0; /* Align to the left edge */
-  right: 0; /* Align to the right edge */
-  width: 100%; /* Span the full width of the wrapper */
+  bottom: 0;
+  left: 0; 
+  right: 0; 
+  width: 100%;
   display: flex;
-  justify-content: center; /* Center the button */
+  justify-content: center;
   padding-bottom: 10px;
 }
 
 .guideTitle {
     font-size: 3rem;
-    font-family: "muroslant", sans-serif;
+    font-family: $font-heading;
     font-weight: 100;
 }
 
 .guide {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Space out the content vertically */
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   width: 100%;
-  height: 100%; /* Match the height of the wrapper */
+  height: 100%;
   padding: 20px 0 20px 0;
-  box-sizing: border-box; /* Include padding in height calculations */
+  box-sizing: border-box;
 }
 
 .guide-content {
@@ -183,25 +182,25 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Space out the content inside */
+  justify-content: space-between;
 }
 
 .guide-content img {
   width: 100%;
-  max-height: 260px; /* Set a max height for the image */
-  object-fit: con; /* Crop the image to fit the available space */
+  max-height: 260px; 
+  object-fit: con;
   object-fit: cover;
 }
 
 .guideText {
-  flex-grow: 1; /* Allow the text to take remaining space */
-  overflow-y: auto; /* Add scroll if the text is too long */
+  flex-grow: 1; 
+  overflow-y: auto;
   font-size: 0.800rem;
   text-align: left;
   font-weight: 100;
   margin: 0 20px;
   letter-spacing: 1px;
-  font-family: "Jakarta", sans-serif;
+  font-family: $font-subheading;
 }
 
 
@@ -213,7 +212,7 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
     margin-right: 20px;
     padding-bottom: 20px;
     letter-spacing: 1px;
-    font-family: "Jakarta", sans-serif;
+    font-family: $font-subheading;
     margin-top: 10px;
     width: 300px;
     ul {

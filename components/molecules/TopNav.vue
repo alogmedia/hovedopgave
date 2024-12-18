@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0; // Removed padding, relying on header-container's padding
+  padding: 0;
   margin-left: 20px;
   margin-right: 20px;
 }

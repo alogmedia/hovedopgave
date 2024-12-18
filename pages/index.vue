@@ -108,7 +108,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-@use "@/assets/global_vars.scss" as *;
 
 body {
   background-color: $background-color;
