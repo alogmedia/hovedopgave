@@ -5,7 +5,7 @@
         <div class="skeleton-image"></div>
       </div>
     </div>
-    <div ref="viewerContainer" class="product-container">
+    <div ref="viewerContainer" class="product-container" >
       <Icon name="tdesign:map-3d" class="moveIcon" />
     </div>
   </div>

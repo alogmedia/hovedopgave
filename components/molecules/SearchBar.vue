@@ -56,7 +56,7 @@ const handleBlur = () => {
 
 <style scoped lang="scss">
 .search-bar {
-  margin: 0 20px;
+  margin: 20px 20px 0 ;
   display: flex;
   align-items: center;
   border: 1px solid #ccc;

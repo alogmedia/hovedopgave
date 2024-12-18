@@ -1,4 +1,6 @@
 <template>
+        <hr class="product-divider" />
+
   <div class="cart">
     <!-- Loop through products -->
     <div
@@ -27,7 +29,6 @@
           </div>
 
           <div class="product-info">
-            <!-- Quantity Selector -->
             <div class="quantity-selector">
               <select
                 v-model="product.quantity"
@@ -90,6 +91,7 @@
       </div>
       <hr v-if="index !== products.length - 1" class="product-divider" />
     </div>
+    <hr class="product-divider" />
     <div class="cart-summary">
       <div class="cart-summary-right">
         <p class="cart-summary-title">Total</p>
@@ -120,7 +122,7 @@
 <script setup>
 import { ref } from "vue";
 import boldeImage from "@/assets/images/bolde.png";
-import mainBat from "@/assets/images/mainbat2.png";
+import mainBat from "@/assets/images/mainbat3.png";
 import padelBat from "@/assets/images/padelbat.png";
 const selectedPrice = ref("Kroner");
 

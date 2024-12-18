@@ -2,8 +2,9 @@
   <div class="pointShop-banner">
     <Text content="FASTE DEALS" class="heading" />
     <div class="filterContent">
-      <Text content="Sorter efter" class="filter" type="sub" />
-      <Icon name="material-symbols:add" class="filterIcon" />
+      <NuxtLink to="/404"><Text content="Sorter efter" class="filter" type="sub" />
+      </NuxtLink>
+      <NuxtLink to="/404"><Icon name="material-symbols:add" class="filterIcon" /></NuxtLink>
     </div>
   </div>
 </template>
@@ -30,9 +31,14 @@
   right: 0px;
   align-items: center;
   gap: 5px;
+  a {
+    text-decoration: none;
+    color: #000;
+  }
 }
 .filterIcon {
   font-size: 1rem;
+  margin-top: 5px;
 }
 
 .filter {

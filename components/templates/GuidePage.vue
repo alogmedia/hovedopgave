@@ -151,7 +151,8 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
   text-align: center;
   width: 100%;
   height: 100%;
-  padding: 20px 0 20px 0;
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
 
 .guide-content {
@@ -200,6 +201,7 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
   display:flex;
   flex-direction: column;
   justify-content: center;
+  padding-bottom: 20px;
 
   a {
     text-decoration: none;

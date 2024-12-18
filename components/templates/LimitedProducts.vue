@@ -86,7 +86,7 @@ import { ref, onMounted } from "vue";
 import { useFetch } from "#app";
 import { useRouter } from 'vue-router';
 import { useNuxtApp } from '#app';
-import mainBat from "@/assets/images/mainbat2.png";
+import mainBat from "@/assets/images/mainbat3.png";
 import padelBat from "@/assets/images/padelbat.png";
 import Product from "@/components/organisms/Product.vue";
 import "swiper/swiper-bundle.css";

@@ -98,7 +98,7 @@ const props = defineProps({
 .expire {
   display: flex;
   position: absolute;
-  right: -25px;
+  right: -20px;
   bottom: 30px;
   width: 200px;
   font-size: 10px;
@@ -108,10 +108,14 @@ const props = defineProps({
   gap: 5px;
   z-index: 10;
 }
+
+.expireclock {
+  margin-top:1px;
+}
 @media only screen and (max-width: 390px) {
   .expire {
     font-size: 10px;
-    right: -25px;
+    right: -20px;
   }
 }
 </style>

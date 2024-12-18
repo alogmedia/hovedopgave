@@ -3,7 +3,7 @@
     <NuxtLink to="/points"
       ><Icon name="material-symbols:arrow-back-rounded" class="arrowIcon"
     /></NuxtLink>
-    <Text content="SIUX PRODUKT LIGHT" class="heading" />
+    <Text content="SIUX ULTRA PRO" class="heading" />
   </div>
 </template>
 

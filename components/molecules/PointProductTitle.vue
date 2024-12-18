@@ -18,7 +18,7 @@ const props = defineProps({
 
 <style scoped lang="scss">
 .category-title {
-  text-transform: uppercase;
+  text-transform: Capitalize;
   .text.subheading {
     font-size: .875rem;
     color: #000;
