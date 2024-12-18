@@ -13,6 +13,7 @@
         :headline="banner.headline"
         :buttonIcon="banner.buttonIcon"
         :buttonLabel="banner.buttonLabel"
+        :buttonLink="banner.buttonLink"
         v-if="isBannerVisible(idx)"
       />
     </div>
@@ -40,6 +41,7 @@ const heroBanners = [
     headline: "Se denne uges deal",
     buttonIcon: "material-symbols:arrow-right-alt",
     buttonLabel: "Find den her",
+    buttonLink: "/points",
   },
   {
     imageSrc: hero2,
@@ -47,6 +49,7 @@ const heroBanners = [
     headline: "Specifikt til dig",
     buttonIcon: "material-symbols:arrow-right-alt",
     buttonLabel: "Se mere",
+    buttonLink: "/404",
   },
   {
     imageSrc: hero3,
@@ -54,6 +57,7 @@ const heroBanners = [
     headline: "Ad libitum",
     buttonIcon: "material-symbols:arrow-right-alt",
     buttonLabel: "Se mere",
+    buttonLink: "/404",
   },
   {
     imageSrc: hero4,
@@ -61,6 +65,7 @@ const heroBanners = [
     headline: "i højeste kvalitet",
     buttonIcon: "material-symbols:arrow-right-alt",
     buttonLabel: "Se mere",
+    buttonLink: "/404",
   },
   {
     imageSrc: hero5,
@@ -68,6 +73,7 @@ const heroBanners = [
     headline: "til skarpe priser",
     buttonIcon: "material-symbols:arrow-right-alt",
     buttonLabel: "Shop nu",
+    buttonLink: "/404",
   },
 ];
 

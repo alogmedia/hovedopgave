@@ -18,9 +18,9 @@
       @blur="isFocused = false"
       class="search-input"
     />
-    <button class="search-button" @click="$emit('search', searchQuery)">
+    <NuxtLink to="/404"><button class="search-button" @click="$emit('search', searchQuery)">
       {{ buttonLabel }}
-    </button>
+    </button></NuxtLink>
   </div>
 </template>
 

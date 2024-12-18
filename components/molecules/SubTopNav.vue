@@ -2,12 +2,12 @@
   <div class="top-nav">
     <Logo customClass="SubLogo" />
     <div class="topicons">
-      <TopNavIcon name="material-symbols:search" class="pointIconHeart" />
-      <TopNavIcon name="ic:twotone-favorite-border" class="pointIconHeart" />
-      <TopNavIcon
+      <NuxtLink to="/404"><TopNavIcon name="material-symbols:search" class="pointIconHeart" /></NuxtLink>
+      <NuxtLink to="/404"><TopNavIcon name="ic:twotone-favorite-border" class="pointIconHeart" /></NuxtLink>
+      <NuxtLink to="/404"><TopNavIcon
         name="material-symbols:account-circle-outline"
         class="pointIconUser"
-      />
+      /></NuxtLink>
     </div>
   </div>
 </template>

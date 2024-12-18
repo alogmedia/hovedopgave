@@ -2,8 +2,8 @@
   <div class="top-nav">
     <Logo />
     <div class="topicons">
-      <TopNavIcon name="ic:twotone-favorite-border" />
-      <TopNavIcon name="material-symbols:account-circle-outline" />
+      <NuxtLink to="/404"><TopNavIcon name="ic:twotone-favorite-border" /></NuxtLink>
+      <NuxtLink to="/404"><TopNavIcon name="material-symbols:account-circle-outline" /></NuxtLink>
     </div>
   </div>
 </template>

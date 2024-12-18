@@ -10,15 +10,21 @@
         Denne side er ikke en del af konceptet<br />
         gå tilbage til forsiden
       </p>
-      <NuxtLink to="/" class="backButton"
-        ><CallToAction label="Tilbage" class="backButton"
-      /></NuxtLink>
+      <NuxtLink :to="backLink" class="backButton">
+        <CallToAction label="Tilbage" class="backButton" />
+      </NuxtLink>
     </div>
   </div>
 </template>
 
 <script setup>
 import errorImage from "@/assets/images/error1.png";
+import { useNuxtApp } from "#app";
+import { computed } from "vue";
+
+const { $previousRoute } = useNuxtApp();
+
+const backLink = computed(() => $previousRoute?.value || "/");
 </script>
 
 <style lang="scss" scoped>

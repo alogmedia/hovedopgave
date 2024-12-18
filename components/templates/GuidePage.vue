@@ -34,7 +34,7 @@
       <span v-else class="red-circle"></span>
     </span>
   </div>
-  <NuxtLink to="/" class="backButton">
+  <NuxtLink to="/points" class="backButton">
     <CallToAction label="Jeg forstår" class="backButton" />
   </NuxtLink>
 </div>

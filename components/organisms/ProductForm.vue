@@ -29,11 +29,11 @@
     </div>
     <div class="favorit">
       <button label="Favorit" class="favoritButton">
-        Favorit
+        <NuxtLink to="/404">Favorit
         <Icon
           name="material-symbols:favorite-outline-rounded"
           class="favoritIcon"
-        ></Icon>
+        ></Icon></NuxtLink>
       </button>
     </div>
   </div>
@@ -137,8 +137,11 @@ const props = defineProps({
       font-family: $font-subheading;
       font-weight: 800;
       font-size: 1.1rem;
-      color: #000;
-    }
+      a{
+        text-decoration: none;
+        color: #000;
+      }
+    }    
   }
 
   .text.main {

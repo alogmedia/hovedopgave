@@ -23,7 +23,7 @@
               lager
             </p>
             <p class="product-delivery">Levering 1 - 2 hverdage</p>
-            <a href="#" class="product-info-link">Info</a>
+            <NuxtLink to="/404" class="product-info-link">Info</NuxtLink>
           </div>
 
           <div class="product-info">
@@ -75,16 +75,16 @@
           </div>
 
           <div class="extra-options">
-            <p class="favorit">
+            <NuxtLink to="/404"><p class="favorit">
               <Icon
                 name="material-symbols:favorite-outline"
                 class="stock-icon"
               />
               Gem som favorit
-            </p>
-            <button class="remove-button" @click="removeProduct(index)">
+            </p></NuxtLink>
+            <NuxtLink to="/404"><button class="remove-button" @click="removeProduct(index)">
               Slet X
-            </button>
+            </button></NuxtLink>
           </div>
         </div>
       </div>
@@ -107,7 +107,7 @@
       </div>
     </div>
 
-    <NuxtLink to="/" class="checkout-button">
+    <NuxtLink to="/404" class="checkout-button">
       <CallToAction
         label="Gå til kassen"
         class="checkout-button"

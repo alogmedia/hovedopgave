@@ -1,7 +1,7 @@
 <template>
   <div class="overlay">
     <TextBlock :title="title" :headline="headline" />
-    <NuxtLink to="/points">
+    <NuxtLink :to="buttonLink">
     <CallToAction :label="buttonLabel" :icon="buttonIcon" /></NuxtLink>
   </div>
 </template>
@@ -15,6 +15,7 @@ const props = defineProps({
   headline: String,
   buttonLabel: String,
   buttonIcon: String,
+  buttonLink: String,
 });
 </script>
 
