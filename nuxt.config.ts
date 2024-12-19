@@ -73,6 +73,7 @@ export default defineNuxtConfig({
         { url: "/kurv", revision: null },
         { url: "/guide", revision: null },
         { url: "/produkt", revision: null },
+        { url: "/offline.html", revision: null },
       ],
       maximumFileSizeToCacheInBytes: 22 * 1024 ** 2, // 22 MB limit
       runtimeCaching: [
