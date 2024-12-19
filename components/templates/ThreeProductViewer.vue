@@ -90,7 +90,7 @@ onMounted(() => {
   const controls = new TrackballControls(camera, renderer.domElement);
   controls.noRotate = false;
   controls.noZoom = true;
-  controls.noPan = false;
+  controls.noPan = true;
   controls.staticMoving = false;
   controls.dynamicDampingFactor = 0.1;
 
@@ -99,6 +99,14 @@ onMounted(() => {
   controls.addEventListener("start", () => {
     autoRotate = false;
   });
+
+  const disablePinchZoom = (event) => {
+    if (event.touches && event.touches.length > 1) {
+      event.preventDefault();
+    }
+  };
+
+  viewerContainer.value.addEventListener("touchmove", disablePinchZoom);
 
   const animate = () => {
     requestAnimationFrame(animate);
@@ -133,6 +141,7 @@ onUnmounted(() => {
   margin-right: 20px;
   background-color: #fff;
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
+  touch-action: none;
 
   .product-container {
     height: 300px;

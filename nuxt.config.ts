@@ -62,24 +62,25 @@ export default defineNuxtConfig({
     },
     registerType: "autoUpdate",
     workbox: {
-      navigateFallback: '/offline.html', 
-      globPatterns: ['**/*.{js,css,html,png,svg,ico,jpg,json,woff2,webp,mp4}'],
+      navigateFallback: "/offline.html",
+      globPatterns: [
+        "**/*.{js,css,html,png,svg,ico,jpg,json,woff2,webp,mp4,gltf}",
+      ],
       additionalManifestEntries: [
-        { url: '/', revision: null },
-        { url: '/points', revision: null },
-        { url: '/error', revision: null },
-        { url: '/kurv', revision: null },
-        { url: '/guide', revision: null },
-        { url: '/produkt', revision: null },
-
+        { url: "/", revision: null },
+        { url: "/points", revision: null },
+        { url: "/error", revision: null },
+        { url: "/kurv", revision: null },
+        { url: "/guide", revision: null },
+        { url: "/produkt", revision: null },
       ],
       maximumFileSizeToCacheInBytes: 22 * 1024 ** 2, // 22 MB limit
       runtimeCaching: [
         {
           urlPattern: /^\/_nuxt\/builds\/meta\/.*\.json$/,
-          handler: 'CacheFirst',
+          handler: "CacheFirst",
           options: {
-            cacheName: 'nuxt-meta-cache',
+            cacheName: "nuxt-meta-cache",
             expiration: {
               maxAgeSeconds: 60,
               maxEntries: 20,
@@ -88,17 +89,17 @@ export default defineNuxtConfig({
         },
         {
           urlPattern: /^\/_nuxt\/builds\/meta\/.*\.json$/,
-          handler: 'NetworkFirst',
+          handler: "NetworkFirst",
           options: {
-            cacheName: 'nuxt-meta-cache',
+            cacheName: "nuxt-meta-cache",
             networkTimeoutSeconds: 10,
           },
         },
         {
-          urlPattern: /.*\.(js|css|png|jpg|jpeg|svg|ico|webp|woff2|mp4)$/,
-          handler: 'CacheFirst',
+          urlPattern: /.*\.(js|css|png|jpg|jpeg|svg|ico|webp|woff2|mp4|gltf)$/,
+          handler: "CacheFirst",
           options: {
-            cacheName: 'static-assets-cache',
+            cacheName: "static-assets-cache",
             expiration: {
               maxAgeSeconds: 60,
               maxEntries: 100,
@@ -113,9 +114,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: [
-    "@/assets/main.scss",
-  ],
+  css: ["@/assets/main.scss"],
   vite: {
     css: {
       preprocessorOptions: {
