@@ -28,7 +28,6 @@
   display: flex;
   font-size: 1.2rem;
   color: #000;
-  margin-top: 5px;
 }
 
 .text.heading {
