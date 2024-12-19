@@ -1,11 +1,20 @@
 <template>
   <div class="product-banner">
-    <NuxtLink to="/points"
+    <NuxtLink :to="backLink"
       ><Icon name="material-symbols:arrow-back-rounded" class="arrowIcon"
     /></NuxtLink>
     <Text content="INDKØBSKURV" class="heading" />
   </div>
 </template>
+
+<script setup>
+import { useNuxtApp } from "#app";
+import { computed } from "vue";
+
+const { $previousRoute } = useNuxtApp();
+
+const backLink = computed(() => $previousRoute?.value || "/");
+</script>
 
 <style scoped lang="scss">
 .product-banner {
