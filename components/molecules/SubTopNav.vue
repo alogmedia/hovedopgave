@@ -3,7 +3,7 @@
     <Logo customClass="SubLogo" />
     <div class="topicons">
       <NuxtLink to="/404"
-        ><TopNavIcon name="material-symbols:search" class="pointIconHeart"
+        ><TopNavIcon name="material-symbols:search" class="pointIconSearch"
       /></NuxtLink>
       <NuxtLink to="/404"
         ><TopNavIcon name="ic:twotone-favorite-border" class="pointIconHeart"
@@ -31,9 +31,13 @@
   display: flex;
   gap: 11px;
 }
-.pointIconHeart,
-.pointIconUser {
-  width: 25px;
+
+.pointIconSearch {
+  transform: scaleX(-1);
+  .pointIconHeart,
+  .pointIconUser {
+    width: 25px;
+  }
 }
 
 .SubLogo {

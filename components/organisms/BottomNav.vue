@@ -10,7 +10,10 @@
       <BottomNavItem icon="ion:tennisball" label="Padelpoints" />
     </NuxtLink>
     <NuxtLink to="/kurv" class="BottomNavLinks" active-class="active">
-      <BottomNavItem icon="material-symbols:shopping-cart" label="Kurv" />
+      <BottomNavItem
+        icon="material-symbols:shopping-cart-outline-sharp"
+        label="Kurv"
+      />
       <div class="cart-count">{{ cartCount }}</div>
     </NuxtLink>
   </nav>

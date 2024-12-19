@@ -26,9 +26,9 @@
 }
 .arrowIcon {
   display: flex;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #000;
-  margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .text.heading {

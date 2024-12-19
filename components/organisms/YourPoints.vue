@@ -61,6 +61,7 @@ const props = defineProps({
     color: $secondary-color;
     margin-left: auto;
     font-size: 1.5rem;
+    margin-top: 5%;
   }
   .text.subheading {
     font-size: 2rem;

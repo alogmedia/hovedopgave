@@ -19,9 +19,8 @@ import vid1 from "@/assets/videos/animationvideo1.mp4";
 import vid2 from "@/assets/videos/animationvideo2.mp4";
 import vid3 from "@/assets/videos/animationvideo3.mp4";
 import vid4 from "@/assets/videos/animationvideo4.mp4";
-import vid5 from "@/assets/videos/animationvideo5.mp4";
 
-const videos = [vid1, vid2, vid3, vid4, vid5];
+const videos = [vid1, vid2, vid3, vid4];
 
 const getRandomVideo = () => {
   const randomIndex = Math.floor(Math.random() * videos.length);

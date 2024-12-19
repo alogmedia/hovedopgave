@@ -84,7 +84,7 @@ import "swiper/swiper-bundle.css";
 import { ref, onMounted } from "vue";
 import Product from "@/components/organisms/Product.vue";
 import { useFetch } from "#app";
-import mainBat from "@/assets/images/mainbat3.png";
+import mainBat from "@/assets/images/mainbat.png";
 import padelBat from "@/assets/images/padelbat.png";
 
 const products = ref([]);

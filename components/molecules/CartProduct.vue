@@ -126,7 +126,7 @@
 <script setup>
 import { ref } from "vue";
 import boldeImage from "@/assets/images/bolde.png";
-import mainBat from "@/assets/images/mainbat3.png";
+import mainBat from "@/assets/images/mainbat.png";
 import padelBat from "@/assets/images/padelbat.png";
 const selectedPrice = ref("Kroner");
 
