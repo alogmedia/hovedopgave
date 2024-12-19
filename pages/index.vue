@@ -114,7 +114,6 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-
 body {
   background-color: $background-color;
 }

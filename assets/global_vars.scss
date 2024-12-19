@@ -1,37 +1,40 @@
 @font-face {
-  font-family: 'Muroslant';
-  src: url('@/assets/fonts/Muroslant.otf') format('opentype');
+  font-family: "Muroslant";
+  src: url("@/assets/fonts/Muroslant.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Jakarta';
-  src: url('@/assets/fonts/PlusJakarta.ttf') format('truetype');
+  font-family: "Jakarta";
+  src: url("@/assets/fonts/PlusJakarta.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Jakarta';
-  src: url('@/assets/fonts/PlusJakarta.ttf') format('truetype');
+  font-family: "Jakarta";
+  src: url("@/assets/fonts/PlusJakarta.ttf") format("truetype");
   font-weight: ExtraBold;
   font-style: normal;
 }
 
-  
 // Define a variable for headings
-$font-heading: 'Muroslant', sans-serif;
-$font-subheading: 'Jakarta', sans-serif;
+$font-heading: "Muroslant", sans-serif;
+$font-subheading: "Jakarta", sans-serif;
 
 // Colors
-$primary-color: #0071E3;
-$secondary-color: #E84B4A;
-$link-color: #21459F;
-$background-color: #F6F8FA;
-
+$primary-color: #0071e3;
+$secondary-color: #e84b4a;
+$link-color: #21459f;
+$background-color: #f6f8fa;
 
 // Assuming this is in a global SCSS file or in your component styles after importing `global_vars.scss`
-h1, h2, h3, h4, h5, h6 {
-    font-family: $font-heading;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-heading;
+}

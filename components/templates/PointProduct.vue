@@ -23,7 +23,9 @@
         <div class="productLink" @click.prevent="handleProductClick(product)">
           <Product
             class="product-column"
-            :imageSrc="parseFloat(product.price + 1000) > userPoints ? padelBat : mainBat"
+            :imageSrc="
+              parseFloat(product.price + 1000) > userPoints ? padelBat : mainBat
+            "
             :alt="product.alt"
             :title="product.title"
             :price="product.price + 1000"
@@ -69,7 +71,7 @@
             </div>
           </div>
           <NuxtLink to="/produkt" class="linkToProduct">
-          <Button label="Gå til produktet" class="goToProduct" />
+            <Button label="Gå til produktet" class="goToProduct" />
           </NuxtLink>
         </div>
       </div>
@@ -149,61 +151,66 @@ const breakpointsConfig = {
 };
 
 const fetchProducts = async () => {
-  const expirationTime = 24 * 60 * 60 * 1000; 
+  const expirationTime = 24 * 60 * 60 * 1000;
 
-  const storedProducts = localStorage.getItem('products');
-  const savedTimestamp = localStorage.getItem('productsTimestamp');
+  const storedProducts = localStorage.getItem("products");
+  const savedTimestamp = localStorage.getItem("productsTimestamp");
 
   if (storedProducts && savedTimestamp) {
-    const isExpired = Date.now() - parseInt(savedTimestamp, 10) > expirationTime;
+    const isExpired =
+      Date.now() - parseInt(savedTimestamp, 10) > expirationTime;
 
     if (!isExpired) {
-      console.log('Loading products from cache');
+      console.log("Loading products from cache");
       products.value = JSON.parse(storedProducts);
       isLoading.value = false;
       return;
     }
   }
 
-  console.log('Fetching products from API');
+  console.log("Fetching products from API");
   const requestData = new URLSearchParams();
-  requestData.append('action', 'get_product_ids_from_raptor');
-  requestData.append('call', 'GetTopViewedInBrands');
-  requestData.append('parameters', JSON.stringify({ BrandId: 'Siux', CookieId: 'rsa' }));
+  requestData.append("action", "get_product_ids_from_raptor");
+  requestData.append("call", "GetTopViewedInBrands");
+  requestData.append(
+    "parameters",
+    JSON.stringify({ BrandId: "Siux", CookieId: "rsa" }),
+  );
 
   try {
-    const { data, error } = await useFetch('/api', {
-      method: 'POST',
+    const { data, error } = await useFetch("/api", {
+      method: "POST",
       body: requestData.toString(),
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
     });
 
     if (!error.value && data.value) {
-      let responseData = typeof data.value === 'string' ? JSON.parse(data.value) : data.value;
+      let responseData =
+        typeof data.value === "string" ? JSON.parse(data.value) : data.value;
 
       const fetchedProducts = Object.keys(responseData)
         .slice(0, 10)
         .map((key) => {
           const item = responseData[key];
           return {
-            imageSrc: item.featured_image_url || '/assets/images/padelbat.png',
-            alt: item.title || 'Default Title',
-            title: item.title || 'Default Product Title',
-            price: parseFloat(item?.pricing?.actual_price || '1500'),
+            imageSrc: item.featured_image_url || "/assets/images/padelbat.png",
+            alt: item.title || "Default Title",
+            title: item.title || "Default Product Title",
+            price: parseFloat(item?.pricing?.actual_price || "1500"),
           };
         });
 
       products.value = fetchedProducts.sort((a, b) => a.price - b.price);
-      localStorage.setItem('products', JSON.stringify(products.value));
-      localStorage.setItem('productsTimestamp', Date.now().toString());
+      localStorage.setItem("products", JSON.stringify(products.value));
+      localStorage.setItem("productsTimestamp", Date.now().toString());
     } else {
-      console.error('Error fetching product data:', error.value);
+      console.error("Error fetching product data:", error.value);
     }
   } catch (err) {
-    console.error('Fetch failed, falling back to cached data', err);
-    const cachedProducts = localStorage.getItem('products');
+    console.error("Fetch failed, falling back to cached data", err);
+    const cachedProducts = localStorage.getItem("products");
     if (cachedProducts) {
       products.value = JSON.parse(cachedProducts);
     }
@@ -212,14 +219,13 @@ const fetchProducts = async () => {
   }
 };
 
-
 onMounted(fetchProducts);
 </script>
 
 <style lang="scss" scoped>
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(2, 1fr);
   margin-left: 20px;
   margin-right: 20px;
   gap: 20px;
@@ -232,9 +238,7 @@ onMounted(fetchProducts);
 .product-column {
   padding: 10px;
   box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
-
 }
-
 
 .pointPrice {
   position: absolute;
@@ -302,12 +306,7 @@ onMounted(fetchProducts);
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.5
-  ); 
+  background-color: rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -315,7 +314,7 @@ onMounted(fetchProducts);
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  pointer-events: none; 
+  pointer-events: none;
 
   .padlock {
     display: flex;
@@ -331,7 +330,7 @@ onMounted(fetchProducts);
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8); 
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -370,13 +369,10 @@ onMounted(fetchProducts);
   font-weight: 100;
   font-family: $font-heading;
 
-
-
   .tennisBall {
     font-size: 1.6rem;
     margin-bottom: 8px;
     margin-left: 5px;
-
   }
 }
 
@@ -392,10 +388,7 @@ onMounted(fetchProducts);
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: conic-gradient(
-    $secondary-color 0deg,
-    #f6c5c5 0deg
-  ); 
+  background: conic-gradient($secondary-color 0deg, #f6c5c5 0deg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -405,7 +398,7 @@ onMounted(fetchProducts);
   position: absolute;
   width: 125px;
   height: 125px;
-  background: #fff; 
+  background: #fff;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -422,7 +415,6 @@ onMounted(fetchProducts);
   letter-spacing: 1px;
   font-weight: 100;
   font-family: $font-heading;
-
 }
 
 .progress-text {
@@ -431,7 +423,6 @@ onMounted(fetchProducts);
   margin: 0;
   margin-top: 5px;
   font-family: $font-heading;
-
 }
 
 .close-button {

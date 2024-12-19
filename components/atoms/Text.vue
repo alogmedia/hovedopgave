@@ -29,14 +29,12 @@ const tag = computed(() => {
 </script>
 
 <style scoped lang="scss">
-
-  .text.expire {
-    font-size: .775rem;
-    color: #000;
-    font-family: $font-subheading;
-    font-weight: 800;
-  }
-  
+.text.expire {
+  font-size: 0.775rem;
+  color: #000;
+  font-family: $font-subheading;
+  font-weight: 800;
+}
 
 .text.subheading {
   font-size: 1.5rem;

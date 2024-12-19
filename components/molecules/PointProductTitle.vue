@@ -10,7 +10,7 @@ import Text from "@/components/atoms/Text.vue";
 
 const props = defineProps({
   title: {
-    type: [String, Number], 
+    type: [String, Number],
     required: true,
   },
 });
@@ -20,12 +20,11 @@ const props = defineProps({
 .category-title {
   text-transform: Capitalize;
   .text.subheading {
-    font-size: .875rem;
+    font-size: 0.875rem;
     color: #000;
     font-weight: 800;
     text-align: center;
     font-family: $font-subheading;
-
   }
 
   .text.undertitle {
@@ -34,7 +33,6 @@ const props = defineProps({
     color: #000;
     letter-spacing: 4%;
     font-weight: 100;
-
   }
 }
 </style>

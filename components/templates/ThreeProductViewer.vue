@@ -5,7 +5,7 @@
         <div class="skeleton-image"></div>
       </div>
     </div>
-    <div ref="viewerContainer" class="product-container" >
+    <div ref="viewerContainer" class="product-container">
       <Icon name="tdesign:map-3d" class="moveIcon" />
     </div>
   </div>
@@ -89,10 +89,10 @@ onMounted(() => {
 
   const controls = new TrackballControls(camera, renderer.domElement);
   controls.noRotate = false;
-  controls.noZoom = true; 
+  controls.noZoom = true;
   controls.noPan = false;
   controls.staticMoving = false;
-  controls.dynamicDampingFactor = 0.1; 
+  controls.dynamicDampingFactor = 0.1;
 
   controls.enableRotate = true;
 

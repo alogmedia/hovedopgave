@@ -12,7 +12,6 @@ import homeImg from "/icon.png";
 </script>
 
 <style scoped lang="scss">
-
 .points {
   background-color: $background-color; // Apply specific styles for points page
 }

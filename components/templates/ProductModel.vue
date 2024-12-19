@@ -20,10 +20,10 @@ const loadModel = () => {
   const loader = new GLTFLoader();
 
   renderer.setSize(250, 250);
-  renderer.setClearColor(0x000000, 0); 
+  renderer.setClearColor(0x000000, 0);
   scene.add(light);
 
-  camera.position.z = 2; 
+  camera.position.z = 2;
 
   loader.load(
     "/models/bat.gltf",

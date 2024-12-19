@@ -17,6 +17,5 @@ const props = defineProps({
 .cta-button {
   margin-top: 20px;
   height: 44px;
-  
 }
 </style>

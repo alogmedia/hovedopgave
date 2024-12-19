@@ -2,7 +2,8 @@
   <div class="overlay">
     <TextBlock :title="title" :headline="headline" />
     <NuxtLink :to="buttonLink">
-    <CallToAction :label="buttonLabel" :icon="buttonIcon" /></NuxtLink>
+      <CallToAction :label="buttonLabel" :icon="buttonIcon"
+    /></NuxtLink>
   </div>
 </template>
 

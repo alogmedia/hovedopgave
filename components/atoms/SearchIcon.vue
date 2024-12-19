@@ -28,4 +28,3 @@ const iconStyle = computed(() => ({
   color: props.color,
 }));
 </script>
-

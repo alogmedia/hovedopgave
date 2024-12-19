@@ -41,7 +41,7 @@ const randomVideo = ref(getRandomVideo());
 
 .banner-video {
   width: 100%;
-  height: auto; 
+  height: auto;
   object-fit: cover;
 }
 </style>

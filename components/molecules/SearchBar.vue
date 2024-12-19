@@ -18,9 +18,11 @@
       @blur="isFocused = false"
       class="search-input"
     />
-    <NuxtLink to="/404"><button class="search-button" @click="$emit('search', searchQuery)">
-      {{ buttonLabel }}
-    </button></NuxtLink>
+    <NuxtLink to="/404"
+      ><button class="search-button" @click="$emit('search', searchQuery)">
+        {{ buttonLabel }}
+      </button></NuxtLink
+    >
   </div>
 </template>
 
@@ -56,7 +58,7 @@ const handleBlur = () => {
 
 <style scoped lang="scss">
 .search-bar {
-  margin: 20px 20px 0 ;
+  margin: 20px 20px 0;
   display: flex;
   align-items: center;
   border: 1px solid #ccc;

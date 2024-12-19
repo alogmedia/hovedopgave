@@ -1,5 +1,5 @@
 <template>
-        <hr class="product-divider" />
+  <hr class="product-divider" />
 
   <div class="cart">
     <!-- Loop through products -->
@@ -43,7 +43,7 @@
             <div class="productPrice-wrapper">
               <p class="product-price">
                 <input
-                  v-if="product.points" 
+                  v-if="product.points"
                   class="radioColor"
                   type="radio"
                   :id="`priceKr-${index}`"
@@ -76,16 +76,20 @@
           </div>
 
           <div class="extra-options">
-            <NuxtLink to="/404"><p class="favorit">
-              <Icon
-                name="material-symbols:favorite-outline"
-                class="stock-icon"
-              />
-              Gem som favorit
-            </p></NuxtLink>
-            <NuxtLink to="/404"><button class="remove-button" @click="removeProduct(index)">
-              Slet X
-            </button></NuxtLink>
+            <NuxtLink to="/404"
+              ><p class="favorit">
+                <Icon
+                  name="material-symbols:favorite-outline"
+                  class="stock-icon"
+                />
+                Gem som favorit
+              </p></NuxtLink
+            >
+            <NuxtLink to="/404"
+              ><button class="remove-button" @click="removeProduct(index)">
+                Slet X
+              </button></NuxtLink
+            >
           </div>
         </div>
       </div>
@@ -153,7 +157,6 @@ const products = ref([
   },
 ]);
 
-
 const totalPrice = ref(
   products.value.reduce(
     (acc, product) => acc + product.price * product.quantity,
@@ -167,7 +170,7 @@ const quantity = ref(1);
 .cart {
   display: flex;
   flex-direction: column;
-  gap: 15px; 
+  gap: 15px;
 }
 
 .cart-item {
@@ -208,7 +211,7 @@ const quantity = ref(1);
   .product-info {
     display: flex;
     justify-content: space-between;
-    gap: 15px; 
+    gap: 15px;
     margin-bottom: 10px;
 
     .product-price {
@@ -262,28 +265,27 @@ const quantity = ref(1);
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-    width: 12px; 
+    width: 12px;
     height: 12px;
     border: none;
     outline: none;
-    border-radius: 50%; 
-    background-color: #FFF;
+    border-radius: 50%;
+    background-color: #fff;
     border: 1px solid #ff4d4d;
     position: relative;
     cursor: pointer;
     transition: background-color 0.1s ease;
-    display:flex;
+    display: flex;
     margin-top: 5%;
   }
   .radioColor:checked {
     background-color: #ff4d4d;
   }
 
-
   .product-details {
     display: flex;
     flex-direction: row;
-    align-items: center; 
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
     font-family: $font-subheading;
@@ -358,7 +360,7 @@ const quantity = ref(1);
 .product-divider {
   border: none;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
-  margin: 15px 0; 
+  margin: 15px 0;
   width: 90%;
   margin: 0 auto;
 }
@@ -384,9 +386,8 @@ const quantity = ref(1);
   }
 }
 
-
 .checkout-button {
-  display:flex;
+  display: flex;
   justify-content: center;
   width: 100%;
   :deep(.button) {
@@ -394,8 +395,8 @@ const quantity = ref(1);
   }
 }
 a {
-    text-decoration: none;
-  }
+  text-decoration: none;
+}
 :deep(button) {
   display: flex;
   flex-direction: row-reverse;

@@ -13,7 +13,7 @@
 
 <script setup>
 import { defineProps } from "vue";
-import Image from "@/components/atoms/Image.vue"; 
+import Image from "@/components/atoms/Image.vue";
 import CategoryTitle from "@/components/molecules/CategoryTitle.vue";
 
 const props = defineProps({
@@ -42,10 +42,10 @@ const props = defineProps({
   background-color: #ffffff;
   margin: 0 auto;
   position: relative;
-  width: 90%; 
-  height: 50%; 
+  width: 90%;
+  height: 50%;
   border-radius: 8px;
-  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1); 
+  box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   .catImg {
     display: flex;

@@ -28,7 +28,7 @@ const cartCount = ref(3);
   bottom: -1px;
   left: 0;
   width: 100%;
-  background-color: #f6f8fa; 
+  background-color: #f6f8fa;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -54,14 +54,13 @@ const cartCount = ref(3);
 
 .cart-count {
   background-color: #ff4d4d;
-  color: #fff; 
-  border-radius: 50%; 
-  padding: 2px 6px; 
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 6px;
   font-size: 12px;
   position: absolute;
   top: 3px;
   right: 20px;
-  z-index: 1; 
+  z-index: 1;
 }
-
 </style>

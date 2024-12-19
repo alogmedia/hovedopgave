@@ -40,7 +40,7 @@ const props = defineProps({
 
   .label {
     font-weight: 100;
-    font-size: .775rem;
+    font-size: 0.775rem;
   }
 }
 </style>

@@ -2,15 +2,17 @@
   <div class="pointShop-banner">
     <Text content="FASTE DEALS" class="heading" />
     <div class="filterContent">
-      <NuxtLink to="/404"><Text content="Sorter efter" class="filter" type="sub" />
+      <NuxtLink to="/404"
+        ><Text content="Sorter efter" class="filter" type="sub" />
       </NuxtLink>
-      <NuxtLink to="/404"><Icon name="material-symbols:add" class="filterIcon" /></NuxtLink>
+      <NuxtLink to="/404"
+        ><Icon name="material-symbols:add" class="filterIcon"
+      /></NuxtLink>
     </div>
   </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style scoped lang="scss">
 .pointShop-banner {

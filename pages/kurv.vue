@@ -1,7 +1,7 @@
 <template>
   <div class="kurvbody">
     <SubHeader />
-   <Cart />
+    <Cart />
   </div>
 </template>
 
@@ -12,12 +12,11 @@ import homeImg from "/icon.png";
 </script>
 
 <style scoped lang="scss">
-
 .points {
   background-color: $background-color; // Apply specific styles for points page
 }
 
 .kurvbody {
- margin-bottom: 100px;
+  margin-bottom: 100px;
 }
 </style>

@@ -26,7 +26,7 @@ const isActive = computed(() => route.path === props.to);
 
 <style scoped lang="scss">
 .bottom-nav-item {
-  flex: 1; 
+  flex: 1;
   text-align: center;
   font-family: $font-heading;
   font-weight: 100;

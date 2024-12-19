@@ -23,7 +23,6 @@ const props = defineProps({
     font-size: 2rem;
     color: $secondary-color;
     font-weight: 100;
-
   }
 }
 </style>

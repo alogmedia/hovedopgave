@@ -29,14 +29,12 @@ const props = defineProps({
     font-size: 2rem;
     letter-spacing: 2px;
     font-weight: 100;
-
   }
   .text.subheading {
     color: $secondary-color;
     font-size: 2rem;
     letter-spacing: 2px;
     font-weight: 100;
-
   }
 }
 </style>

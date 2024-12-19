@@ -62,7 +62,6 @@ h1 {
   font-size: 3.5rem;
   padding-top: 20px;
   font-weight: 100;
-
 }
 
 p {

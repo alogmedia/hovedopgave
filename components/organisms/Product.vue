@@ -110,7 +110,7 @@ const props = defineProps({
 }
 
 .expireclock {
-  margin-top:1px;
+  margin-top: 1px;
 }
 @media only screen and (max-width: 390px) {
   .expire {

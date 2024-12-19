@@ -21,11 +21,15 @@
         </div>
       </template>
       <template v-else>
-        <div class="product-wrapper" @click.prevent="handleProductClick(product)">
-          
+        <div
+          class="product-wrapper"
+          @click.prevent="handleProductClick(product)"
+        >
           <Product
             :title="product.title"
-            :imageSrc="parseFloat(product.price + 1000) > userPoints ? padelBat : mainBat"
+            :imageSrc="
+              parseFloat(product.price + 1000) > userPoints ? padelBat : mainBat
+            "
             :alt="product.alt"
             :price="product.price + 1000"
             :showExpire="true"
@@ -42,60 +46,55 @@
       </template>
     </SwiperSlide>
   </Swiper>
-   <div v-if="showOverlay" class="points-overlay">
-        <div class="overlay-content">
-          
-          <div class="overlay-header">
-            <button @click="closeOverlay" class="close-button">
-              <Icon
-                name="material-symbols:arrow-back-rounded"
-                class="arrowIcon"
-              />
-            </button>
-            <p class="overlay-title">Du har desværre ikke nok</p>
-            <p class="overlay-subtitle">
-              PADELPOINT <Icon name="ion:tennisball" class="tennisBall"></Icon>
-            </p>
-          </div>
-          <div class="progress-container">
-            <div
-              class="progress-circle"
-              :style="{
-                background: `conic-gradient(
+  <div v-if="showOverlay" class="points-overlay">
+    <div class="overlay-content">
+      <div class="overlay-header">
+        <button @click="closeOverlay" class="close-button">
+          <Icon name="material-symbols:arrow-back-rounded" class="arrowIcon" />
+        </button>
+        <p class="overlay-title">Du har desværre ikke nok</p>
+        <p class="overlay-subtitle">
+          PADELPOINT <Icon name="ion:tennisball" class="tennisBall"></Icon>
+        </p>
+      </div>
+      <div class="progress-container">
+        <div
+          class="progress-circle"
+          :style="{
+            background: `conic-gradient(
           #e84b4a ${progress * 3.6}deg,
           #f6c5c5 ${progress * 3.6}deg
         )`,
-              }"
-            >
-              <div class="inner-circle">
-                <p class="progress-percent">{{ progress }}%</p>
-                <p class="progress-text">{{ userPoints }}/{{ totalPoints }}</p>
-              </div>
-            </div>
+          }"
+        >
+          <div class="inner-circle">
+            <p class="progress-percent">{{ progress }}%</p>
+            <p class="progress-text">{{ userPoints }}/{{ totalPoints }}</p>
           </div>
-          <NuxtLink to="/produkt" class="linkToProduct">
-          <Button label="Gå til produktet" class="goToProduct" />
-          </NuxtLink>
         </div>
       </div>
+      <NuxtLink to="/produkt" class="linkToProduct">
+        <Button label="Gå til produktet" class="goToProduct" />
+      </NuxtLink>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { ref, onMounted } from "vue";
 import { useFetch } from "#app";
-import { useRouter } from 'vue-router';
-import { useNuxtApp } from '#app';
+import { useRouter } from "vue-router";
+import { useNuxtApp } from "#app";
 import mainBat from "@/assets/images/mainbat3.png";
 import padelBat from "@/assets/images/padelbat.png";
 import Product from "@/components/organisms/Product.vue";
 import "swiper/swiper-bundle.css";
 
-
 const router = useRouter();
 const nuxtApp = useNuxtApp();
 const products = ref([]);
-const isLoading = ref(true); 
+const isLoading = ref(true);
 const showOverlay = ref(false);
 const selectedProduct = ref(null);
 const userPoints = ref(2500);
@@ -111,7 +110,10 @@ const handleProductClick = async (product) => {
     showOverlay.value = true;
   } else {
     await nuxtApp.runWithContext(async () => {
-      await router.resolve({ path: "/produkt", query: { productId: product.id } });
+      await router.resolve({
+        path: "/produkt",
+        query: { productId: product.id },
+      });
     });
 
     router.push({ path: "/produkt", query: { productId: product.id } });
@@ -227,7 +229,7 @@ const fetchProducts = async () => {
   } catch (err) {
     console.error("An error occurred during the fetch:", err);
   } finally {
-    isLoading.value = false; 
+    isLoading.value = false;
   }
 };
 
@@ -240,7 +242,7 @@ onMounted(fetchProducts);
 }
 
 .swiper-slide {
-  width: auto; 
+  width: auto;
 }
 
 .product-slide {
@@ -256,9 +258,7 @@ onMounted(fetchProducts);
   position: absolute;
 }
 
-¨
-
-.product-wrapper {
+¨ .product-wrapper {
   position: relative;
 }
 
@@ -268,12 +268,7 @@ onMounted(fetchProducts);
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.3
-  );
+  background-color: rgba(255, 255, 255, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -281,7 +276,7 @@ onMounted(fetchProducts);
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  pointer-events: none; 
+  pointer-events: none;
 
   .padlock {
     display: flex;
@@ -337,8 +332,6 @@ onMounted(fetchProducts);
   font-weight: 100;
   font-family: $font-heading;
 
-
-
   .tennisBall {
     font-size: 1.6rem;
     margin-left: 5px;
@@ -358,10 +351,7 @@ onMounted(fetchProducts);
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  background: conic-gradient(
-    $secondary-color 0deg,
-    #f6c5c5 0deg
-  );
+  background: conic-gradient($secondary-color 0deg, #f6c5c5 0deg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -371,13 +361,13 @@ onMounted(fetchProducts);
   position: absolute;
   width: 125px;
   height: 125px;
-  background: #fff; 
+  background: #fff;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .progress-percent {

@@ -33,7 +33,6 @@ const props = defineProps({
     color: $secondary-color;
     letter-spacing: 4%;
     font-weight: 100;
-    
   }
 
   .text.undertitle {
@@ -42,7 +41,6 @@ const props = defineProps({
     color: #000;
     letter-spacing: 4%;
     font-weight: 100;
-
   }
 }
 </style>

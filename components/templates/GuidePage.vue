@@ -1,8 +1,8 @@
 <template>
-    <div>
-      <SubHeader />
+  <div>
+    <SubHeader />
 
-      <Swiper
+    <Swiper
       :slides-per-view="1"
       :space-between="10"
       :breakpoints="breakpointsConfig"
@@ -10,50 +10,51 @@
       @swiper="onSwiper"
       @slideChange="updateActiveSlide"
     >
-        <SwiperSlide
-          v-for="(guide, index) in guides"
-          :key="index"
-          class="product-slide"
-
-        >
-            <div class="guide">
-                <div class="guide-content">
-  <p class="guideTitle">{{ guide.title }}</p>
-  <p class="guideSubtitle">{{ guide.subtitle }}</p>
-  <img :src="guide.image" :alt="guide.alt" />
-  <p class="guideText" v-html="guide.text"></p>
-  <div class="pagination-wrapper">
-  <div class="custom-pagination">
-    <span
-      v-for="(guide, index) in guides"
-      :key="index"
-      :class="['custom-bullet', { active: activeSlide === index }]"
-      @click="goToSlide(index)"
-    >
-      <Icon v-if="activeSlide === index" name="ion:tennisball" class="tennisBullet" />
-      <span v-else class="red-circle"></span>
-    </span>
-  </div>
-  <NuxtLink to="/points" class="backButton">
-    <CallToAction label="Jeg forstår" class="backButton" />
-  </NuxtLink>
-</div>
-
+      <SwiperSlide
+        v-for="(guide, index) in guides"
+        :key="index"
+        class="product-slide"
+      >
+        <div class="guide">
+          <div class="guide-content">
+            <p class="guideTitle">{{ guide.title }}</p>
+            <p class="guideSubtitle">{{ guide.subtitle }}</p>
+            <img :src="guide.image" :alt="guide.alt" />
+            <p class="guideText" v-html="guide.text"></p>
+            <div class="pagination-wrapper">
+              <div class="custom-pagination">
+                <span
+                  v-for="(guide, index) in guides"
+                  :key="index"
+                  :class="['custom-bullet', { active: activeSlide === index }]"
+                  @click="goToSlide(index)"
+                >
+                  <Icon
+                    v-if="activeSlide === index"
+                    name="ion:tennisball"
+                    class="tennisBullet"
+                  />
+                  <span v-else class="red-circle"></span>
+                </span>
+              </div>
+              <NuxtLink to="/points" class="backButton">
+                <CallToAction label="Jeg forstår" class="backButton" />
+              </NuxtLink>
             </div>
           </div>
-        </SwiperSlide>
-      </Swiper>
- 
+        </div>
+      </SwiperSlide>
+    </Swiper>
   </div>
-  </template>
-  
-  <script setup>
-  import { Swiper, SwiperSlide } from "swiper/vue";
-  import "swiper/swiper-bundle.css";
-  import hero1 from "@/assets/images/hero1.png";
-  import hero2 from "@/assets/images/hero2.png";
-  import hero3 from "@/assets/images/hero3.png";
-  
+</template>
+
+<script setup>
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/swiper-bundle.css";
+import hero1 from "@/assets/images/hero1.png";
+import hero2 from "@/assets/images/hero2.png";
+import hero3 from "@/assets/images/hero3.png";
+
 const activeSlide = ref(0);
 
 let swiperInstance = null;
@@ -68,17 +69,17 @@ const updateActiveSlide = (swiper) => {
 
 const goToSlide = (index) => {
   if (swiperInstance) {
-    swiperInstance.slideTo(index); 
+    swiperInstance.slideTo(index);
   }
 };
 
-  const guides = [
-    {
-      title: "Padelpoints",
-      subtitle: "Guide",
-      image: hero1,
-      alt: "Guide Image 1",
-      text: `
+const guides = [
+  {
+    title: "Padelpoints",
+    subtitle: "Guide",
+    image: hero1,
+    alt: "Guide Image 1",
+    text: `
         <strong>Hvad er Padelpoint?</strong><br><br>
         Padelpoint er vores eksklusive belønningssystem, der giver dig mulighed for at få endnu mere ud af dine køb hos os.
         <br><br>
@@ -88,13 +89,13 @@ const goToSlide = (index) => {
           <li style="padding-top: 5px;">Brug dine Padelpoint til at købe produkter i Padelpoint butikken.</li>
         </ul>
       `,
-    },
-    {
-      title: "Padelpoints",
-      subtitle: "Guide",
-      image: hero2,
-      alt: "Guide Image 2",
-      text: `
+  },
+  {
+    title: "Padelpoints",
+    subtitle: "Guide",
+    image: hero2,
+    alt: "Guide Image 2",
+    text: `
         <strong>Sådan optjener du Padelpoint</strong><br><br>
 <p style="width: 100%;">At optjene Padelpoint er super nemt. Hver gang du handler hos os, får du en procentdel af dit køb i point, og de bliver pointene automatisk tilføjet til din konto.
 <br><br>
@@ -102,13 +103,13 @@ Du kan holde øje med dine point under Padelpoint og bruge dem, når det passer 
 <br><br>
 Der er ingen grænser for, hvor mange point du kan optjene – jo mere du handler, jo flere point får du!</p>
       `,
-    },
-    {
-      title: "Padelpoints",
-      subtitle: "Guide",
-      image: hero3,
-      alt: "Guide Image 3",
-      text: `
+  },
+  {
+    title: "Padelpoints",
+    subtitle: "Guide",
+    image: hero3,
+    alt: "Guide Image 3",
+    text: `
     <strong>Sådan bruger du dine Padelpoint</strong><br><br>
 
 Når du har optjent Padelpoint, kan du bruge dem til at købe produkter i vores Padelpoint-butik. 
@@ -123,18 +124,15 @@ Når du har optjent Padelpoint, kan du bruge dem til at købe produkter i vores 
 
 Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget nyt at vælge imellem.
       `,
-    },
-  ];
-  </script>
-  
-  <style lang="scss" scoped>
+  },
+];
+</script>
 
-
-
+<style lang="scss" scoped>
 .guideTitle {
-    font-size: 3rem;
-    font-family: $font-heading;
-    font-weight: 100;
+  font-size: 3rem;
+  font-family: $font-heading;
+  font-weight: 100;
 }
 .guideSubtitle {
   font-size: 2rem;
@@ -166,13 +164,13 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
 .guide-content img {
   width: 90%;
   margin: 0 auto;
-  max-height: 275px; 
+  max-height: 275px;
   object-fit: cover;
 }
 
 .guideText {
-  flex-grow: 1; 
-  font-size: 0.800rem;
+  flex-grow: 1;
+  font-size: 0.8rem;
   text-align: left;
   font-weight: 100;
   margin: 0 20px;
@@ -182,23 +180,21 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
 }
 
 .guideText {
-    font-size: .800rem;
-    text-align: left;
-    font-weight: 100;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-bottom: 20px;
-    letter-spacing: 1px;
-    font-family: $font-subheading;
-    margin-top: 10px;
-    width: 300px;
-    height: 250px;
-
+  font-size: 0.8rem;
+  text-align: left;
+  font-weight: 100;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 20px;
+  letter-spacing: 1px;
+  font-family: $font-subheading;
+  margin-top: 10px;
+  width: 300px;
+  height: 250px;
 }
 
-    
 .pagination-wrapper {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   padding-bottom: 20px;
@@ -206,8 +202,6 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
   a {
     text-decoration: none;
   }
-
-
 }
 
 .custom-pagination {
@@ -217,14 +211,13 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
 }
 
 .backButton {
-  display:flex;
+  display: flex;
   justify-content: center;
   width: 100%;
   :deep(.button) {
     width: 90%;
   }
 }
-
 
 .custom-bullet {
   cursor: pointer;
@@ -246,16 +239,15 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
 .custom-bullet.active {
   width: 25px;
   height: 25px;
-  color: #ff0000
+  color: #ff0000;
 }
 
 .tennisBullet {
-    color: #ff0000;
-    font-size: 2rem;
-    width: 25px;
-    height: 25px;
+  color: #ff0000;
+  font-size: 2rem;
+  width: 25px;
+  height: 25px;
 }
-
 
 @media only screen and (max-width: 390px) {
   .guide-content img {
@@ -265,5 +257,4 @@ Du finder både faste deals og tidsbegrænsede tilbud, så der er altid noget ny
     height: 240px;
   }
 }
-  </style>
-  
+</style>

@@ -29,11 +29,13 @@
     </div>
     <div class="favorit">
       <button label="Favorit" class="favoritButton">
-        <NuxtLink to="/404">Favorit
-        <Icon
-          name="material-symbols:favorite-outline-rounded"
-          class="favoritIcon"
-        ></Icon></NuxtLink>
+        <NuxtLink to="/404"
+          >Favorit
+          <Icon
+            name="material-symbols:favorite-outline-rounded"
+            class="favoritIcon"
+          ></Icon
+        ></NuxtLink>
       </button>
     </div>
   </div>
@@ -90,10 +92,10 @@ const props = defineProps({
     padding: 20px;
 
     .amount {
-      flex: 0 0 50px; 
+      flex: 0 0 50px;
       border: 1px solid #000;
-      text-align: center; 
-      height: 40px; 
+      text-align: center;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -103,8 +105,8 @@ const props = defineProps({
         font-size: 1.5rem;
         color: rgba(0, 0, 0, 1);
         border: none;
-        width: 100%; 
-        text-align: center; 
+        width: 100%;
+        text-align: center;
       }
     }
 
@@ -137,11 +139,11 @@ const props = defineProps({
       font-family: $font-subheading;
       font-weight: 800;
       font-size: 1.1rem;
-      a{
+      a {
         text-decoration: none;
         color: #000;
       }
-    }    
+    }
   }
 
   .text.main {
